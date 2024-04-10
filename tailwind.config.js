@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      'title': ['Gentium Book Plus', 'serif'],
+      'body': ['Roboto Slab', 'serif'],
+    },
     colors: {
       'maroon': '#800000',
       'silverChalice': '#B0B8B8',
