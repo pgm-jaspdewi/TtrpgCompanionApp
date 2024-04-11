@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LandingView from '../views/LandingView.vue'
 
 // Code responsible for routing
 
@@ -8,8 +8,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'landing',
+      component: LandingView
     },
     {
       path: '/about',
