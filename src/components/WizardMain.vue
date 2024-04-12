@@ -9,14 +9,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import WizardStep1 from './WizardStep1.vue'
 import WizardStep2 from './WizardStep2.vue'
 import WizardStep3 from './WizardStep3.vue'
 import WizardStep4 from './WizardStep4.vue'
 import WizardStep5 from './WizardStep5.vue'
 import WizardSummary from './WizardSummary.vue'
-import { useWizardStore } from '@/store'
+import { useWizardStore } from '@/stores/wizard-store'
 
 const store = useWizardStore()
 </script>

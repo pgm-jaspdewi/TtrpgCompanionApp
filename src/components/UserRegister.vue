@@ -2,9 +2,14 @@
   <div
     class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mxFrmWidth p-4"
   >
-    <AppH1 title="Login" />
+    <AppH1 title="Register" />
 
-    <form @submit.prevent="handleLogin">
+    <form @submit.prevent="handleRegister">
+      <div class="flex flex-col mb-2">
+        <FormLabel for="email" text="Email" />
+        <FormInput type="text" name="email" id="email" :value="credentials?.email" />
+      </div>
+
       <div class="flex flex-col mb-2">
         <FormLabel for="user_name" text="Username" />
         <FormInput type="text" name="userName" id="user_name" :value="credentials?.username" />
@@ -16,17 +21,17 @@
       </div>
 
       <div class="flex justify-center mb-6">
-        <AppButton type="submit" btnContent="Login">
+        <AppButton type="submit" btnContent="Register">
           <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
         </AppButton>
       </div>
     </form>
 
     <div class="flex justify-center">
-      <p class="text-sm mr-1">No account yet?</p>
-      <RouterLink to="/register" class="text-sm text-indigo hover:font-bold hover:underline"
-        >Register now</RouterLink
-      >
+      <p class="text-sm mr-1">Already an account?</p>
+      <RouterLink to="/login" class="text-sm text-indigo hover:font-bold hover:underline">
+        Login
+      </RouterLink>
     </div>
   </div>
 </template>
@@ -42,11 +47,12 @@ import { ref } from 'vue'
 
 const authStore = useAuthStore()
 const credentials = ref({
+  email: '',
   username: '',
   password: ''
 })
 
-const handleLogin = async (event: any) => {
+const handleRegister = async (event: any) => {
   try {
     console.log('Attempting to login...')
     const { username, password } = event.target.elements

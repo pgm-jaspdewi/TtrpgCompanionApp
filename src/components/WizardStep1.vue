@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useWizardStore } from '@/store'
+import { useWizardStore } from '@/stores/wizard-store'
 
 const store = useWizardStore()
 </script>

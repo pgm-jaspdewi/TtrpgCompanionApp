@@ -1,7 +1,8 @@
 <!-- Script tag goes here -->
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import UserRegister from '@/components/UserRegister.vue'
+</script>
 
-<!-- Template tag goes here -->
 <template>
   <main class="flex items-center">
     <div
@@ -10,10 +11,8 @@
       <div
         class="border-2 border-silverChalice w-innerContainer h-innerContainer m-innerContainer rounded-lg p-4 flex justify-center items-center"
       >
-        <RouterLink to="/login" class="text-blue-500 underline"> Go to Login </RouterLink>
+        <UserRegister />
       </div>
     </div>
   </main>
 </template>
-
-<!-- Style tag goes here -->
