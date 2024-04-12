@@ -3,13 +3,6 @@
   Place to write the HTML structure of the component
 -->
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
-
   <RouterView />
 </template>
 

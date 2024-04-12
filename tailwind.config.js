@@ -5,6 +5,11 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      'tablet': "768px",
+      'laptopSm': "1024px",
+      'laptopLg': "1440px",
+    },
     fontFamily: {
       'title': ['Gentium Book Plus', 'serif'],
       'body': ['Roboto Slab', 'serif'],
@@ -19,7 +24,24 @@ export default {
       'redishBrown': '#A52A2A',
       'britishRacingGreen': '#00563F',
     },
-    extend: {},
+    extend: {
+      spacing: {
+        'mnFrmWidth': '20rem',
+        'mxFrmWidth': '35rem',
+      },
+      width: {
+        'outerContainer': "calc(100vw - 20px)",
+        'innerContainer': 'calc(100vw - 30px)',
+      },
+      height: {
+        'outerContainer': "calc(100vh - 20px)",
+        'innerContainer': 'calc(100vh - 30px)',
+      },
+      margin: {
+        'outerContainer': '10px',
+        'innerContainer': '3.4px',
+      },
+    },
   },
   plugins: [],
 }

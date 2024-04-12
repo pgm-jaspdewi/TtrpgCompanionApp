@@ -5,9 +5,16 @@ import UserLogin from '@/components/UserLogin.vue'
 
 <!-- Template tag goes here -->
 <template>
-  <main>
-    <h1 class="text-2xl font-title">Homepage</h1>
-    <UserLogin />
+  <main class="flex items-center">
+    <div
+      class="border-2 border-silverChalice w-outerContainer h-outerContainer my-outerContainer m-auto rounded-lg"
+    >
+      <div
+        class="border-2 border-silverChalice w-innerContainer h-innerContainer m-innerContainer rounded-lg p-4 flex justify-center items-center"
+      >
+        <UserLogin />
+      </div>
+    </div>
   </main>
 </template>
 
