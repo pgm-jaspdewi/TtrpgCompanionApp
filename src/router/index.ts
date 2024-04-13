@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LandingView from '../views/LandingView.vue'
+import { useAuthStore } from '@/stores/auth-store'
 
 // Code responsible for routing
 
@@ -9,7 +10,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'landing',
-      component: LandingView
+      component: LandingView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -35,6 +39,14 @@ const router = createRouter({
       redirect: '/'
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  if (!useAuthStore()?.isLoggedIn && to.meta.requiresAuth) {
+    next({ name: 'login' })
+  } else {
+    next()
+  }
 })
 
 export default router

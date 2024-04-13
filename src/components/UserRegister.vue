@@ -11,8 +11,8 @@
       </div>
 
       <div class="flex flex-col mb-2">
-        <FormLabel for="user_name" text="Username" />
-        <FormInput type="text" name="userName" id="user_name" />
+        <FormLabel for="username" text="Username" />
+        <FormInput type="text" name="username" id="username" />
       </div>
 
       <div class="flex flex-col mb-6">
@@ -51,9 +51,10 @@ const router = useRouter()
 const handleRegister = async (event: any) => {
   try {
     const { email, username, password } = event.target.elements
+    console.log(username)
     const { data, error } = await authStore.createAccount({
       email: email.value,
-      username: email.value,
+      username: username.value,
       password: password.value
     })
     if (error) throw error
