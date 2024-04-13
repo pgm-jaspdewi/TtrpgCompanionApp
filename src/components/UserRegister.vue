@@ -7,17 +7,17 @@
     <form @submit.prevent="handleRegister">
       <div class="flex flex-col mb-2">
         <FormLabel for="email" text="Email" />
-        <FormInput type="text" name="email" id="email" :value="credentials?.email" />
+        <FormInput type="text" name="email" id="email" />
       </div>
 
       <div class="flex flex-col mb-2">
         <FormLabel for="user_name" text="Username" />
-        <FormInput type="text" name="userName" id="user_name" :value="credentials?.username" />
+        <FormInput type="text" name="userName" id="user_name" />
       </div>
 
       <div class="flex flex-col mb-6">
         <FormLabel for="password" text="Password" />
-        <FormInput type="password" name="password" id="password" :value="credentials?.password" />
+        <FormInput type="password" name="password" id="password" />
       </div>
 
       <div class="flex justify-center mb-6">
@@ -43,20 +43,22 @@ import AppH1 from './AppH1.vue'
 import FormInput from './formComponents/FormInput.vue'
 import FormLabel from './formComponents/FormLabel.vue'
 import { useAuthStore } from '@/stores/auth-store'
-import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
-const credentials = ref({
-  email: '',
-  username: '',
-  password: ''
-})
+const router = useRouter()
 
 const handleRegister = async (event: any) => {
   try {
-    console.log('Attempting to login...')
-    const { username, password } = event.target.elements
-    await authStore.login({ username, password })
+    const { email, username, password } = event.target.elements
+    const { data, error } = await authStore.createAccount({
+      email: email.value,
+      username: email.value,
+      password: password.value
+    })
+    if (error) throw error
+    console.log(data?.user?.email)
+    router.replace('/')
   } catch (error) {
     console.error(error)
   }
