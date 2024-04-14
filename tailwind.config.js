@@ -24,16 +24,29 @@ export default {
       'redishBrown': '#A52A2A',
       'britishRacingGreen': '#00563F',
     },
+    borderWidth: {
+      '1': '1px',
+      '2': '2px',
+      '3': '3px',
+      '4': '4px',
+      '5': '5px',
+      '6': '6px',
+    },
     extend: {
       spacing: {
         'mnFrmWidth': '20rem',
         'mxFrmWidth': '35rem',
       },
       width: {
+        'image': '90px',
+        'characterCard': '500px',
         'outerContainer': "calc(100vw - 20px)",
         'innerContainer': 'calc(100vw - 30px)',
       },
       height: {
+        'image': '90px',
+        'characterCard': '120px',
+        'characterCardLg': '150px',
         'outerContainer': "calc(100vh - 20px)",
         'innerContainer': 'calc(100vh - 30px)',
       },
@@ -41,6 +54,10 @@ export default {
         'outerContainer': '10px',
         'innerContainer': '3.4px',
       },
+      padding: {
+        'characterCard': '15px',
+        'characterCardLg': '25px',
+      }
     },
   },
   plugins: [],
