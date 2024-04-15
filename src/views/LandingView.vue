@@ -8,20 +8,33 @@ import CharacterCard from '@/components/CharacterCard.vue'
 
 const router = useRouter()
 
-const { user, userProfile, logout } = useAuthStore()
+const { userProfile, logout } = useAuthStore()
 
 const doLogout = async () => {
   const { error } = await logout()
   router.replace('/login')
 }
 
-const characterTest = {
-  image: 'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/7/7b/Gully.png/',
-  name: 'Gully',
-  race: 'Halfling',
-  level: 1,
-  class: 'Monk'
-}
+const characterTest = [
+  {
+    id: 1,
+    image:
+      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/7/7b/Gully.png/',
+    name: 'Gully',
+    race: 'Halfling',
+    level: 1,
+    class: 'Monk'
+  },
+  {
+    id: 2,
+    image:
+      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/5/52/Garrison.png/',
+    name: 'Garrison',
+    race: 'Human',
+    level: 1,
+    class: 'Fighter'
+  }
+]
 </script>
 
 <!-- Template tag goes here -->
@@ -40,9 +53,11 @@ const characterTest = {
             </h1>
             <h3 class="text-md">Select a character or create a new one</h3>
           </div>
-          <CharacterCard :character="characterTest" />
-          <CharacterCard :character="characterTest" />
-          <CharacterCard :character="characterTest" />
+          <ul class="flex flex-col items-center">
+            <li class="list-none" v-for="character in characterTest" :key="character.id">
+              <CharacterCard :character="character" />
+            </li>
+          </ul>
           <RouterLink to="/login" class=""> Go to Login </RouterLink>
           <AppButton @click="doLogout" btnContent="Logout">
             <FaPowerOff class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />

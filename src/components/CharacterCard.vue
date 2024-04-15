@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { character as CharacterType } from '@/interfaces'
+import { FaTrash } from 'vue3-icons/fa'
 
 defineProps<{
   character: CharacterType
@@ -8,22 +9,28 @@ defineProps<{
 
 <template>
   <div
-    class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex p-characterCard my-2"
+    class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex align-top justify-between p-characterCard my-2 group hover:border-maroon hover:bg-lightKaki cursor-pointer"
   >
-    <div
-      class="border-1 border-darkKhaki w-image h-image overflow-hidden bg-lightKaki rounded-lg mr-4"
-    >
-      <img :src="character.image" alt="" />
-    </div>
+    <div class="flex">
+      <div
+        class="border-1 border-darkKhaki group-hover:border-maroon w-image h-image overflow-hidden bg-lightKaki rounded-lg mr-4"
+      >
+        <img :src="character.image" alt="character image" class="group-hover:grayscale" />
+      </div>
 
-    <div>
-      <p>{{ character.name }}</p>
-      <p>{{ character.race }}</p>
-      <div class="flex">
-        <p>Lvl {{ character.level }}</p>
-        <p>{{ character.class }}</p>
+      <div class="flex flex-col justify-between">
+        <p class="font-title font-bold text-maroon text-xl">{{ character.name }}</p>
+        <p>{{ character.race }}</p>
+        <div class="flex">
+          <p class="mr-2">Lvl: {{ character.level }}</p>
+          <p>Class: {{ character.class }}</p>
+        </div>
       </div>
     </div>
-    <div></div>
+    <div>
+      <button>
+        <FaTrash class="fill-maroon hover:fill-lightMaroon w-5 h-5" />
+      </button>
+    </div>
   </div>
 </template>
