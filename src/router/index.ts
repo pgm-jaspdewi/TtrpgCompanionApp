@@ -31,6 +31,14 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/RegisterView.vue')
     },
+    {
+      path: '/characterWizard',
+      name: 'characterWizard',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/WizardView.vue')
+    },
 
     // This is a catch-all route in case the user enters an invalid URL
     {

@@ -1,10 +1,46 @@
-<!-- Script tag goes here -->
+<!-- Template tag-->
+<template>
+  <main class="flex items-center">
+    <AppLandingBorders :relative="true">
+      <div>
+        <!-- Title & subtitle -->
+        <div class="flex flex-col items-center pb-5">
+          <h1 class="text-4xl laptopSm:text-5xl text-maroon border-b-3 p-1 font-title font-bold">
+            Welcome, {{ userProfile?.username }}
+          </h1>
+          <h2 class="text-md laptopSm:text-xl">Select a character or create a new one</h2>
+        </div>
+
+        <!-- Character list -->
+        <ul class="flex flex-col items-center">
+          <li class="list-none" v-for="character in characterTest" :key="character.id">
+            <CharacterCard :character="character" />
+          </li>
+        </ul>
+
+        <!-- Create character button -->
+        <AppButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5">
+          <FaUserPlus class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+        </AppButtonBig>
+
+        <!-- logout button -->
+        <AppButton @click="doLogout" btnContent="Logout" class="absolute top-5 right-5">
+          <FaPowerOff class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
+        </AppButton>
+      </div>
+    </AppLandingBorders>
+  </main>
+</template>
+
+<!-- Script tag -->
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue'
 import { useAuthStore } from '@/stores/auth-store'
-import { FaPowerOff } from 'vue3-icons/fa'
+import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/CharacterCard.vue'
+import AppLandingBorders from '@/components/AppLandingBorders.vue'
+import AppButtonBig from '@/components/AppButtonBig.vue'
 
 const router = useRouter()
 
@@ -15,6 +51,11 @@ const doLogout = async () => {
   router.replace('/login')
 }
 
+const createCharacter = () => {
+  router.push('/characterWizard')
+}
+
+// temporary test-data
 const characterTest = [
   {
     id: 1,
@@ -33,39 +74,24 @@ const characterTest = [
     race: 'Human',
     level: 1,
     class: 'Fighter'
+  },
+  {
+    id: 3,
+    image:
+      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/4/45/Calibretto_%28transparent%29.png/',
+    name: 'Calibretto',
+    race: 'Warforged',
+    level: 1,
+    class: 'Cleric'
+  },
+  {
+    id: 4,
+    image:
+      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/2/29/Monika.png/',
+    name: 'Red Monika',
+    race: 'Human',
+    level: 1,
+    class: 'Rogue'
   }
 ]
 </script>
-
-<!-- Template tag goes here -->
-<template>
-  <main class="flex items-center">
-    <div
-      class="border-2 border-silverChalice w-outerContainer h-outerContainer my-outerContainer m-auto rounded-lg"
-    >
-      <div
-        class="border-2 border-silverChalice w-innerContainer h-innerContainer m-innerContainer rounded-lg p-4 flex justify-center items-center"
-      >
-        <div>
-          <div class="flex flex-col items-center">
-            <h1 class="text-4xl laptopSm:text-5xl text-maroon border-b-3 p-1 font-title font-bold">
-              Welcome, {{ userProfile?.username }}
-            </h1>
-            <h3 class="text-md">Select a character or create a new one</h3>
-          </div>
-          <ul class="flex flex-col items-center">
-            <li class="list-none" v-for="character in characterTest" :key="character.id">
-              <CharacterCard :character="character" />
-            </li>
-          </ul>
-          <RouterLink to="/login" class=""> Go to Login </RouterLink>
-          <AppButton @click="doLogout" btnContent="Logout">
-            <FaPowerOff class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
-          </AppButton>
-        </div>
-      </div>
-    </div>
-  </main>
-</template>
-
-<!-- Style tag goes here -->

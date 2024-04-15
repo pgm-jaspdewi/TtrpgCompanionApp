@@ -1,8 +1,4 @@
-<!-- Script tag goes here -->
-<script setup lang="ts">
-import UserRegister from '@/components/UserRegister.vue'
-</script>
-
+<!-- template tag -->
 <template>
   <main class="flex items-center">
     <div
@@ -16,3 +12,8 @@ import UserRegister from '@/components/UserRegister.vue'
     </div>
   </main>
 </template>
+
+<!-- Script tag -->
+<script setup lang="ts">
+import UserRegister from '@/components/UserRegister.vue'
+</script>

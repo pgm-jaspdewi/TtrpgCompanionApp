@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import type { character as CharacterType } from '@/interfaces'
-import { FaTrash } from 'vue3-icons/fa'
+import { FaTrash } from 'vue3-icons/fa6'
 
 defineProps<{
   character: CharacterType
 }>()
+
+const deleteCharacter = () => {
+  console.log('delete character')
+  // delete logic goes here once backend is set up properly
+}
 </script>
 
 <template>
@@ -20,16 +25,16 @@ defineProps<{
 
       <div class="flex flex-col justify-between">
         <p class="font-title font-bold text-maroon text-xl">{{ character.name }}</p>
-        <p>{{ character.race }}</p>
+        <p><span class="text-maroon">Race: </span>{{ character.race }}</p>
         <div class="flex">
-          <p class="mr-2">Lvl: {{ character.level }}</p>
-          <p>Class: {{ character.class }}</p>
+          <p class="mr-2"><span class="text-maroon">Lvl: </span>{{ character.level }}</p>
+          <p><span class="text-maroon">Class: </span>{{ character.class }}</p>
         </div>
       </div>
     </div>
     <div>
-      <button>
-        <FaTrash class="fill-maroon hover:fill-lightMaroon w-5 h-5" />
+      <button @click="deleteCharacter">
+        <FaTrash class="fill-maroon hover:fill-darkMaroon w-5 h-5" />
       </button>
     </div>
   </div>

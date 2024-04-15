@@ -16,7 +16,7 @@ export default {
     },
     colors: {
       'maroon': '#800000',
-      'lightMaroon': "#FF0000",
+      'darkMaroon': "#400000",
       'silverChalice': '#B0B8B8',
       'darkKhaki': '#C0AD6A',
       'lightKaki': '#F8F2D6',
@@ -24,6 +24,7 @@ export default {
       'indigo': '#4B0082',
       'redishBrown': '#A52A2A',
       'britishRacingGreen': '#00563F',
+      'black': '#181e23'
     },
     borderWidth: {
       '1': '1px',
@@ -41,14 +42,18 @@ export default {
       width: {
         'image': '90px',
         'characterCard': '500px',
-        'outerContainer': "calc(100vw - 20px)",
-        'innerContainer': 'calc(100vw - 30px)',
+        'outerContainer': "calc(100vw - 50px)",
+        'innerContainer': 'calc(100vw - 60px)',
       },
       height: {
         'image': '90px',
         'characterCard': '120px',
         'characterCardLg': '150px',
-        'outerContainer': "calc(100vh - 20px)",
+        'outerContainer': 'calc(100vh - 20px)',
+        'innerContainer': 'calc(100vh - 30px)',
+      },
+      minHeight: {
+        'outerContainer': 'calc(100vh - 20px)',
         'innerContainer': 'calc(100vh - 30px)',
       },
       margin: {
