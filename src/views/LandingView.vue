@@ -1,7 +1,7 @@
 <!-- Template tag-->
 <template>
   <main class="flex items-center">
-    <AppLandingBorders :relative="true">
+    <BasePageBorders :relative="true">
       <div>
         <!-- Title & subtitle -->
         <div class="flex flex-col items-center pb-5">
@@ -19,28 +19,28 @@
         </ul>
 
         <!-- Create character button -->
-        <AppButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5">
+        <BaseButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5">
           <FaUserPlus class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
-        </AppButtonBig>
+        </BaseButtonBig>
 
         <!-- logout button -->
-        <AppButton @click="doLogout" btnContent="Logout" class="absolute top-5 right-5">
+        <BaseButton @click="doLogout" btnContent="Logout" class="absolute top-5 right-5">
           <FaPowerOff class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
-        </AppButton>
+        </BaseButton>
       </div>
-    </AppLandingBorders>
+    </BasePageBorders>
   </main>
 </template>
 
 <!-- Script tag -->
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/CharacterCard.vue'
-import AppLandingBorders from '@/components/AppLandingBorders.vue'
-import AppButtonBig from '@/components/AppButtonBig.vue'
+import BasePageBorders from '@/components/BasePageBorders.vue'
+import BaseButtonBig from '@/components/BaseButtonBig.vue'
 
 const router = useRouter()
 

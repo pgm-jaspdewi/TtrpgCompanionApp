@@ -1,19 +1,14 @@
 <!-- template tag -->
 <template>
   <main class="flex items-center">
-    <div
-      class="border-2 border-silverChalice w-outerContainer h-outerContainer my-outerContainer m-auto rounded-lg"
-    >
-      <div
-        class="border-2 border-silverChalice w-innerContainer h-innerContainer m-innerContainer rounded-lg p-4 flex justify-center items-center"
-      >
-        <UserRegister />
-      </div>
-    </div>
+    <BasePageBorders>
+      <UserRegister />
+    </BasePageBorders>
   </main>
 </template>
 
 <!-- Script tag -->
 <script setup lang="ts">
 import UserRegister from '@/components/UserRegister.vue'
+import BasePageBorders from '@/components/BasePageBorders.vue'
 </script>

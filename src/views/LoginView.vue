@@ -1,14 +1,14 @@
 <!-- Template tag -->
 <template>
   <main class="flex items-center">
-    <AppLandingBorders>
+    <BasePageBorders>
       <UserLogin />
-    </AppLandingBorders>
+    </BasePageBorders>
   </main>
 </template>
 
 <!-- Script tag -->
 <script setup lang="ts">
-import AppLandingBorders from '@/components/AppLandingBorders.vue'
+import BasePageBorders from '@/components/BasePageBorders.vue'
 import UserLogin from '@/components/UserLogin.vue'
 </script>

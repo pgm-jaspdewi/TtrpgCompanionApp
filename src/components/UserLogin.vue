@@ -2,7 +2,7 @@
   <div
     class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mxFrmWidth p-4"
   >
-    <AppH1 title="Login" />
+    <BaseH1 title="Login" />
 
     <form @submit.prevent="handleLogin">
       <div class="flex flex-col mb-2">
@@ -16,9 +16,9 @@
       </div>
 
       <div class="flex justify-center mb-6">
-        <AppButton type="submit" btnContent="Login">
+        <BaseButton type="submit" btnContent="Login">
           <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
-        </AppButton>
+        </BaseButton>
       </div>
     </form>
 
@@ -32,9 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import AppButton from '@/components/AppButton.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import { FaAngleRight } from 'vue3-icons/fa'
-import AppH1 from './AppH1.vue'
+import BaseH1 from './BaseH1.vue'
 import FormInput from './formComponents/FormInput.vue'
 import FormLabel from './formComponents/FormLabel.vue'
 import { useAuthStore } from '@/stores/auth-store'
