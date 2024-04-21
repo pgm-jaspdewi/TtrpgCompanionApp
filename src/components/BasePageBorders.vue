@@ -1,10 +1,4 @@
 <!-- Borders used on landing-, login-, and wizard-views -->
-<script setup lang="ts">
-defineProps<{
-  relative?: boolean
-}>()
-</script>
-
 <template>
   <div
     class="border-2 border-silverChalice w-outerContainer min-h-outerContainer h-full my-outerContainer m-auto rounded-lg"
@@ -16,3 +10,9 @@ defineProps<{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  relative?: boolean
+}>()
+</script>

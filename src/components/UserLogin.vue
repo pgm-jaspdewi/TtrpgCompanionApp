@@ -5,15 +5,9 @@
     <BaseH1 title="Login" />
 
     <form @submit.prevent="handleLogin">
-      <div class="flex flex-col mb-2">
-        <FormLabel for="email" text="Email" />
-        <FormInput type="text" name="email" id="email" />
-      </div>
+      <BaseInput v-model="email" label="Email" class="mb-2" id="email" />
 
-      <div class="flex flex-col mb-6">
-        <FormLabel for="password" text="Password" />
-        <FormInput type="password" name="password" id="password" />
-      </div>
+      <BaseInput v-model="password" label="Password" type="password" class="mb-6" id="password" />
 
       <div class="flex justify-center mb-6">
         <BaseButton type="submit" btnContent="Login">
@@ -35,13 +29,16 @@
 import BaseButton from '@/components/BaseButton.vue'
 import { FaAngleRight } from 'vue3-icons/fa'
 import BaseH1 from './BaseH1.vue'
-import FormInput from './formComponents/FormInput.vue'
-import FormLabel from './formComponents/FormLabel.vue'
 import { useAuthStore } from '@/stores/auth-store'
 import { useRouter } from 'vue-router'
+import BaseInput from './BaseInput.vue'
+import { ref } from 'vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
+
+const email = ref('')
+const password = ref('')
 
 const handleLogin = async (event: any) => {
   try {

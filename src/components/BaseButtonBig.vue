@@ -1,9 +1,3 @@
-<script setup lang="ts">
-defineProps<{
-  btnContent: string
-}>()
-</script>
-
 <template>
   <!-- Attributes do not need to be passed as props,they will be inherited from parent components as fallthrough attributes -->
   <!-- https://vuejs.org/guide/components/attrs -->
@@ -20,3 +14,9 @@ defineProps<{
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  btnContent: string
+}>()
+</script>

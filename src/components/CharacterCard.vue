@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import type { character as CharacterType } from '@/interfaces'
-import { FaTrash } from 'vue3-icons/fa6'
-
-defineProps<{
-  character: CharacterType
-}>()
-
-const navigateToCharacter = () => {
-  console.log('navigate to character')
-  // navigation logic goes here
-}
-
-const deleteCharacter = () => {
-  console.log('delete character')
-  // delete logic goes here once backend is set up properly
-}
-</script>
-
 <template>
   <div class="flex">
     <div
@@ -50,3 +31,22 @@ const deleteCharacter = () => {
     </button>
   </div>
 </template>
+
+<script setup lang="ts">
+import type { character as CharacterType } from '@/interfaces'
+import { FaTrash } from 'vue3-icons/fa6'
+
+defineProps<{
+  character: CharacterType
+}>()
+
+const navigateToCharacter = () => {
+  console.log('navigate to character')
+  // navigation logic goes here
+}
+
+const deleteCharacter = () => {
+  console.log('delete character')
+  // delete logic goes here once backend is set up properly
+}
+</script>
