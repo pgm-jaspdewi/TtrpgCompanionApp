@@ -16,7 +16,6 @@ export default {
     },
     colors: {
       'maroon': '#800000',
-      'darkMaroon': "#400000",
       'silverChalice': '#B0B8B8',
       'darkKhaki': '#C0AD6A',
       'lightKaki': '#F8F2D6',
