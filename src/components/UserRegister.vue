@@ -5,11 +5,42 @@
     <BaseH1 title="Register" />
 
     <form @submit.prevent="handleRegister">
-      <BaseInput v-model="email" label="Email" class="mb-2" id="email" />
+      <div class="mb-2">
+        <BaseInput v-model="formData.email" label="Email" id="email" />
+        <span class="text-redishBrown pl-2" v-for="error in v$.email.$errors" :key="error.$uid">
+          {{ error.$message }}
+        </span>
+      </div>
 
-      <BaseInput v-model="username" label="Username" class="mb-2" id="username" />
+      <div class="mb-2">
+        <BaseInput v-model="formData.username" label="Username" id="username" />
+        <span class="text-redishBrown pl-2" v-for="error in v$.username.$errors" :key="error.$uid">
+          {{ error.$message }}
+        </span>
+      </div>
 
-      <BaseInput v-model="password" label="Password" type="password" class="mb-6" id="password" />
+      <div class="mb-2">
+        <BaseInput v-model="formData.password" label="Password" type="password" id="password" />
+        <span class="text-redishBrown pl-2" v-for="error in v$.password.$errors" :key="error.$uid">
+          {{ error.$message }}
+        </span>
+      </div>
+
+      <div class="mb-6">
+        <BaseInput
+          v-model="formData.confirmPassword"
+          label="Confirm Password"
+          type="password"
+          id="confirmPassword"
+        />
+        <span
+          class="text-redishBrown pl-2"
+          v-for="error in v$.confirmPassword.$errors"
+          :key="error.$uid"
+        >
+          {{ error.$message }}
+        </span>
+      </div>
 
       <div class="flex justify-center mb-6">
         <BaseButton type="submit" btnContent="Register">
@@ -34,29 +65,57 @@ import BaseH1 from './BaseH1.vue'
 import { useAuthStore } from '@/stores/auth-store'
 import { useRouter } from 'vue-router'
 import BaseInput from './BaseInput.vue'
-import { ref } from 'vue'
+import { reactive, computed } from 'vue'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength, maxLength, sameAs, helpers } from '@vuelidate/validators'
 
 const authStore = useAuthStore()
 const router = useRouter()
 
-const email = ref('')
-const username = ref('')
-const password = ref('')
+// Define the form data object
+const formData = reactive({
+  email: '',
+  username: '',
+  password: '',
+  confirmPassword: ''
+})
+// Define the validation rules
+const rules = computed(() => {
+  return {
+    email: { required, email },
+    username: {
+      required,
+      minLength: minLength(3),
+      maxLength: maxLength(20)
+    },
+    password: { required, minLength: minLength(8) },
+    confirmPassword: {
+      required,
+      sameAs: helpers.withMessage('Passwords do not match', sameAs(formData.password))
+    }
+  }
+})
 
-const handleRegister = async (event: any) => {
-  try {
-    const { email, username, password } = event.target.elements
-    console.log(username)
-    const { data, error } = await authStore.createAccount({
-      email: email.value,
-      username: username.value,
-      password: password.value
-    })
-    if (error) throw error
-    console.log(data?.user?.email)
-    router.replace('/')
-  } catch (error) {
-    console.error(error)
+// Create the vuelidate instance
+const v$ = useVuelidate(rules, formData)
+
+const handleRegister = async () => {
+  const result = await v$.value.$validate()
+
+  if (result) {
+    try {
+      const { error } = await authStore.createAccount({
+        email: formData.email,
+        username: formData.username,
+        password: formData.password
+      })
+      if (error) throw error
+      router.replace('/')
+    } catch (error) {
+      console.error(error)
+    }
+  } else {
+    console.log('Validation failed')
   }
 }
 </script>
