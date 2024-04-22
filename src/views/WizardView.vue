@@ -3,7 +3,7 @@
   <main class="flex items-center">
     <BasePageBorders :relative="true">
       <div class="tablet:w-5/6 laptopSm:w-8/12 laptopLg:w-7/12 min-w-mnFrmWidth max-w-lgFrmWidth">
-        <div class="bg-paleGold rounded-lg p-4">
+        <div class="bg-paleGold rounded-lg p-4 border-2 border-darkKhaki">
           <BaseH1 title="New Character" />
           <!-- wizard-form -->
           <WizardMain />

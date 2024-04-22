@@ -6,14 +6,14 @@
 
     <form @submit.prevent="handleLogin">
       <div class="mb-2">
-        <BaseInput v-model="formData.email" label="Email" id="email" />
+        <BaseInput v-model="v$.email.$model" label="Email" id="email" />
         <span class="text-redishBrown pl-2" v-for="error in v$.email.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>
       </div>
 
       <div class="mb-6">
-        <BaseInput v-model="formData.password" label="Password" type="password" id="password" />
+        <BaseInput v-model="v$.password.$model" label="Password" type="password" id="password" />
         <span class="text-redishBrown pl-2" v-for="error in v$.password.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>

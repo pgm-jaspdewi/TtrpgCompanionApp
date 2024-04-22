@@ -6,21 +6,21 @@
 
     <form @submit.prevent="handleRegister">
       <div class="mb-2">
-        <BaseInput v-model="formData.email" label="Email" id="email" />
+        <BaseInput v-model="v$.email.$model" label="Email" id="email" />
         <span class="text-redishBrown pl-2" v-for="error in v$.email.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>
       </div>
 
       <div class="mb-2">
-        <BaseInput v-model="formData.username" label="Username" id="username" />
+        <BaseInput v-model="v$.username.$model" label="Username" id="username" />
         <span class="text-redishBrown pl-2" v-for="error in v$.username.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>
       </div>
 
       <div class="mb-2">
-        <BaseInput v-model="formData.password" label="Password" type="password" id="password" />
+        <BaseInput v-model="v$.password.$model" label="Password" type="password" id="password" />
         <span class="text-redishBrown pl-2" v-for="error in v$.password.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>
@@ -28,7 +28,7 @@
 
       <div class="mb-6">
         <BaseInput
-          v-model="formData.confirmPassword"
+          v-model="v$.confirmPassword.$model"
           label="Confirm Password"
           type="password"
           id="confirmPassword"
