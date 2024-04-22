@@ -36,7 +36,8 @@ export default {
     extend: {
       spacing: {
         'mnFrmWidth': '20rem',
-        'mxFrmWidth': '35rem',
+        'mdFrmWidth': '35rem',
+        'lgFrmWidth': '50rem',
       },
       width: {
         'image': '90px',
@@ -45,6 +46,7 @@ export default {
         'innerContainer': 'calc(100vw - 60px)',
       },
       height: {
+        'line': '2px',
         'image': '90px',
         'characterCard': '120px',
         'characterCardLg': '150px',

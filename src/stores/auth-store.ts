@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth-store', () => {
     import.meta.env.VITE_SUPABASE_URL,
     import.meta.env.VITE_SUPABASE_KEY
   )
-  console.log(supabase)
+  // console.log(supabase)
 
   // function to login
   const login = async ({ email, password }: { email: string; password: string }) => {

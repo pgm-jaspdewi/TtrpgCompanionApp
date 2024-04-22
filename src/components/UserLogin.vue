@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mxFrmWidth p-4"
+    class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mdFrmWidth p-4"
   >
     <BaseH1 title="Login" />
 
@@ -17,6 +17,9 @@
         <span class="text-redishBrown pl-2" v-for="error in v$.password.$errors" :key="error.$uid">
           {{ error.$message }}
         </span>
+        <p v-if="WrongCredentials" class="text-redishBrown pl-2 pt-3">
+          Incorrect Email and/or password
+        </p>
       </div>
 
       <div class="flex justify-center mb-6">
@@ -41,13 +44,15 @@ import { FaAngleRight } from 'vue3-icons/fa'
 import BaseH1 from './BaseH1.vue'
 import { useAuthStore } from '@/stores/auth-store'
 import { useRouter } from 'vue-router'
-import { reactive, computed } from 'vue'
+import { reactive, computed, ref } from 'vue'
 import BaseInput from './BaseInput.vue'
 import useVuelidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 
 const authStore = useAuthStore()
 const router = useRouter()
+
+const WrongCredentials = ref(false)
 
 // Define the form data object
 const formData = reactive({
@@ -77,7 +82,7 @@ const handleLogin = async () => {
       if (error) throw error
       router.replace('/')
     } catch (error) {
-      console.error(error)
+      WrongCredentials.value = true
     }
   } else {
     alert('error, form not submitted')
