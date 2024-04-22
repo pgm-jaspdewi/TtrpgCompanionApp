@@ -4,7 +4,8 @@
     class="border-2 border-silverChalice w-outerContainer min-h-outerContainer h-full my-outerContainer m-auto rounded-lg"
   >
     <div
-      class="border-2 border-silverChalice w-innerContainer min-h-innerContainer m-innerContainer rounded-lg p-8 flex justify-center items-center {{ relative ? 'relative' : '' }}"
+      :class="{ relative: relative }"
+      class="border-2 border-silverChalice w-innerContainer min-h-innerContainer m-innerContainer rounded-lg p-8 flex justify-center items-center"
     >
       <slot></slot>
     </div>
@@ -12,7 +13,11 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  relative?: boolean
-}>()
+defineProps({
+  relative: {
+    type: Boolean,
+    default: false,
+    required: false
+  }
+})
 </script>

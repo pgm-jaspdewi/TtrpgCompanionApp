@@ -9,9 +9,18 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  text: string
-  nr: number
-  step: number
-}>()
+defineProps({
+  text: {
+    type: String,
+    required: true
+  },
+  nr: {
+    type: Number,
+    required: true
+  },
+  step: {
+    type: Number,
+    required: true
+  }
+})
 </script>

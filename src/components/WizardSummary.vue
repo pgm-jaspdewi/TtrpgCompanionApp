@@ -1,13 +1,8 @@
 <template>
   <h2>Summary</h2>
-  <div>
-    <button @click="($event) => store.prevStep()">Back</button>
-    <button>Finish</button>
-  </div>
+  <WizardNav navType="last" />
 </template>
 
 <script setup lang="ts">
-import { useWizardStore } from '@/stores/wizard-store'
-
-const store = useWizardStore()
+import WizardNav from './WizardNav.vue'
 </script>
