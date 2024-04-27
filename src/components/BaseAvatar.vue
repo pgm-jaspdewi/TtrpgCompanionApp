@@ -75,18 +75,25 @@ const src = ref('')
 const files = ref()
 
 const downloadImage = async () => {
-  console.log('Downloading image...')
   try {
     const { data, error } = await supabase.storage.from('avatars').download(path.value)
     if (error) throw error
     src.value = URL.createObjectURL(data)
-    console.log('Image downloaded successfully')
   } catch (error) {
     console.error('Error downloading image: ', (error as Error).message)
   }
 }
 
 const uploadAvatar = async (evt: any) => {
+  if (path.value !== '') {
+    console.log('already image here')
+    try {
+      const { error } = await supabase.storage.from('avatars').remove([path.value])
+      if (error) throw error
+    } catch (error) {
+      console.error('Error removing image: ', (error as Error).message)
+    }
+  }
   files.value = evt.target.files
   try {
     uploading.value = true
@@ -98,9 +105,7 @@ const uploadAvatar = async (evt: any) => {
     const fileExt = file.name.split('.').pop()
     const filePath = `${Math.random()}.${fileExt}`
 
-    const { data, error: uploadError } = await supabase.storage
-      .from('avatars')
-      .upload(filePath, file)
+    const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
 
     emit('update:path', filePath)
     emit('upload')
@@ -114,7 +119,7 @@ const uploadAvatar = async (evt: any) => {
 }
 
 watch(path, () => {
-  console.log('Path changed')
+  console.log(path.value)
   if (path.value) downloadImage()
 })
 </script>
