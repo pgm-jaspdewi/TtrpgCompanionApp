@@ -75,6 +75,7 @@ const src = ref('')
 const files = ref()
 
 const downloadImage = async () => {
+  // Download the image from the storage-bucket to show in the UI
   try {
     const { data, error } = await supabase.storage.from('avatars').download(path.value)
     if (error) throw error
@@ -86,7 +87,7 @@ const downloadImage = async () => {
 
 const uploadAvatar = async (evt: any) => {
   if (path.value !== '') {
-    console.log('already image here')
+    // Remove the existing image before uploading a new one to avoid cluttering the storage-bucket
     try {
       const { error } = await supabase.storage.from('avatars').remove([path.value])
       if (error) throw error
@@ -95,6 +96,7 @@ const uploadAvatar = async (evt: any) => {
     }
   }
   files.value = evt.target.files
+  // Upload the image to the storage-bucket
   try {
     uploading.value = true
     if (!files.value || files.value.length === 0) {
