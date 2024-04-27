@@ -10,8 +10,16 @@
     <WizardBreadcrumb text="Equipment" :nr="5" :step="store.step" />
     <WizardBreadcrumb text="Overview" :nr="6" :step="store.step" />
   </div>
-
-  <WizardStep1 v-if="store.step === 1" />
+  <Suspense>
+    <template #default>
+      <WizardStep1 v-if="store.step === 1" />
+    </template>
+    <template #fallback>
+      <div class="flex justify-center items-center h-[400px]">
+        <p>Loading...</p>
+      </div>
+    </template>
+  </Suspense>
   <WizardStep2 v-if="store.step === 2" />
   <WizardStep3 v-if="store.step === 3" />
   <WizardStep4 v-if="store.step === 4" />
