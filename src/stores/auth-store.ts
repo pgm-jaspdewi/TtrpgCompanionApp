@@ -1,19 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { createClient, type User } from '@supabase/supabase-js'
+import type { User } from '@supabase/supabase-js'
 import type { profile } from '@/interfaces'
+import { supabase } from '@/supabase'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = ref<User | null>(null)
   const userProfile = ref<profile>({ username: '', email: '' })
   const isLoggedIn = ref(false)
-
-  // Create a single supabase client for interacting with your database
-  const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL,
-    import.meta.env.VITE_SUPABASE_KEY
-  )
-  // console.log(supabase)
 
   // function to login
   const login = async ({ email, password }: { email: string; password: string }) => {
