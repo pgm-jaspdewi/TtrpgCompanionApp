@@ -12,7 +12,14 @@
   </div>
   <Suspense>
     <template #default>
-      <WizardStep1 v-if="store.step === 1" />
+      <div>
+        <WizardStep1 v-if="store.step === 1" />
+        <WizardStep2 v-if="store.step === 2" />
+        <WizardStep3 v-if="store.step === 3" />
+        <WizardStep4 v-if="store.step === 4" />
+        <WizardStep5 v-if="store.step === 5" />
+        <WizardSummary v-if="store.step === 6" />
+      </div>
     </template>
     <template #fallback>
       <div class="flex justify-center items-center h-[400px]">
@@ -20,11 +27,6 @@
       </div>
     </template>
   </Suspense>
-  <WizardStep2 v-if="store.step === 2" />
-  <WizardStep3 v-if="store.step === 3" />
-  <WizardStep4 v-if="store.step === 4" />
-  <WizardStep5 v-if="store.step === 5" />
-  <WizardSummary v-if="store.step === 6" />
 </template>
 
 <script setup lang="ts">

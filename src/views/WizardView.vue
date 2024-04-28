@@ -11,7 +11,7 @@
       </div>
 
       <!-- cancel-button -->
-      <BaseButton @click="doCancel" btnContent="Cancel" class="absolute top-5 right-5">
+      <BaseButton @click="doCancel" btnContent="Cancel" class="absolute top-3 right-3">
         <FaXmark class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
       </BaseButton>
     </BasePageBorders>

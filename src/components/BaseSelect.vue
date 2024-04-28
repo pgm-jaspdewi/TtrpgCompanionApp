@@ -9,7 +9,7 @@
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
-      <option value="" disabled>Please select one</option>
+      <option value="" disabled>Select an option</option>
       <option v-for="item in options" :key="item.index" :value="item.index">
         {{ item.name }}
       </option>
