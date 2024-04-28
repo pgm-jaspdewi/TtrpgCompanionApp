@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full">
     <img
       v-if="src"
       :src="src"

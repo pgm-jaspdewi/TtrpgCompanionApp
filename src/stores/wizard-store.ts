@@ -1,9 +1,31 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 export const useWizardStore = defineStore('wizard-store', () => {
   const step = ref(1)
-  function nextStep() {
+  const characterInfo = reactive({
+    charAvatar: '',
+    charName: '',
+    charRace: '',
+    charStats: {
+      str: 0,
+      dex: 0,
+      con: 0,
+      int: 0,
+      wis: 0,
+      cha: 0
+    },
+    charClass: '',
+    charBackground: ''
+  })
+
+  function nextStep(formdData: object) {
+    const store = useWizardStore()
+    store.$patch({
+      characterInfo: {
+        ...formdData
+      }
+    })
     step.value++
   }
 
@@ -11,5 +33,5 @@ export const useWizardStore = defineStore('wizard-store', () => {
     step.value--
   }
 
-  return { step, nextStep, prevStep }
+  return { step, characterInfo, nextStep, prevStep }
 })

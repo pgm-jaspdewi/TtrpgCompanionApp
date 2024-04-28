@@ -1,7 +1,7 @@
 <template>
   <!-- returned when navType = "first" -->
   <div v-if="navType === 'first'" class="flex justify-center">
-    <BaseButton btnContent="Next" @click="store.nextStep">
+    <BaseButton btnContent="Next" type="submit">
       <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
     </BaseButton>
   </div>
