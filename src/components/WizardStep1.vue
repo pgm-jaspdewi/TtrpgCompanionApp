@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div class="flex my-10">
+    <div class="flex my-6">
       <div class="w-5/12 flex justify-center">
         <div>
           <BaseAvatar v-model:path="v$.charAvatar.$model" :size="10" />

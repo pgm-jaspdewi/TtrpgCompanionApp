@@ -7,12 +7,14 @@ export const useWizardStore = defineStore('wizard-store', () => {
     charAvatar: '',
     charName: '',
     charRace: '',
-    str: 0,
-    dex: 0,
-    con: 0,
-    int: 0,
-    wis: 0,
-    cha: 0,
+    charStats: {
+      str: '',
+      dex: '',
+      con: '',
+      int: '',
+      wis: '',
+      cha: ''
+    },
     charClass: '',
     charBackground: ''
   })
