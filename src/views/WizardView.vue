@@ -16,7 +16,7 @@
       </BaseButton>
     </BasePageBorders>
     <BaseModal :modalActive="store.statModal">
-      <p>Modal content</p>
+      <WizardStatsModal />
     </BaseModal>
   </main>
 </template>
@@ -31,6 +31,7 @@ import { useRouter } from 'vue-router'
 import { FaXmark } from 'vue3-icons/fa6'
 import BaseModal from '@/components/BaseModal.vue'
 import { useStatModalStore } from '@/stores/modal-stores'
+import WizardStatsModal from '@/components/WizardStatsModal.vue'
 
 const store = useStatModalStore()
 

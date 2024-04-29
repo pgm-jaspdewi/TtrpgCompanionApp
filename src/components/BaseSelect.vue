@@ -26,8 +26,8 @@ defineProps({
   },
   // label prop is optional, if not provided, it will not render the label
   label: {
-    type: [String, Boolean],
-    default: false
+    type: String,
+    default: null
   },
   // options prop is required, it is the options for the select element
   options: {

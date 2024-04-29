@@ -10,9 +10,6 @@
           class="p-4 bg-paleGold self-start mt-32 max-w-screen-tablet border-2 border-darkKhaki rounded-lg"
         >
           <slot />
-          <BaseButton btnContent="Close" @click="store.toggleStatModal">
-            <FaXmark class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
-          </BaseButton>
         </div>
       </Transition>
     </div>
@@ -20,12 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from './BaseButton.vue'
-import { FaXmark } from 'vue3-icons/fa6'
-import { useStatModalStore } from '@/stores/modal-stores'
-
-const store = useStatModalStore()
-
 defineProps({
   modalActive: {
     type: Boolean,
