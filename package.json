@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@dice-roller/rpg-dice-roller": "^5.5.0",
     "@supabase/supabase-js": "^2.42.3",
     "@vue/test-utils": "^2.4.5",
     "@vuelidate/core": "^2.0.3",
