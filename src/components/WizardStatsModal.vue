@@ -33,7 +33,7 @@
             :key="index"
             class="text-2xl font-bold mx-2"
           >
-            {{ number.value }}
+            {{ number }}
           </p>
         </div>
       </div>
@@ -42,13 +42,22 @@
     <div class="m-4">
       <p class="font-bold">3. Assign the results to your stat of choice & confirm.</p>
 
-      <div class="flex justify-center">
-        <BaseSelectSmall label="Str" />
-        <BaseSelectSmall label="Dex" />
-        <BaseSelectSmall label="Con" />
-        <BaseSelectSmall label="Int" />
-        <BaseSelectSmall label="Wis" />
-        <BaseSelectSmall label="Cha" />
+      <div v-if="generatedNumbers.length !== 0" class="flex justify-center">
+        <BaseSelectSmall label="Str" :options="generatedNumbers" />
+        <BaseSelectSmall label="Dex" :options="generatedNumbers" />
+        <BaseSelectSmall label="Con" :options="generatedNumbers" />
+        <BaseSelectSmall label="Int" :options="generatedNumbers" />
+        <BaseSelectSmall label="Wis" :options="generatedNumbers" />
+        <BaseSelectSmall label="Cha" :options="generatedNumbers" />
+      </div>
+
+      <div v-if="generatedNumbers.length !== 0" class="flex justify-center">
+        <BaseSelectSmall label="Str" :options="generatedNumbers" />
+        <BaseSelectSmall label="Dex" :options="generatedNumbers" />
+        <BaseSelectSmall label="Con" :options="generatedNumbers" />
+        <BaseSelectSmall label="Int" :options="generatedNumbers" />
+        <BaseSelectSmall label="Wis" :options="generatedNumbers" />
+        <BaseSelectSmall label="Cha" :options="generatedNumbers" />
       </div>
     </div>
 
@@ -73,7 +82,7 @@ import BaseSelectSmall from './BaseSelectSmall.vue'
 
 const roll = new DiceRoll('4d6dl1')
 
-const generatedNumbers: { value: number; disabled: boolean }[] = reactive([])
+const generatedNumbers: number[] = reactive([])
 
 const generateStats = () => {
   if (generatedNumbers.length > 0) {
@@ -81,10 +90,8 @@ const generateStats = () => {
   }
   for (let i = 0; i < 6; i++) {
     roll.roll()
-    generatedNumbers.push({ value: roll.total, disabled: false })
-    store.modalOptions = generatedNumbers
-    // console.log(generatedNumbers)
-    console.log(store.modalOptions)
+    generatedNumbers.push(roll.total)
+    console.log(generatedNumbers)
   }
 }
 

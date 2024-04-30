@@ -6,12 +6,10 @@ export const useStatModalStore = defineStore('statModal-store', () => {
   // Create a ref for the stat modal
   const statModal = ref(false)
 
-  const modalOptions = reactive<{ value: number; disabled: boolean }[]>([])
-
   // Toggle the stat modal
   function toggleStatModal() {
     statModal.value = !statModal.value
   }
 
-  return { statModal, toggleStatModal, modalOptions }
+  return { statModal, toggleStatModal }
 })
