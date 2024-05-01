@@ -9,8 +9,13 @@
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
-      <option value="" disabled>Select an option</option>
-      <option v-for="item in options" :key="item.index" :value="item.index">
+      <option value="" disabled :selected="'' === modelValue">Select an option</option>
+      <option
+        v-for="item in options"
+        :key="item.index"
+        :value="item.index"
+        :selected="item.index === modelValue"
+      >
         {{ item.name }}
       </option>
     </select>
@@ -22,7 +27,8 @@ defineProps({
   // modelValue prop is required, it is the v-model binding
   modelValue: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   },
   // label prop is optional, if not provided, it will not render the label
   label: {

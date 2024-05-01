@@ -6,11 +6,10 @@ import router from './router'
 import { createPinia } from 'pinia'
 import { useAuthStore } from './stores/auth-store'
 
-// create a pinia instance
-const pinia = createPinia()
 // create the app instance
 const app = createApp(App)
-
+// create a pinia instance
+const pinia = createPinia()
 // use the pinia instance
 app.use(pinia)
 // Without this function call, the router will trigger before the supabase client is initialized.

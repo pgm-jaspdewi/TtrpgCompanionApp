@@ -75,16 +75,18 @@ const backgrounds = await axios.get(import.meta.env.VITE_5E_API_URL + 'backgroun
 
 // Define the form data object
 const formData = reactive({
-  charStats: {
-    str: '',
-    dex: '',
-    con: '',
-    int: '',
-    wis: '',
-    cha: ''
-  },
-  charClass: '',
-  charBackground: ''
+  charStats: computed(() => {
+    return {
+      str: wizardStore.charStats.str,
+      dex: wizardStore.charStats.dex,
+      con: wizardStore.charStats.con,
+      int: wizardStore.charStats.int,
+      wis: wizardStore.charStats.wis,
+      cha: wizardStore.charStats.cha
+    }
+  }),
+  charClass: wizardStore.characterInfo.charClass,
+  charBackground: wizardStore.characterInfo.charBackground
 })
 
 // Define the validation rules

@@ -8,9 +8,10 @@
     </div>
 
     <select
-      @change="onSelect"
       class="outline-none p-2 px-1 rounded-lg border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon w-12"
+      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
+      <option value="" disabled selected>{{ fillerValue }}</option>
       <option v-for="(option, index) in options" :key="index" :value="option">
         {{ option }}
       </option>
@@ -23,7 +24,8 @@ defineProps({
   // modelValue prop is required, it is the v-model binding
   modelValue: {
     type: String,
-    default: ''
+    default: '',
+    required: true
   },
   // label prop is optional, if not provided, it will not render the label
   label: {
@@ -34,12 +36,12 @@ defineProps({
   options: {
     type: Array as () => Array<number>,
     required: true
+  },
+  // fillerValue prop is the value that should be displayed by default
+  fillerValue: {
+    type: String,
+    default: null,
+    required: true
   }
 })
-
-const onSelect = () => {
-  console.log('need to figure this out')
-}
 </script>
-
-<!-- try to figure this out:  https://codesandbox.io/p/sandbox/elated-smoke-lwcriw?file=%2Fsrc%2Fcomponents%2FDisabledOptionOnSelect.vue-->

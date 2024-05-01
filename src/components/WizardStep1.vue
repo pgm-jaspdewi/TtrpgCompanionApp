@@ -61,9 +61,9 @@ const races = await axios.get(import.meta.env.VITE_5E_API_URL + 'races')
 
 // Define the form data object
 const formData = reactive({
-  charAvatar: '',
-  charName: '',
-  charRace: ''
+  charAvatar: store.characterInfo.charAvatar,
+  charName: store.characterInfo.charName,
+  charRace: store.characterInfo.charRace
 })
 
 // Define the validation rules

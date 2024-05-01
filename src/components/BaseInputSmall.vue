@@ -7,7 +7,7 @@
       class="outline-none text-lg text-center p-2 py-1 rounded-lg border-2 w-12 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-      type="number"
+      type="string"
       min="0"
       max="20"
       v-bind:id="id"
