@@ -120,8 +120,13 @@ const uploadAvatar = async (evt: any) => {
   }
 }
 
+// Download the image when the component is mounted. used when user backs to this step
+if (path.value !== '') downloadImage()
+
+// Watch for changes in the path prop and download the image when it changes. used when user selects a new image.
 watch(path, () => {
-  console.log(path.value)
+  // console.log(path)
+  // console.log(path.value)
   if (path.value) downloadImage()
 })
 </script>
