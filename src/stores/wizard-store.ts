@@ -18,7 +18,10 @@ export const useWizardStore = defineStore('wizard-store', () => {
     charRace: '',
     charStats: charStats,
     charClass: '',
-    charBackground: ''
+    charBackground: '',
+    skillProficiencies: [''],
+    toolProficincy: '',
+    languages: ['']
   })
 
   function nextStep(formData: object) {

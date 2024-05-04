@@ -74,11 +74,9 @@ const chosenClass = await axios.get(
 let classProficiencies: { index: string; name: string }[] = []
 for (const prof of chosenClass.data.proficiency_choices[0].from.options) {
   const proficiency = prof.item.name
-  const index = prof.index
   const parts: string[] = proficiency.split(' ')
   const proficiencyName = parts[1]
-  console.log(index)
-  classProficiencies.push({ index: index, name: proficiencyName })
+  classProficiencies.push({ index: proficiencyName, name: proficiencyName })
 }
 
 // Define the form data object
@@ -101,9 +99,13 @@ const v$ = useVuelidate(rules, formData)
 const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
+    // Add the characters proficiencies to the store
     store.nextStep({
-      charClass: formData.selectedProficiency1,
-      charBackground: formData.selectedProficiency2
+      skillProficiencies: [
+        ...backgroundProficiencies,
+        formData.selectedProficiency1,
+        formData.selectedProficiency2
+      ]
     })
   }
 }
