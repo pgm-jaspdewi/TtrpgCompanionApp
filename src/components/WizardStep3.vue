@@ -79,7 +79,6 @@ import BaseSelect from './BaseSelect.vue'
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
-import { s } from 'vitest/dist/reporters-P7C2ytIv.js'
 
 const store = useWizardStore()
 
