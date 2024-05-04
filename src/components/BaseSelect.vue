@@ -1,11 +1,12 @@
 <template>
   <div class="flex flex-col">
-    <label v-if="label" class="text-sm pl-2">
+    <BaseLabel v-if="label" pl="large">
       {{ label }}
-    </label>
+    </BaseLabel>
 
     <select
-      class="outline-none p-2 px-3 rounded-full border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
+      :class="smallFormMode ? 'text-sm p-1 m-2 my-1 rounded-lg' : 'text-base p-2 rounded-full'"
+      class="outline-none px-3 border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
@@ -23,6 +24,8 @@
 </template>
 
 <script setup lang="ts">
+import BaseLabel from './BaseLabel.vue'
+
 defineProps({
   // modelValue prop is required, it is the v-model binding
   modelValue: {
@@ -39,6 +42,10 @@ defineProps({
   options: {
     type: Array as () => Array<{ index: string; name: string }>,
     required: true
+  },
+  smallFormMode: {
+    type: Boolean,
+    default: false
   }
 })
 </script>

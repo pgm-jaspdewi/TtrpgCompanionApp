@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col">
-    <label v-if="label" class="text-sm pl-2">
+    <BaseLabel v-if="label" pl="large">
       {{ label }}
-    </label>
+    </BaseLabel>
     <input
       class="outline-none p-2 px-3 rounded-full border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"
@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+import BaseLabel from './BaseLabel.vue'
+
 defineProps({
   // modelValue prop is required, it is the v-model binding
   modelValue: {

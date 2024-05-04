@@ -2,7 +2,7 @@
   <form @submit.prevent="handleSubmit">
     <div class="flex align-middle justify-center items-center mt-4">
       <div>
-        <p class="text-sm pb-1">Fill in stats</p>
+        <BaseLabel pl="small"> Fill in stats </BaseLabel>
         <div class="flex space-x-1">
           <BaseInputSmall label="str" v-model="v$.charStats.str.$model" id="str" />
           <BaseInputSmall label="dex" v-model="v$.charStats.dex.$model" id="dex" />
@@ -66,6 +66,7 @@ import { useWizardStore } from '@/stores/wizard-store'
 import { useStatModalStore } from '@/stores/modal-stores'
 import { FaDice } from 'vue3-icons/fa6'
 import BaseInputSmall from './BaseInputSmall.vue'
+import BaseLabel from './BaseLabel.vue'
 
 const wizardStore = useWizardStore()
 const modalStore = useStatModalStore()
