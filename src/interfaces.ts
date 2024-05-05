@@ -11,3 +11,10 @@ export interface character {
   level: number
   class: string
 }
+
+export interface spell {
+  index: string
+  name: string
+  level: number
+  url: string
+}

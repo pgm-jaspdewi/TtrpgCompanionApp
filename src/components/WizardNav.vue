@@ -11,7 +11,10 @@
     <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true">
       <FaAngleLeft class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
     </BaseButton>
-    <BaseButton btnContent="Next" type="submit">
+    <BaseButton v-if="formButton" btnContent="Next" type="submit">
+      <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+    </BaseButton>
+    <BaseButton v-if="!formButton" btnContent="Next" @click="store.nextStep">
       <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
     </BaseButton>
   </div>
@@ -44,6 +47,11 @@ defineProps({
     },
     required: false,
     default: 'default'
+  },
+  formButton: {
+    type: Boolean,
+    default: true,
+    required: false
   }
 })
 </script>

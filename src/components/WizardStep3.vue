@@ -130,7 +130,6 @@ let languages: { index: string; name: string }[] = []
 for (const lang of languagesResult.data.results) {
   languages.push({ index: lang.name, name: lang.name })
 }
-console.log(languages)
 
 /** Form functionality */
 // Define the form data object
