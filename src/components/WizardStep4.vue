@@ -10,7 +10,7 @@
 
   <form v-if="spellcastingAtLvl1" @submit.prevent="handleSubmit">
     <div class="flex justify-between py-6">
-      <div class="w-5/12 pl-4">
+      <div class="w-6/12 pl-10 pr-6">
         <BaseLabel pl="small">Cantrips</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">
           <BaseSelect
@@ -19,10 +19,23 @@
             v-model="selectedCantrips[index]"
             :options="cantrips"
             :smallFormMode="true"
+            class="m-2"
           />
         </div>
       </div>
-      <div class="w-5/12 pr-4"></div>
+      <div class="w-6/12 pr-10 pl-6">
+        <BaseLabel pl="small">1st-level spells</BaseLabel>
+        <div class="border-2 border-darkKhaki rounded-lg">
+          <BaseSelect
+            v-for="(spell, index) in spellSlots"
+            :key="'cantrip' + index"
+            v-model="selectedSpells[index]"
+            :options="firstLevelSpells"
+            :smallFormMode="true"
+            class="m-2"
+          />
+        </div>
+      </div>
     </div>
     <WizardNav />
   </form>
@@ -47,6 +60,7 @@ const store = useWizardStore()
 const classSpellList = await axios.get(
   import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass + '/spells'
 )
+console.log(classSpellList.data.results)
 // Filter the list to get only the cantrips and first level spells
 const cantrips = classSpellList.data.results.filter((spell: spell) => spell.level === 0)
 const firstLevelSpells = classSpellList.data.results.filter((spell: spell) => spell.level === 1)
@@ -81,16 +95,19 @@ if (characterClass.data.spellcasting && characterClass.data.spellcasting.level =
 }
 
 /** Form functionality */
-
 // Define the form data object
 const formData = reactive({
-  selectedCantrips: ['']
+  selectedCantrips: store.characterInfo.selectedCantrips,
+  selectedSpells: store.characterInfo.selected1stLvlSpells
 })
 
 // Define the validation rules
 const rules = computed(() => {
   return {
     selectedCantrips: {
+      $each: { required: helpers.withMessage('Field is required', required) }
+    },
+    selectedSpells: {
       $each: { required: helpers.withMessage('Field is required', required) }
     }
   }
@@ -100,15 +117,15 @@ const rules = computed(() => {
 const v$ = useVuelidate(rules, formData)
 
 const selectedCantrips = ref(v$.value.selectedCantrips.$model)
+const selectedSpells = ref(v$.value.selectedSpells.$model)
 
 const handleSubmit = async () => {
-  console.log('submit')
-
   const result = await v$.value.$validate()
   if (result) {
-    console.log('validated')
-    console.log(formData)
-    // Add the characters proficiencies to the store
+    store.nextStep({
+      selectedCantrips: formData.selectedCantrips,
+      selected1stLvlSpells: formData.selectedSpells
+    })
   }
 }
 </script>
