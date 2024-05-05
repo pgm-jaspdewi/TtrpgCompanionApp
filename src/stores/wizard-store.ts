@@ -23,7 +23,8 @@ export const useWizardStore = defineStore('wizard-store', () => {
     // toolProficiency: '',
     languageProficiencies: [''],
     selectedCantrips: [''],
-    selected1stLvlSpells: ['']
+    selected1stLvlSpells: [''],
+    selectedEquipment: ['']
   })
 
   function nextStep(formData: object) {

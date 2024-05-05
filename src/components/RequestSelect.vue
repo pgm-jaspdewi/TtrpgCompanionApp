@@ -5,13 +5,13 @@
   Therefore, the url is passed as a prop to this component, and the fetch request is made in the setup function.
  -->
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col w-5/12">
     <select
       class="text-sm p-1 m-2 my-1 rounded-lg outline-none px-3 border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
-      <option value="" disabled :selected="'' === modelValue">Select an option</option>
+      <option value="" disabled :selected="'' === modelValue">Select equipment</option>
       <option v-for="item in options" :key="item.index" :value="item.index">
         {{ item.name }}
       </option>
@@ -35,6 +35,10 @@ const props = defineProps({
     required: true
   }
 })
+
+const generateValue = (index: string) => {
+  return { amount: 1, item: index }
+}
 
 const request = await axios.get(import.meta.env.VITE_5E_URL + props.url)
 const options = request.data.equipment
