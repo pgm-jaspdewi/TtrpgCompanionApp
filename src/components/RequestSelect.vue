@@ -5,7 +5,7 @@
   Therefore, the url is passed as a prop to this component, and the fetch request is made in the setup function.
  -->
 <template>
-  <div class="flex flex-col w-5/12">
+  <div class="flex flex-col">
     <select
       class="text-sm p-1 m-2 my-1 rounded-lg outline-none px-3 border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"

@@ -1,63 +1,59 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    class="m-4">
     <BaseLabel pl="small" :pb="true">Select equipment</BaseLabel>
-    <div class="border-2 border-darkKhaki rounded-lg p-2">
-      <p class="text-sm">
+    <div class="border-2 border-darkKhaki rounded-lg py-2 px-8">
+      <p class="pb-2">
         Apart from the standard equipment provided by your class and background, a
         <span class="lowercase font-bold">{{ characterClass.data.name }}</span> also gets to choose
         from the following options:
       </p>
-
-      <p>{{ selectedOption }}</p>
+      <hr class="pb-2 border-darkKhaki border-t-2" />
 
       <!-- div for radiobutton choices -->
-      <div
-        v-for="(choice, index) in radioButtonOptions"
-        :key="index"
-        class="p-2 border-2 flex flex-col"
-      >
-        <li>{{ choice.desc }}</li>
+      <div v-for="(choice, index) in radioButtonOptions" :key="index" class="flex flex-col pb-4">
+        <p class="pb-2">{{ choice.desc }}</p>
 
-        <div v-for="(option, i) in choice.from.options" :key="i">
-          <!-- display for counted reference -->
-          <label v-if="option.option_type === 'counted_reference'" class="flex">
-            <input
-              type="radio"
-              v-model="selectedOption[index]"
-              :value="{ amount: option.count, item: option.of.index }"
-            />
-            <p class="m-2 my-1">{{ option.of.name }} ( {{ option.count }} )</p>
-          </label>
+        <div class="flex items-center px-5">
+          <div v-for="(option, i) in choice.from.options" :key="i" class="w-6/12">
+            <!-- display for counted reference -->
+            <label v-if="option.option_type === 'counted_reference'" class="flex">
+              <input
+                type="radio"
+                v-model="selectedOption[index]"
+                :value="{ amount: option.count, item: option.of.index }"
+              />
+              <p class="m-2 my-1 text-sm">{{ option.of.name }} ( {{ option.count }} )</p>
+            </label>
 
-          <!-- display for multiple -->
-          <label v-if="option.option_type === 'multiple'" class="flex">
-            <input
-              type="radio"
-              v-model="selectedOption[index]"
-              :value="[
-                { amount: option.items[0].count, item: option.items[0].of.index },
-                { amount: option.items[1].count, item: option.items[1].of.index }
-              ]"
-            />
-            <p class="m-2 my-1">
-              {{ option.items[0].of.name }} ( {{ option.items[0].count }} ) &
-              {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
-            </p>
-          </label>
+            <!-- display for multiple -->
+            <label v-if="option.option_type === 'multiple'" class="flex">
+              <input
+                type="radio"
+                v-model="selectedOption[index]"
+                :value="[
+                  { amount: option.items[0].count, item: option.items[0].of.index },
+                  { amount: option.items[1].count, item: option.items[1].of.index }
+                ]"
+              />
+              <p class="m-2 my-1 text-sm">
+                {{ option.items[0].of.name }} ( {{ option.items[0].count }} ) &
+                {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
+              </p>
+            </label>
 
-          <!-- display for choice -->
-          <label v-if="option.option_type === 'choice'" class="flex">
-            <input
-              type="radio"
-              v-model="selectedOption[index]"
-              :value="{ amount: 1, item: itemValue[index] }"
-            />
-            <RequestSelect
-              :url="option.choice.from.equipment_category.url"
-              v-model="itemValue[index]"
-            />
-          </label>
+            <!-- display for choice -->
+            <label v-if="option.option_type === 'choice'" class="flex">
+              <input
+                type="radio"
+                v-model="selectedOption[index]"
+                :value="{ amount: 1, item: itemValue[index] }"
+              />
+              <RequestSelect
+                :url="option.choice.from.equipment_category.url"
+                v-model="itemValue[index]"
+              />
+            </label>
+          </div>
         </div>
       </div>
 
@@ -123,7 +119,7 @@ for (let i = 1; i < radioButtonOptions.value.length + selectInputOptions.value.l
 /** Form functionality */
 // Define the form data object
 const formData = reactive({
-  selectedEquipment: []
+  selectedEquipment: selectedOption
 })
 
 // Define the validation rules
@@ -152,9 +148,11 @@ const handleSubmit = async () => {
         }
       })
       .filter((i) => i !== null)
+    // flatten the array
+    const unNestedArray = filterArray.flat()
 
     // filter out the objects
-    const filterObjects = formData.selectedEquipment
+    const objects = formData.selectedEquipment
       .map((i) => {
         if (Array.isArray(i)) {
           return null
@@ -163,10 +161,11 @@ const handleSubmit = async () => {
         }
       })
       .filter((i) => i !== null)
+
+    const allEquipment = unNestedArray.concat(objects)
     store.nextStep({
       selectedEquipment: {
-        ...filterArray,
-        ...filterObjects
+        ...allEquipment
       }
     })
   }
