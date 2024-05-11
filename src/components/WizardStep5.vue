@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <BaseLabel pl="small" :pb="true">Select equipment</BaseLabel>
-    <div class="border-2 border-darkKhaki rounded-lg py-2 px-8">
+    <div class="border-2 border-darkKhaki rounded-lg py-2 px-8 mb-4">
       <p class="pb-2">
         Apart from the standard equipment provided by your class and background, a
         <span class="lowercase font-bold">{{ characterClass.data.name }}</span> also gets to choose

@@ -11,7 +11,7 @@
       </p>
       <div class="flex justify-center my-2">
         <BaseButton type="button" btnContent="Generate values" @click="generateStats()">
-          <FaDice class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
+          <FaDice class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
         </BaseButton>
       </div>
     </div>
@@ -85,10 +85,10 @@
 
     <div class="flex justify-between">
       <BaseButton type="button" btnContent="Back" @click="store.toggleStatModal">
-        <FaXmark class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+        <FaXmark class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
       </BaseButton>
       <BaseButton type="submit" btnContent="Confirm">
-        <FaCheck class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+        <FaCheck class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
       </BaseButton>
     </div>
   </form>

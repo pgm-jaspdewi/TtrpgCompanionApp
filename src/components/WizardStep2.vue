@@ -19,7 +19,7 @@
       <p class="mx-4 laptopSm:mx-6 laptopLg:mx-8">OR</p>
       <div>
         <BaseButton type="button" btnContent="Roll stats" @click="modalStore.toggleStatModal()">
-          <FaDice class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+          <FaDice class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
         </BaseButton>
       </div>
     </div>

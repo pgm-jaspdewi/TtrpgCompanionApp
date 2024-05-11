@@ -2,30 +2,30 @@
   <!-- returned when navType = "first" -->
   <div v-if="navType === 'first'" class="flex justify-center">
     <BaseButton btnContent="Next" type="submit">
-      <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+      <FaAngleRight class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
     </BaseButton>
   </div>
 
   <!-- returned when navType = "default" -->
   <div v-if="navType === 'default'" class="flex justify-around">
-    <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true">
-      <FaAngleLeft class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+    <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true" :secondary="true">
+      <FaAngleLeft class="fill-paleGold w-5 h-5" />
     </BaseButton>
     <BaseButton v-if="formButton" btnContent="Next" type="submit">
-      <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+      <FaAngleRight class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
     </BaseButton>
     <BaseButton v-if="!formButton" btnContent="Next" @click="store.nextStep">
-      <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+      <FaAngleRight class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
     </BaseButton>
   </div>
 
   <!-- returned when navType = "last" -->
   <div v-if="navType === 'last'" class="flex justify-around">
     <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true">
-      <FaAngleLeft class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+      <FaAngleLeft class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
     </BaseButton>
     <BaseButton btnContent="Finish" @click="store.nextStep">
-      <FaUserPlus class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
+      <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
     </BaseButton>
   </div>
 </template>

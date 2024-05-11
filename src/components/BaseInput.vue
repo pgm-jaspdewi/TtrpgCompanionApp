@@ -4,7 +4,7 @@
       {{ label }}
     </BaseLabel>
     <input
-      class="outline-none p-2 px-3 rounded-full border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
+      class="outline-none p-2 px-3 rounded-full border-2 border-darkKhaki bg-lightKhaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       v-bind:type="type"

@@ -18,7 +18,8 @@ export default {
       'maroon': '#800000',
       'silverChalice': '#B0B8B8',
       'darkKhaki': '#C0AD6A',
-      'lightKaki': '#F8F2D6',
+
+      'lightKhaki': '#F8F2D6',
       'paleGold': '#EAD9A8',
       'indigo': '#4B0082',
       'redishBrown': '#A52A2A',

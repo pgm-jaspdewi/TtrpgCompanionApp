@@ -20,12 +20,12 @@
 
         <!-- Create character button -->
         <BaseButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5">
-          <FaUserPlus class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+          <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
         </BaseButtonBig>
 
         <!-- logout button -->
         <BaseButton @click="doLogout" btnContent="Logout" class="absolute top-5 right-5">
-          <FaPowerOff class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
+          <FaPowerOff class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
         </BaseButton>
       </div>
     </BasePageBorders>

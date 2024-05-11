@@ -4,12 +4,12 @@
       v-if="src"
       :src="src"
       alt="Avatar"
-      class="border-2 border-darkKhaki rounded-lg bg-lightKaki"
+      class="border-2 border-darkKhaki rounded-lg bg-lightKhaki"
       :style="{ height: size + 'em', width: size + 'em' }"
     />
     <div
       v-else
-      class="border-2 border-darkKhaki rounded-lg bg-lightKaki"
+      class="border-2 border-darkKhaki rounded-lg bg-lightKhaki"
       :style="{ height: size + 'em', width: size + 'em' }"
     />
 
@@ -17,7 +17,8 @@
       <label
         :class="{
           'bg-paleGold text-darkKhaki': uploading,
-          'bg-maroon hover:bg-lightKaki text-lightKaki hover:text-maroon border-maroon': !uploading
+          'bg-maroon hover:bg-lightKhaki text-lightKhaki hover:text-maroon border-maroon':
+            !uploading
         }"
         class="text-sm border-2 py-1 px-2 mt-2 rounded-3xl flex items-center justify-between group cursor-pointer w-9/12"
         for="single"
@@ -26,14 +27,14 @@
         <div
           :class="{
             'bg-darkKhaki': uploading,
-            'bg-lightKaki group-hover:bg-maroon ': !uploading
+            'bg-lightKhaki group-hover:bg-maroon ': !uploading
           }"
           class="rounded-full w-5 h-5 flex justify-center items-center"
         >
           <FaPlus
             :class="{
               'fill-paleGold': uploading,
-              'fill-maroon group-hover:fill-lightKaki': !uploading
+              'fill-maroon group-hover:fill-lightKhaki': !uploading
             }"
             class="w-4 h-4"
           />

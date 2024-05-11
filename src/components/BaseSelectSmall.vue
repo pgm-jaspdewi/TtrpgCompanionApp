@@ -8,7 +8,7 @@
     </div>
 
     <select
-      class="outline-none p-2 px-1 rounded-lg border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon w-12"
+      class="outline-none p-2 px-1 rounded-lg border-2 border-darkKhaki bg-lightKhaki focus:border-maroon focus:ring-1 focus:ring-maroon w-12"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
       <option value="" disabled selected>{{ fillerValue }}</option>

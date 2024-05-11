@@ -7,7 +7,7 @@
 <template>
   <div class="flex flex-col">
     <select
-      class="text-sm p-1 m-2 my-1 rounded-lg outline-none px-3 border-2 border-darkKhaki bg-lightKaki focus:border-maroon focus:ring-1 focus:ring-maroon"
+      class="text-sm p-1 m-2 my-1 rounded-lg outline-none px-3 border-2 border-darkKhaki bg-lightKhaki focus:border-maroon focus:ring-1 focus:ring-maroon"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >

@@ -11,8 +11,13 @@
       </div>
 
       <!-- cancel-button -->
-      <BaseButton @click="doCancel" btnContent="Cancel" class="absolute top-3 right-3">
-        <FaXmark class="fill-maroon group-hover:fill-lightKaki w-4 h-4" />
+      <BaseButton
+        @click="doCancel"
+        btnContent="Cancel"
+        :tertiary="true"
+        class="absolute top-3 right-3"
+      >
+        <FaXmark class="fill-lightKhaki w-4 h-4" />
       </BaseButton>
     </BasePageBorders>
     <BaseModal :modalActive="store.statModal">

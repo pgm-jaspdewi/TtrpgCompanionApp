@@ -44,7 +44,7 @@
 
       <div class="flex justify-center mb-6">
         <BaseButton type="submit" btnContent="Register">
-          <FaAngleRight class="fill-maroon group-hover:fill-lightKaki w-5 h-5" />
+          <FaAngleRight class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
         </BaseButton>
       </div>
     </form>
