@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { useStatModalStore } from './modal-stores'
+import { supabase } from '../supabase'
 
 export const useWizardStore = defineStore('wizard-store', () => {
   const step = ref(1)
@@ -24,7 +25,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     languageProficiencies: [''],
     selectedCantrips: [''],
     selected1stLvlSpells: [''],
-    selectedEquipment: ['']
+    selectedEquipment: [{}]
   })
 
   function nextStep(formData: object) {
@@ -52,12 +53,45 @@ export const useWizardStore = defineStore('wizard-store', () => {
     modalStore.toggleStatModal()
   }
 
+  async function submitCharacter() {
+    // submit character to backend
+    console.log(characterInfo.selectedEquipment[0])
+    try {
+      await supabase
+        .from('test')
+        .insert({
+          avatar: characterInfo.charAvatar,
+          name: characterInfo.charName,
+          race: characterInfo.charRace,
+          stats: {
+            str: characterInfo.charStats.str,
+            dex: characterInfo.charStats.dex,
+            con: characterInfo.charStats.con,
+            int: characterInfo.charStats.int,
+            wis: characterInfo.charStats.wis,
+            cha: characterInfo.charStats.cha
+          },
+          class: characterInfo.charClass,
+          background: characterInfo.charBackground,
+          skills: characterInfo.skillProficiencies,
+          languages: characterInfo.languageProficiencies,
+          cantrips: characterInfo.selectedCantrips,
+          first_level_spells: characterInfo.selected1stLvlSpells,
+          equipment: characterInfo.selectedEquipment
+        })
+        .select()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return {
     step,
     charStats,
     characterInfo,
     nextStep,
     prevStep,
-    closeModal
+    closeModal,
+    submitCharacter
   }
 })

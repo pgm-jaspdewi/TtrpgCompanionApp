@@ -21,10 +21,10 @@
 
   <!-- returned when navType = "last" -->
   <div v-if="navType === 'last'" class="flex justify-around">
-    <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true">
-      <FaAngleLeft class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
+    <BaseButton btnContent="Back" @click="store.prevStep" :mirror="true" :secondary="true">
+      <FaAngleLeft class="fill-paleGold w-5 h-5" />
     </BaseButton>
-    <BaseButton btnContent="Finish" @click="store.nextStep">
+    <BaseButton btnContent="Finish" type="submit">
       <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
     </BaseButton>
   </div>

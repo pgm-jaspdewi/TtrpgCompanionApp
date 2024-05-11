@@ -58,21 +58,19 @@
       </div>
 
       <!-- div for select input choices -->
-      <div
-        v-for="(choice, index) in selectInputOptions"
-        :key="index"
-        class="p-2 border-2 flex flex-col"
-      >
-        <li>{{ choice.desc }}</li>
-        <label class="flex">
-          <input
-            type="radio"
-            v-model="selectedOption[radioButtonOptions.length + index]"
-            :value="{ amount: 1, item: itemValue[index] }"
-          />
+      <div v-for="(choice, index) in selectInputOptions" :key="index" class="pb-4">
+        <p class="m-2 my-1 text-sm">{{ choice.desc }}</p>
+        <div class="flex items-center px-5">
+          <label class="flex">
+            <input
+              type="radio"
+              v-model="selectedOption[radioButtonOptions.length + index]"
+              :value="{ amount: 1, item: itemValue[index] }"
+            />
 
-          <RequestSelect :url="choice.from.equipment_category.url" v-model="itemValue[index]" />
-        </label>
+            <RequestSelect :url="choice.from.equipment_category.url" v-model="itemValue[index]" />
+          </label>
+        </div>
       </div>
     </div>
     <WizardNav />
@@ -137,7 +135,7 @@ const v$ = useVuelidate(rules, formData)
 const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
-    console.log(formData)
+    // console.log(formData)
     // filter out any nested arrays
     const filterArray = formData.selectedEquipment
       .map((i) => {

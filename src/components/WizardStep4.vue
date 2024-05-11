@@ -60,7 +60,7 @@ const store = useWizardStore()
 const classSpellList = await axios.get(
   import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass + '/spells'
 )
-console.log(classSpellList.data.results)
+// console.log(classSpellList.data.results)
 // Filter the list to get only the cantrips and first level spells
 const cantrips = classSpellList.data.results.filter((spell: spell) => spell.level === 0)
 const firstLevelSpells = classSpellList.data.results.filter((spell: spell) => spell.level === 1)

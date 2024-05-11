@@ -50,7 +50,7 @@
             </div>
 
             <BaseLabel pl="small" class="pt-1 text-maroon text-xs">
-              Available class skills:
+              Other available languages:
             </BaseLabel>
             <BaseSelect
               v-model="v$.selectedLanguage1.$model"

@@ -3,7 +3,7 @@
     <div class="flex my-6">
       <div class="w-5/12 flex justify-center">
         <div>
-          <BaseAvatar v-model:path="v$.charAvatar.$model" :size="10" />
+          <BaseAvatar v-model:path="v$.charAvatar.$model" />
           <span
             class="text-redishBrown pl-2 w-7/12"
             v-for="error in v$.charAvatar.$errors"

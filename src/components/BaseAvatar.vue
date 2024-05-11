@@ -1,12 +1,6 @@
 <template>
   <div class="w-full">
-    <img
-      v-if="src"
-      :src="src"
-      alt="Avatar"
-      class="border-2 border-darkKhaki rounded-lg bg-lightKhaki"
-      :style="{ height: size + 'em', width: size + 'em' }"
-    />
+    <BaseImage v-if="src" :src="src" />
     <div
       v-else
       class="border-2 border-darkKhaki rounded-lg bg-lightKhaki"
@@ -56,6 +50,7 @@
 import { ref, toRefs, watch } from 'vue'
 import { supabase } from '../supabase'
 import { FaPlus } from 'vue3-icons/fa'
+import BaseImage from './BaseImage.vue'
 
 const props = defineProps({
   path: {
