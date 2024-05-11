@@ -14,7 +14,7 @@
       <BaseButton
         @click="doCancel"
         btnContent="Cancel"
-        :tertiary="true"
+        :secondary="true"
         class="absolute top-3 right-3"
       >
         <FaXmark class="fill-lightKhaki w-4 h-4" />

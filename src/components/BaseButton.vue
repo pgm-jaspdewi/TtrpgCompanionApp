@@ -4,11 +4,8 @@
   <button
     :class="{
       'flex-row-reverse': mirror,
-      'text-maroon hover:bg-none hover:border-darkKhaki hover:text-darkKhaki':
-        secondary || tertiary,
-      'bg-paleGold': secondary,
-      'bg-lightKhaki ': tertiary,
-      'bg-maroon text-lightKhaki hover:bg-lightKhaki hover:text-maroon': !secondary && !tertiary
+      'text-maroon hover:bg-none hover:border-darkKhaki hover:text-darkKhaki': secondary,
+      'bg-maroon text-lightKhaki hover:bg-lightKhaki hover:text-maroon ': !secondary
     }"
     class="border-2 border-maroon text-base py-2 px-3 rounded-3xl flex items-center justify-between group"
   >
@@ -17,8 +14,8 @@
       :class="{
         'mr-4': mirror,
         'ml-4': !mirror,
-        'bg-maroon group-hover:bg-darkKhaki': secondary || tertiary,
-        'bg-lightKhaki group-hover:bg-maroon': !secondary && !tertiary
+        'bg-maroon group-hover:bg-darkKhaki': secondary,
+        'bg-lightKhaki group-hover:bg-maroon': !secondary
       }"
       class="rounded-full w-6 h-6 flex justify-center items-center"
     >
@@ -39,11 +36,6 @@ defineProps({
     required: false
   },
   secondary: {
-    type: Boolean,
-    default: false,
-    required: false
-  },
-  tertiary: {
     type: Boolean,
     default: false,
     required: false
