@@ -162,9 +162,7 @@ const handleSubmit = async () => {
 
     const allEquipment = unNestedArray.concat(objects)
     store.nextStep({
-      selectedEquipment: {
-        ...allEquipment
-      }
+      selectedEquipment: [...allEquipment]
     })
   }
 }

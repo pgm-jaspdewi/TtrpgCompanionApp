@@ -2,8 +2,11 @@ import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { useStatModalStore } from './modal-stores'
 import { supabase } from '../supabase'
+import type { equipment } from '../interfaces'
+import { useRouter } from 'vue-router'
 
 export const useWizardStore = defineStore('wizard-store', () => {
+  const router = useRouter()
   const step = ref(1)
   const charStats = reactive({
     str: '0',
@@ -13,6 +16,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     wis: '0',
     cha: '0'
   })
+
   const characterInfo = reactive({
     charAvatar: '',
     charName: '',
@@ -25,7 +29,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     languageProficiencies: [''],
     selectedCantrips: [''],
     selected1stLvlSpells: [''],
-    selectedEquipment: [{}]
+    selectedEquipment: [] as equipment[]
   })
 
   function nextStep(formData: object) {
@@ -55,10 +59,11 @@ export const useWizardStore = defineStore('wizard-store', () => {
 
   async function submitCharacter() {
     // submit character to backend
-    console.log(characterInfo.selectedEquipment[0])
+    console.log(characterInfo.selectedEquipment)
+    const store = useWizardStore()
     try {
       await supabase
-        .from('test')
+        .from('characters')
         .insert({
           avatar: characterInfo.charAvatar,
           name: characterInfo.charName,
@@ -80,6 +85,9 @@ export const useWizardStore = defineStore('wizard-store', () => {
           equipment: characterInfo.selectedEquipment
         })
         .select()
+
+      // redirect to landing page
+      router.push('/')
     } catch (err) {
       console.log(err)
     }

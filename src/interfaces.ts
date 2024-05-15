@@ -18,3 +18,8 @@ export interface spell {
   level: number
   url: string
 }
+
+export interface equipment {
+  amount: number
+  name: string
+}
