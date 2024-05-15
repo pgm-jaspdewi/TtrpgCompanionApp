@@ -1,8 +1,24 @@
 <template>
-  <div v-if="!spellcastingAtLvl1">
+  <div v-if="noSpellcasting">
     <div class="flex justify-center">
       <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
-        <p class="text-center">The chosen class does not learn spells at level 1.</p>
+        <p class="text-center">
+          The
+          <span class="font-bold">{{ store.characterInfo.charClass }}</span> class does not learn
+          spells.
+        </p>
+      </div>
+    </div>
+    <WizardNav :formButton="false" />
+  </div>
+
+  <div v-if="!noSpellcasting && !spellcastingAtLvl1">
+    <div class="flex justify-center">
+      <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
+        <p class="text-center">
+          The <span class="font-bold">{{ store.characterInfo.charClass }}</span> class does not
+          learn spells at level 1.
+        </p>
       </div>
     </div>
     <WizardNav :formButton="false" />
@@ -55,43 +71,52 @@ import BaseSelect from './BaseSelect.vue'
 
 const store = useWizardStore()
 
+const noSpellcasting = ref<Boolean>(false)
+const spellcastingAtLvl1 = ref<Boolean>(false)
+const spellSlots = ref<number>(0)
+const cantripSlots = ref<number>(0)
+
 /** Spell functionality */
 // Get the list of spells the class can choose from
 const classSpellList = await axios.get(
   import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass + '/spells'
 )
-// console.log(classSpellList.data.results)
+// If the class can not learn spells, the list will be empty. In that case, set the noSpellcasting variable to true.
+if (classSpellList.data.results.length === 0) {
+  noSpellcasting.value = true
+}
+
 // Filter the list to get only the cantrips and first level spells
 const cantrips = classSpellList.data.results.filter((spell: spell) => spell.level === 0)
 const firstLevelSpells = classSpellList.data.results.filter((spell: spell) => spell.level === 1)
 
 /**  functionality for amount of spells/cantrips*/
-// Get the spellCasting data belonging to the class the user chose in the previous step
-const characterClass = await axios.get(
-  import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass
-)
-// Get the remaining data, missing on the 5e API, from the supabase database.
-const classSpells = await supabase
-  .from('spells-' + store.characterInfo.charClass)
-  .select('*')
-  .eq('level', '1st')
-  .single()
+if (noSpellcasting.value === false) {
+  // Get the spellCasting data belonging to the class the user chose in the previous step
+  const characterClass = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass
+  )
+  // Get the remaining data, missing on the 5e API, from the supabase database.
+  const classSpells = await supabase
+    .from('spells-' + store.characterInfo.charClass)
+    .select('*')
+    .eq('level', '1st')
+    .single()
 
-// Get the amount of spells the class knows at level 1.
-// If the class does not learn a limited amount of spells,
-// get the spell slots (the maximum amount of spells a character can use between long rests) instead.
-// Each class will only have first level spell slots at level one, so we only need the first object in the spellslotsByLvl object.
-const spellSlots = classSpells.data.spellsKnown
-  ? classSpells.data.spellsKnown
-  : classSpells.data.spellslotsByLvl[Object.keys(classSpells.data.spellslotsByLvl)[0]]
+  // Get the amount of spells the class knows at level 1.
+  // If the class does not learn a limited amount of spells,
+  // get the spell slots (the maximum amount of spells a character can use between long rests) instead.
+  // Each class will only have first level spell slots at level one, so we only need the first object in the spellslotsByLvl object.
+  spellSlots.value = classSpells.data.spellsKnown
+    ? classSpells.data.spellsKnown
+    : classSpells.data.spellslotsByLvl[Object.keys(classSpells.data.spellslotsByLvl)[0]]
 
-// Get the amount of cantrips the class knows at level 1.
-const cantripSlots = classSpells.data.cantripsKnown
+  // Get the amount of cantrips the class knows at level 1.
+  cantripSlots.value = classSpells.data.cantripsKnown
 
-const spellcastingAtLvl1 = ref<Boolean>(false)
-
-if (characterClass.data.spellcasting && characterClass.data.spellcasting.level === 1) {
-  spellcastingAtLvl1.value = true
+  if (characterClass.data.spellcasting && characterClass.data.spellcasting.level === 1) {
+    spellcastingAtLvl1.value = true
+  }
 }
 
 /** Form functionality */

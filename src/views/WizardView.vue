@@ -25,7 +25,6 @@
 
 <!-- script tag -->
 <script setup lang="ts">
-import BaseButton from '@/components/BaseButton.vue'
 import BasePageBorders from '@/components/BasePageBorders.vue'
 import BaseH1 from '@/components/BaseH1.vue'
 import WizardMain from '@/components/WizardMain.vue'
