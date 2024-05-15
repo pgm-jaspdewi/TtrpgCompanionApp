@@ -34,19 +34,19 @@
       <div class="flex flex-col">
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Str</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.str }}</p>
           </div>
         </div>
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Dex</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.dex }}</p>
           </div>
         </div>
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Con</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.con }}</p>
           </div>
         </div>
@@ -54,19 +54,19 @@
       <div class="flex flex-col">
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Int</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.int }}</p>
           </div>
         </div>
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Wis</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.wis }}</p>
           </div>
         </div>
         <div class="flex items-center my-1">
           <p class="text-sm uppercase pr-2">Cha</p>
-          <div class="border-2 border-maroon rounded-lg w-12 flex justify-center">
+          <div class="border-2 border-darkKhaki rounded-lg w-12 flex justify-center">
             <p class="text-sm">{{ store.characterInfo.charStats.cha }}</p>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <li
           v-for="skill in store.characterInfo.skillProficiencies"
           :key="skill"
-          class="text-sm border-2 border-maroon rounded-lg p-1 m-1 flex justify-center w-32 laptopSm:w-5/12"
+          class="text-sm border-2 border-darkKhaki rounded-lg p-1 m-1 flex justify-center w-32 laptopSm:w-5/12"
         >
           {{ skill }}
         </li>
@@ -97,7 +97,7 @@
         <li
           v-for="skill in store.characterInfo.languageProficiencies"
           :key="skill"
-          class="text-sm border-2 border-maroon rounded-lg p-1 m-1 flex justify-center w-32 laptopSm:w-5/12"
+          class="text-sm border-2 border-darkKhaki rounded-lg p-1 m-1 flex justify-center w-32 laptopSm:w-5/12"
         >
           {{ skill }}
         </li>
