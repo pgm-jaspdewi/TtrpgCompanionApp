@@ -10,15 +10,12 @@
         </div>
       </div>
 
-      <!-- cancel-button -->
-      <BaseButton
+      <button
         @click="doCancel"
-        btnContent="Cancel"
-        :secondary="true"
-        class="absolute top-3 right-3 bg-lightKhaki"
+        class="absolute top-3 right-3 rounded-full w-8 h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group"
       >
-        <FaXmark class="fill-lightKhaki w-4 h-4" />
-      </BaseButton>
+        <FaXmark class="fill-maroon group-hover:fill-lightKhaki w-6 h-6" />
+      </button>
     </BasePageBorders>
     <BaseModal :modalActive="store.statModal">
       <WizardStatsModal />
