@@ -15,7 +15,7 @@
 
         <div class="flex items-center px-5">
           <div v-for="(option, i) in choice.from.options" :key="i" class="w-6/12">
-            <!-- display for counted reference -->
+            <!-- display for  items of type 'counted reference' -->
             <label v-if="option.option_type === 'counted_reference'" class="flex">
               <input
                 type="radio"
@@ -25,7 +25,8 @@
               <p class="m-2 my-1 text-sm">{{ option.of.name }} ( {{ option.count }} )</p>
             </label>
 
-            <!-- displays for multiple -->
+            <!-- displays for items of type 'multiple' -->
+            <!-- display for type 'multiple' containing 2 items, one of which is of type 'choice' -->
             <label
               v-if="
                 option.option_type === 'multiple' &&
@@ -34,19 +35,23 @@
               "
               class="flex"
             >
-              <p>problematic</p>
-              <!-- <input
+              <input
                 type="radio"
                 v-model="selectedOption[index]"
                 :value="[
-                  { amount: option.items[0].count, item: option.items[0].of.index },
+                  { amount: 1, item: itemValue[index] },
                   { amount: option.items[1].count, item: option.items[1].of.index }
                 ]"
               />
-              <p class="m-2 my-1 text-sm">
-                {{ option.items[0].of.name }} ( {{ option.items[0].count }} ) &
-                {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
-              </p> -->
+              <div class="flex items-center">
+                <RequestSelect
+                  :url="option.items[0].choice.from.equipment_category.url"
+                  v-model="itemValue[index]"
+                />
+                <p class="my-1 text-sm">
+                  & {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
+                </p>
+              </div>
             </label>
 
             <!-- display for type 'multiple' containing 2 items -->
@@ -93,12 +98,12 @@
               </p>
             </label>
 
-            <!-- display for choice -->
+            <!-- display for items of type 'choice' -->
             <label v-if="option.option_type === 'choice'" class="flex">
               <input
                 type="radio"
                 v-model="selectedOption[index]"
-                :value="{ amount: 1, item: itemValue[index] }"
+                :value="{ amount: option.choice.choose, item: itemValue[index] }"
               />
               <RequestSelect
                 :url="option.choice.from.equipment_category.url"
@@ -117,7 +122,7 @@
             <input
               type="radio"
               v-model="selectedOption[radioButtonOptions.length + index]"
-              :value="{ amount: 1, item: itemValue[index] }"
+              :value="{ amount: choice.choose, item: itemValue[index] }"
             />
 
             <RequestSelect :url="choice.from.equipment_category.url" v-model="itemValue[index]" />
