@@ -25,8 +25,39 @@
               <p class="m-2 my-1 text-sm">{{ option.of.name }} ( {{ option.count }} )</p>
             </label>
 
-            <!-- display for multiple -->
-            <label v-if="option.option_type === 'multiple'" class="flex">
+            <!-- displays for multiple -->
+            <label
+              v-if="
+                option.option_type === 'multiple' &&
+                option.items.length === 2 &&
+                option.items[0].option_type === 'choice'
+              "
+              class="flex"
+            >
+              <p>problematic</p>
+              <!-- <input
+                type="radio"
+                v-model="selectedOption[index]"
+                :value="[
+                  { amount: option.items[0].count, item: option.items[0].of.index },
+                  { amount: option.items[1].count, item: option.items[1].of.index }
+                ]"
+              />
+              <p class="m-2 my-1 text-sm">
+                {{ option.items[0].of.name }} ( {{ option.items[0].count }} ) &
+                {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
+              </p> -->
+            </label>
+
+            <!-- display for type 'multiple' containing 2 items -->
+            <label
+              v-if="
+                option.option_type === 'multiple' &&
+                option.items.length === 2 &&
+                option.items[0].option_type !== 'choice'
+              "
+              class="flex"
+            >
               <input
                 type="radio"
                 v-model="selectedOption[index]"
@@ -38,6 +69,27 @@
               <p class="m-2 my-1 text-sm">
                 {{ option.items[0].of.name }} ( {{ option.items[0].count }} ) &
                 {{ option.items[1].of.name }} ( {{ option.items[1].count }} )
+              </p>
+            </label>
+
+            <!-- display for type 'multiple' containing 3 items -->
+            <label
+              v-if="option.option_type === 'multiple' && option.items.length === 3"
+              class="flex"
+            >
+              <input
+                type="radio"
+                v-model="selectedOption[index]"
+                :value="[
+                  { amount: option.items[0].count, item: option.items[0].of.index },
+                  { amount: option.items[1].count, item: option.items[1].of.index },
+                  { amount: option.items[2].count, item: option.items[2].of.index }
+                ]"
+              />
+              <p class="m-2 my-1 text-sm">
+                {{ option.items[0].of.name }} ( {{ option.items[0].count }} ),
+                {{ option.items[1].of.name }} ( {{ option.items[1].count }} ),
+                {{ option.items[2].of.name }} ( {{ option.items[2].count }} )
               </p>
             </label>
 
@@ -96,6 +148,8 @@ const characterClass = await axios.get(
 )
 // get the equipment options for the class
 const equipmentOptions = characterClass.data.starting_equipment_options
+console.log(equipmentOptions)
+
 //  loop through the options to get the type of option set. This will be used to determine how to display the options
 const radioButtonOptions = ref<any[]>([])
 const selectInputOptions = ref<any[]>([])
