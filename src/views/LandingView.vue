@@ -24,9 +24,20 @@
         </BaseButtonBig>
 
         <!-- logout button -->
-        <BaseButton @click="doLogout" btnContent="Logout" class="absolute top-5 right-5">
+        <button
+          @click="doLogout"
+          class="absolute top-5 right-5 w-10 h-10 border-1 border-maroon rounded-full group flex justify-center items-center hover:bg-maroon"
+        >
           <FaPowerOff class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButton>
+        </button>
+        <!-- <BaseButton
+          @click="doLogout"
+          btnContent="Logout"
+          :secondary="true"
+          class="absolute top-5 right-5"
+        >
+          <FaPowerOff class="fill-lightKhaki group-hover:fill-lightKhaki w-4 h-4" />
+        </BaseButton> -->
       </div>
     </BasePageBorders>
   </main>
