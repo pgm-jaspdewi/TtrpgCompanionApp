@@ -40,20 +40,23 @@
         </BaseButton> -->
       </div>
     </BasePageBorders>
+    <BaseModal :modalActive="store.deleteModal"> </BaseModal>
   </main>
 </template>
 
 <!-- Script tag -->
 <script setup lang="ts">
-import { BaseButton, BasePageBorders, BaseButtonBig } from '@/components/baseComponents'
+import { BaseButton, BasePageBorders, BaseButtonBig, BaseModal } from '@/components/baseComponents'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/landingComponents/CharacterCard.vue'
-
 import { ref } from 'vue'
 import { supabase } from '@/supabase'
 import type { characterDetails } from '@/interfaces'
+import { useModalStore } from '@/stores/modal-store'
+
+const store = useModalStore()
 
 const router = useRouter()
 

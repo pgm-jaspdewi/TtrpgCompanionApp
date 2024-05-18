@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 // Define a new store for toggling a modal
 export const useModalStore = defineStore('modal-store', () => {
   // Create a reactive object for the stat modal
   const statModal = ref(false)
   // create a reactive object for the delete modal
-  const deleteModal = ref(false)
+  const deleteModal = ref(true)
 
   // Toggle the stat modal
   function toggleStatModal() {
