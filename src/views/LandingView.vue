@@ -52,6 +52,9 @@ const { userProfile, logout } = useAuthStore()
 // logout function
 const doLogout = async () => {
   const { error } = await logout()
+  if (error) {
+    console.error('Error logging out:', error.message)
+  }
   router.replace('/login')
 }
 
