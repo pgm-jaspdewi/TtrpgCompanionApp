@@ -86,44 +86,4 @@ const getUser = async () => {
   }
 }
 getUser()
-
-// temporary test-data
-const characterTest = [
-  {
-    id: 1,
-    image:
-      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/7/7b/Gully.png/',
-    name: 'Gully',
-    race: 'Halfling',
-    level: 1,
-    class: 'Monk'
-  },
-  {
-    id: 2,
-    image:
-      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/5/52/Garrison.png/',
-    name: 'Garrison',
-    race: 'Human',
-    level: 1,
-    class: 'Fighter'
-  },
-  {
-    id: 3,
-    image:
-      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/4/45/Calibretto_%28transparent%29.png/',
-    name: 'Calibretto',
-    race: 'Warforged',
-    level: 1,
-    class: 'Cleric'
-  },
-  {
-    id: 4,
-    image:
-      'https://static.wikia.nocookie.net/battlechasersnightwar_gamepedia/images/2/29/Monika.png/',
-    name: 'Red Monika',
-    race: 'Human',
-    level: 1,
-    class: 'Rogue'
-  }
-]
 </script>
