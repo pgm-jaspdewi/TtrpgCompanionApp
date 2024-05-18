@@ -8,7 +8,7 @@
         <div
           class="border-1 border-darkKhaki group-hover:border-maroon w-image h-image overflow-hidden bg-lightKhaki rounded-lg mr-4"
         >
-          <img :src="character.image" alt="character image" class="group-hover:grayscale" />
+          <img :src="character.avatar" alt="character image" class="group-hover:grayscale" />
         </div>
 
         <div class="flex flex-col justify-between">
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import type { character as CharacterType } from '@/interfaces'
+import type { characterDetails as CharacterType } from '@/interfaces'
 import { FaTrash } from 'vue3-icons/fa6'
 
 defineProps<{

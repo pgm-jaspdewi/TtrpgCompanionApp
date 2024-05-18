@@ -13,7 +13,7 @@
 
         <!-- Character list -->
         <ul class="flex flex-col items-center">
-          <li class="list-none" v-for="character in characterTest" :key="character.id">
+          <li class="list-none" v-for="character in characters" :key="character.id">
             <CharacterCard :character="character" />
           </li>
         </ul>
@@ -41,19 +41,51 @@ import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/CharacterCard.vue'
 import BasePageBorders from '@/components/BasePageBorders.vue'
 import BaseButtonBig from '@/components/BaseButtonBig.vue'
+import { ref } from 'vue'
+import { supabase } from '../supabase'
+import type { characterDetails } from '@/interfaces'
 
 const router = useRouter()
 
+// get the user profile and logout function from the auth store
 const { userProfile, logout } = useAuthStore()
 
+// logout function
 const doLogout = async () => {
   const { error } = await logout()
   router.replace('/login')
 }
 
+// route to the character creation wizard
 const createCharacter = () => {
   router.push('/characterWizard')
 }
+
+const characters = ref<characterDetails[]>([])
+// Get the user & characters data from the supabase database.
+const getUser = async () => {
+  // Vue is peculiar about awaits in the setup function, so we need to wrap the call in an IIFE.
+  // This way, we can use await in the IIFE without Vue complaining.
+  const { data, error } = await supabase.auth.getUser()
+  if (error) {
+    console.error('Error getting user:', error.message)
+  } else {
+    const id = data.user.id
+    console.log(data.user.id)
+    // get the characters from the database
+    const { data: charactersData, error: charactersError } = await supabase
+      .from('characters')
+      .select('*')
+      .eq('userId', id)
+    if (charactersError) {
+      console.error('Error getting characters:', charactersError.message)
+    } else {
+      characters.value = charactersData
+      console.log(characters)
+    }
+  }
+}
+getUser()
 
 // temporary test-data
 const characterTest = [

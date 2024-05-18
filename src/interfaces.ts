@@ -4,14 +4,6 @@ export interface profile {
   email: string
 }
 
-export interface character {
-  image: string
-  name: string
-  race: string
-  level: number
-  class: string
-}
-
 export interface spell {
   index: string
   name: string
@@ -21,5 +13,32 @@ export interface spell {
 
 export interface equipment {
   amount: number
+  item: string
+}
+
+export interface characterStats {
+  str: string
+  dex: string
+  con: string
+  int: string
+  wis: string
+  cha: string
+}
+
+export interface characterDetails {
+  avatar: string
+  background: string
+  cantrip: string[]
+  class: string
+  created_at: string
+  equipment: equipment[]
+  first_level_spells: string[]
+  id: number
+  languages: string[]
+  level: number
   name: string
+  race: string
+  skills: string[]
+  stats: characterStats
+  userId: string
 }
