@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
-import { useStatModalStore } from './modal-stores'
+import { useModalStore } from './modal-store'
 import { supabase } from '../supabase'
 import type { equipment } from '../interfaces'
 import { useRouter } from 'vue-router'
@@ -48,7 +48,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
 
   function closeModal(formData: object) {
     const store = useWizardStore()
-    const modalStore = useStatModalStore()
+    const modalStore = useModalStore()
     store.$patch({
       charStats: {
         ...formData
@@ -60,7 +60,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
   async function submitCharacter() {
     // submit character to backend
     console.log(characterInfo.selectedEquipment)
-    const store = useWizardStore()
+
     try {
       await supabase
         .from('characters')

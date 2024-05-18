@@ -62,10 +62,10 @@ import { required, helpers } from '@vuelidate/validators'
 import { computed, reactive } from 'vue'
 import axios from 'axios'
 import { useWizardStore } from '@/stores/wizard-store'
-import { useStatModalStore } from '@/stores/modal-stores'
+import { useModalStore } from '@/stores/modal-store'
 
 const wizardStore = useWizardStore()
-const modalStore = useStatModalStore()
+const modalStore = useModalStore()
 
 const classes = await axios.get(import.meta.env.VITE_5E_API_URL + 'classes')
 const backgrounds = await axios.get(import.meta.env.VITE_5E_API_URL + 'backgrounds')

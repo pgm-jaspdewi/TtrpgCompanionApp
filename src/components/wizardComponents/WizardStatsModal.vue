@@ -97,14 +97,14 @@
 <script setup lang="ts">
 import { BaseButton, BaseSelectSmall } from '@/components/baseComponents'
 import { FaXmark, FaCheck, FaDice } from 'vue3-icons/fa6'
-import { useStatModalStore } from '@/stores/modal-stores'
+import { useModalStore } from '@/stores/modal-store'
 import { DiceRoll } from '@dice-roller/rpg-dice-roller'
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import { computed, reactive } from 'vue'
 import { useWizardStore } from '@/stores/wizard-store'
 
-const store = useStatModalStore()
+const store = useModalStore()
 const wizardStore = useWizardStore()
 const roll = new DiceRoll('4d6dl1')
 

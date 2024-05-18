@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref, toRefs, watch } from 'vue'
-import { supabase } from '../../supabase'
+import { supabase } from '@/supabase'
 import { FaPlus } from 'vue3-icons/fa'
 import BaseImage from '../baseComponents/BaseImage.vue'
 

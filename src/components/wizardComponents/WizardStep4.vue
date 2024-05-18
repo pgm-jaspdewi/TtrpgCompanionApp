@@ -65,7 +65,7 @@ import useVuelidate from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
 import axios from 'axios'
 import { computed, reactive, ref } from 'vue'
-import { supabase } from '../../supabase'
+import { supabase } from '@/supabase'
 import { type spell } from '../../interfaces'
 
 const store = useWizardStore()

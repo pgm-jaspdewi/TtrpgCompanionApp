@@ -115,7 +115,7 @@ import { BaseImage } from '@/components/baseComponents'
 import WizardNav from './WizardNav.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 import { ref } from 'vue'
-import { supabase } from '../../supabase'
+import { supabase } from '@/supabase'
 
 const store = useWizardStore()
 

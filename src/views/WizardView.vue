@@ -29,9 +29,9 @@ import { BasePageBorders, BaseH1, BaseModal } from '@/components/baseComponents'
 import { WizardMain, WizardStatsModal } from '@/components/wizardComponents'
 import { useRouter } from 'vue-router'
 import { FaXmark } from 'vue3-icons/fa6'
-import { useStatModalStore } from '@/stores/modal-stores'
+import { useModalStore } from '@/stores/modal-store'
 
-const store = useStatModalStore()
+const store = useModalStore()
 
 const router = useRouter()
 

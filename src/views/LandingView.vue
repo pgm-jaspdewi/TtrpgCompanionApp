@@ -49,10 +49,10 @@ import { BaseButton, BasePageBorders, BaseButtonBig } from '@/components/baseCom
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
-import CharacterCard from '@/components/CharacterCard.vue'
+import CharacterCard from '@/components/landingComponents/CharacterCard.vue'
 
 import { ref } from 'vue'
-import { supabase } from '../supabase'
+import { supabase } from '@/supabase'
 import type { characterDetails } from '@/interfaces'
 
 const router = useRouter()

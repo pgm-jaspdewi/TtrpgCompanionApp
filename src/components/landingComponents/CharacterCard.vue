@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import type { characterDetails as CharacterType } from '@/interfaces'
 import { FaTrash } from 'vue3-icons/fa6'
-import { supabase } from '../supabase'
+import { supabase } from '@/supabase'
 import { ref, toRefs } from 'vue'
 
 const props = defineProps<{
