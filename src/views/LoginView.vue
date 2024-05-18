@@ -9,6 +9,6 @@
 
 <!-- Script tag -->
 <script setup lang="ts">
-import BasePageBorders from '@/components/BasePageBorders.vue'
+import { BasePageBorders } from '@/components/baseComponents'
 import UserLogin from '@/components/UserLogin.vue'
 </script>

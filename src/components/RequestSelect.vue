@@ -36,10 +36,6 @@ const props = defineProps({
   }
 })
 
-const generateValue = (index: string) => {
-  return { amount: 1, item: index }
-}
-
 const request = await axios.get(import.meta.env.VITE_5E_URL + props.url)
 const options = request.data.equipment
 </script>

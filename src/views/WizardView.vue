@@ -25,18 +25,13 @@
 
 <!-- script tag -->
 <script setup lang="ts">
-import BasePageBorders from '@/components/BasePageBorders.vue'
-import BaseH1 from '@/components/BaseH1.vue'
-import WizardMain from '@/components/WizardMain.vue'
+import { BasePageBorders, BaseH1, BaseModal } from '@/components/baseComponents'
+import { WizardMain, WizardStatsModal } from '@/components/wizardComponents'
 import { useRouter } from 'vue-router'
 import { FaXmark } from 'vue3-icons/fa6'
-import BaseModal from '@/components/BaseModal.vue'
 import { useStatModalStore } from '@/stores/modal-stores'
-import WizardStatsModal from '@/components/WizardStatsModal.vue'
 
 const store = useStatModalStore()
-
-console.log(store.statModal)
 
 const router = useRouter()
 

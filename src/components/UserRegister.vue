@@ -59,12 +59,10 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/components/BaseButton.vue'
+import {BaseButton,BaseH1, BaseInput } from '@/components/baseComponents'
 import { FaAngleRight } from 'vue3-icons/fa'
-import BaseH1 from './BaseH1.vue'
 import { useAuthStore } from '@/stores/auth-store'
 import { useRouter } from 'vue-router'
-import BaseInput from './BaseInput.vue'
 import { reactive, computed } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { required, email, minLength, maxLength, sameAs, helpers } from '@vuelidate/validators'

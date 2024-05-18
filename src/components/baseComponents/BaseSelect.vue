@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseLabel from './BaseLabel.vue'
+import BaseLabel from '@/components/baseComponents/BaseLabel.vue'
 
 defineProps({
   // modelValue prop is required, it is the v-model binding

@@ -58,16 +58,15 @@
 </template>
 
 <script setup lang="ts">
+import { BaseLabel, BaseSelect } from '@/components/baseComponents'
 import WizardNav from './WizardNav.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 import useVuelidate from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
 import axios from 'axios'
 import { computed, reactive, ref } from 'vue'
-import { supabase } from '../supabase'
-import { type spell } from '../interfaces'
-import BaseLabel from './BaseLabel.vue'
-import BaseSelect from './BaseSelect.vue'
+import { supabase } from '../../supabase'
+import { type spell } from '../../interfaces'
 
 const store = useWizardStore()
 

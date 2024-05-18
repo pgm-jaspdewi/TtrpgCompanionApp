@@ -32,9 +32,8 @@
 
 <script setup lang="ts">
 import { FaAngleRight, FaAngleLeft, FaUserPlus } from 'vue3-icons/fa6'
-
 import { useWizardStore } from '@/stores/wizard-store'
-import BaseButton from './BaseButton.vue'
+import { BaseButton } from '@/components/baseComponents'
 
 const store = useWizardStore()
 

@@ -55,18 +55,14 @@
 </template>
 
 <script setup lang="ts">
+import { BaseLabel, BaseButton, BaseSelect, BaseInputSmall } from '@/components/baseComponents'
 import WizardNav from './WizardNav.vue'
-import BaseButton from '@/components/BaseButton.vue'
 import useVuelidate from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
 import { computed, reactive } from 'vue'
 import axios from 'axios'
-import BaseSelect from './BaseSelect.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 import { useStatModalStore } from '@/stores/modal-stores'
-import { FaDice } from 'vue3-icons/fa6'
-import BaseInputSmall from './BaseInputSmall.vue'
-import BaseLabel from './BaseLabel.vue'
 
 const wizardStore = useWizardStore()
 const modalStore = useStatModalStore()

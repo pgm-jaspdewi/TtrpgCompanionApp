@@ -111,11 +111,11 @@
 </template>
 
 <script setup lang="ts">
+import { BaseImage } from '@/components/baseComponents'
 import WizardNav from './WizardNav.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 import { ref } from 'vue'
-import { supabase } from '../supabase'
-import BaseImage from './BaseImage.vue'
+import { supabase } from '../../supabase'
 
 const store = useWizardStore()
 

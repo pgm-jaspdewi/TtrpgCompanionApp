@@ -45,14 +45,12 @@
 </template>
 
 <script async setup lang="ts">
+import { BaseAvatar, BaseInput, BaseSelect } from '@/components/baseComponents'
 import WizardNav from './WizardNav.vue'
-import BaseInput from './BaseInput.vue'
 import useVuelidate from '@vuelidate/core'
 import { required, helpers } from '@vuelidate/validators'
 import { computed, reactive } from 'vue'
 import axios from 'axios'
-import BaseSelect from './BaseSelect.vue'
-import BaseAvatar from './BaseAvatar.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 
 const store = useWizardStore()

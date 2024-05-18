@@ -95,14 +95,13 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from './BaseButton.vue'
+import { BaseButton, BaseSelectSmall } from '@/components/baseComponents'
 import { FaXmark, FaCheck, FaDice } from 'vue3-icons/fa6'
 import { useStatModalStore } from '@/stores/modal-stores'
 import { DiceRoll } from '@dice-roller/rpg-dice-roller'
 import useVuelidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import { computed, reactive } from 'vue'
-import BaseSelectSmall from './BaseSelectSmall.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 
 const store = useStatModalStore()

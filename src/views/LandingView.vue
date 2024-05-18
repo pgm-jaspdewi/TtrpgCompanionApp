@@ -34,13 +34,12 @@
 
 <!-- Script tag -->
 <script setup lang="ts">
-import BaseButton from '@/components/BaseButton.vue'
+import { BaseButton, BasePageBorders, BaseButtonBig } from '@/components/baseComponents'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/CharacterCard.vue'
-import BasePageBorders from '@/components/BasePageBorders.vue'
-import BaseButtonBig from '@/components/BaseButtonBig.vue'
+
 import { ref } from 'vue'
 import { supabase } from '../supabase'
 import type { characterDetails } from '@/interfaces'
@@ -71,7 +70,6 @@ const getUser = async () => {
     console.error('Error getting user:', error.message)
   } else {
     const id = data.user.id
-    console.log(data.user.id)
     // get the characters from the database
     const { data: charactersData, error: charactersError } = await supabase
       .from('characters')
@@ -81,7 +79,6 @@ const getUser = async () => {
       console.error('Error getting characters:', charactersError.message)
     } else {
       characters.value = charactersData
-      console.log(characters)
     }
   }
 }

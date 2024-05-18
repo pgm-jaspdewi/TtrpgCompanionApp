@@ -71,11 +71,10 @@
 </template>
 
 <script setup lang="ts">
+import { BaseLabel, BaseSelect } from '@/components/baseComponents'
 import { useWizardStore } from '@/stores/wizard-store'
 import WizardNav from './WizardNav.vue'
 import axios from 'axios'
-import BaseLabel from './BaseLabel.vue'
-import BaseSelect from './BaseSelect.vue'
 import { computed, reactive } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
