@@ -8,7 +8,7 @@
         <div
           class="border-1 border-darkKhaki group-hover:border-maroon w-image h-image overflow-hidden bg-lightKhaki rounded-lg mr-4"
         >
-          <img :src="character.avatar" alt="character image" class="group-hover:grayscale" />
+          <img :src="src" alt="character image" class="group-hover:grayscale" />
         </div>
 
         <div class="flex flex-col justify-between">
@@ -35,10 +35,27 @@
 <script setup lang="ts">
 import type { characterDetails as CharacterType } from '@/interfaces'
 import { FaTrash } from 'vue3-icons/fa6'
+import { supabase } from '../supabase'
+import { ref, toRefs } from 'vue'
 
-defineProps<{
+const props = defineProps<{
   character: CharacterType
 }>()
+
+const { character } = toRefs(props)
+const src = ref('')
+
+const downloadImage = async () => {
+  // Download the image from the storage-bucket to show in the UI
+  try {
+    const { data, error } = await supabase.storage.from('avatars').download(character.value.avatar)
+    if (error) throw error
+    src.value = URL.createObjectURL(data)
+  } catch (error) {
+    console.error('Error downloading image: ', (error as Error).message)
+  }
+}
+if (character.value.avatar !== '') downloadImage()
 
 const navigateToCharacter = () => {
   console.log('navigate to character')
