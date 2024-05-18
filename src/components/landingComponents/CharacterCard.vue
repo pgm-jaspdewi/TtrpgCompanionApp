@@ -35,6 +35,9 @@ import type { characterDetails as CharacterType } from '@/interfaces'
 import { FaTrash } from 'vue3-icons/fa6'
 import { supabase } from '@/supabase'
 import { ref, toRefs } from 'vue'
+import { useModalStore } from '@/stores/modal-store'
+
+const store = useModalStore()
 
 const props = defineProps<{
   character: CharacterType
@@ -56,12 +59,12 @@ const downloadImage = async () => {
 if (character.value.avatar !== '') downloadImage()
 
 const navigateToCharacter = () => {
-  console.log('navigate to character')
+  console.log('navigate to character' + character.value.id)
   // navigation logic goes here
 }
 
 const deleteCharacter = () => {
-  console.log('delete character')
-  // delete logic goes here once backend is set up properly
+  store.characterIdToDelete = character.value.id
+  store.toggleDeleteModal()
 }
 </script>

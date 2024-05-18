@@ -6,7 +6,11 @@ export const useModalStore = defineStore('modal-store', () => {
   // Create a reactive object for the stat modal
   const statModal = ref(false)
   // create a reactive object for the delete modal
-  const deleteModal = ref(true)
+  const deleteModal = ref(false)
+  // Create a reactive reference for the character ID to delete
+  const characterIdToDelete = ref<number>()
+  // Create a reactive reference to see if a character was deleted
+  const characterListWasAltered = ref(false)
 
   // Toggle the stat modal
   function toggleStatModal() {
@@ -17,5 +21,12 @@ export const useModalStore = defineStore('modal-store', () => {
     deleteModal.value = !deleteModal.value
   }
 
-  return { statModal, deleteModal, toggleStatModal, toggleDeleteModal }
+  return {
+    statModal,
+    deleteModal,
+    characterIdToDelete,
+    characterListWasAltered,
+    toggleStatModal,
+    toggleDeleteModal
+  }
 })

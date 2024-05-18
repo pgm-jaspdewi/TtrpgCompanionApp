@@ -1,5 +1,7 @@
 <template>
-  <h1 class="text-4xl font-bold font-title text-maroon">{{ title }}</h1>
+  <h1 :class="smallerTitle ? 'text-3xl' : 'text-4xl'" class="font-bold font-title text-maroon">
+    {{ title }}
+  </h1>
   <hr class="mb-6 border-2 border-maroon" />
 </template>
 
@@ -8,6 +10,10 @@ defineProps({
   title: {
     type: String,
     required: true
+  },
+  smallerTitle: {
+    type: Boolean,
+    default: false
   }
 })
 </script>

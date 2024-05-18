@@ -121,8 +121,6 @@ if (path.value !== '') downloadImage()
 
 // Watch for changes in the path prop and download the image when it changes. used when user selects a new image.
 watch(path, () => {
-  // console.log(path)
-  // console.log(path.value)
   if (path.value) downloadImage()
 })
 </script>

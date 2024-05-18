@@ -40,18 +40,21 @@
         </BaseButton> -->
       </div>
     </BasePageBorders>
-    <BaseModal :modalActive="store.deleteModal"> </BaseModal>
+    <BaseModal :modalActive="store.deleteModal">
+      <DeleteModal />
+    </BaseModal>
   </main>
 </template>
 
 <!-- Script tag -->
 <script setup lang="ts">
 import { BaseButton, BasePageBorders, BaseButtonBig, BaseModal } from '@/components/baseComponents'
+import { DeleteModal } from '@/components/landingComponents'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
 import { useRouter } from 'vue-router'
 import CharacterCard from '@/components/landingComponents/CharacterCard.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { supabase } from '@/supabase'
 import type { characterDetails } from '@/interfaces'
 import { useModalStore } from '@/stores/modal-store'
@@ -100,4 +103,12 @@ const getUser = async () => {
   }
 }
 getUser()
+
+// watch for changes in the store to update the character list when a character is removed.
+watch(store, () => {
+  if (store.characterListWasAltered) {
+    getUser()
+    store.characterListWasAltered = false
+  }
+})
 </script>

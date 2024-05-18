@@ -59,8 +59,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
 
   async function submitCharacter() {
     // submit character to backend
-    console.log(characterInfo.selectedEquipment)
-
+    const store = useModalStore()
     try {
       await supabase
         .from('characters')
@@ -82,10 +81,13 @@ export const useWizardStore = defineStore('wizard-store', () => {
           languages: characterInfo.languageProficiencies,
           cantrips: characterInfo.selectedCantrips,
           first_level_spells: characterInfo.selected1stLvlSpells,
-          equipment: characterInfo.selectedEquipment
+          equipment: characterInfo.selectedEquipment,
+          level: 1
         })
         .select()
 
+      // let the modal store know that the character list was altered
+      store.characterListWasAltered = true
       // redirect to landing page
       router.push('/')
     } catch (err) {

@@ -151,7 +151,7 @@ downloadImage()
 
 const handleSubmit = async () => {
   // Save the character to the database
-  console.log('Submitting character...')
+  console.log('submitting character')
   store.submitCharacter()
 }
 </script>
