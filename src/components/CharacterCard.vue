@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex items-start">
     <div
       @click="navigateToCharacter"
       class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex align-top justify-between p-characterCard my-2 group hover:border-maroon hover:bg-lightKhaki cursor-pointer"
@@ -23,11 +23,9 @@
     </div>
     <button
       @click="deleteCharacter"
-      class="border-1 my-2 ml-4 rounded-lg px-3 border-maroon bg-maroon hover:bg-lightKhaki group"
+      class="w-10 h-10 border-1 my-2 ml-2 rounded-lg group flex justify-center items-center border-darkKhaki hover:bg-maroon"
     >
-      <div class="w-9 h-9 bg-lightKhaki rounded-full flex justify-center items-center">
-        <FaTrash class="fill-maroon group-hover:fill-maroon w-5 h-5" />
-      </div>
+      <FaTrash class="fill-darkKhaki group-hover:fill-lightKhaki w-5 h-5" />
     </button>
   </div>
 </template>
