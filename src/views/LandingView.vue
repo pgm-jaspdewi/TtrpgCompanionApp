@@ -30,14 +30,6 @@
         >
           <FaPowerOff class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
         </button>
-        <!-- <BaseButton
-          @click="doLogout"
-          btnContent="Logout"
-          :secondary="true"
-          class="absolute top-5 right-5"
-        >
-          <FaPowerOff class="fill-lightKhaki group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButton> -->
       </div>
     </BasePageBorders>
     <BaseModal :modalActive="modal.deleteModal">
@@ -48,7 +40,7 @@
 
 <!-- Script tag -->
 <script setup lang="ts">
-import { BaseButton, BasePageBorders, BaseButtonBig, BaseModal } from '@/components/baseComponents'
+import { BasePageBorders, BaseButtonBig, BaseModal } from '@/components/baseComponents'
 import { DeleteModal } from '@/components/landingComponents'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'
