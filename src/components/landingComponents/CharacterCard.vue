@@ -36,8 +36,10 @@ import { FaTrash } from 'vue3-icons/fa6'
 import { supabase } from '@/supabase'
 import { ref, toRefs } from 'vue'
 import { useModalStore } from '@/stores/modal-store'
+import { useCharListStore } from '@/stores/charList-store'
 
-const store = useModalStore()
+const modal = useModalStore()
+const store = useCharListStore()
 
 const props = defineProps<{
   character: CharacterType
@@ -65,6 +67,7 @@ const navigateToCharacter = () => {
 
 const deleteCharacter = () => {
   store.characterIdToDelete = character.value.id
-  store.toggleDeleteModal()
+  store.characterAvatarToDelete = character.value.avatar
+  modal.toggleDeleteModal()
 }
 </script>

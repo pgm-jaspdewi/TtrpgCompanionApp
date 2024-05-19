@@ -17,7 +17,7 @@
         <FaXmark class="fill-maroon group-hover:fill-lightKhaki w-6 h-6" />
       </button>
     </BasePageBorders>
-    <BaseModal :modalActive="store.statModal">
+    <BaseModal :modalActive="modal.statModal">
       <WizardStatsModal />
     </BaseModal>
   </main>
@@ -31,7 +31,7 @@ import { useRouter } from 'vue-router'
 import { FaXmark } from 'vue3-icons/fa6'
 import { useModalStore } from '@/stores/modal-store'
 
-const store = useModalStore()
+const modal = useModalStore()
 
 const router = useRouter()
 

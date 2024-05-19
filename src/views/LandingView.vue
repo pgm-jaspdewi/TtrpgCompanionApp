@@ -40,7 +40,7 @@
         </BaseButton> -->
       </div>
     </BasePageBorders>
-    <BaseModal :modalActive="store.deleteModal">
+    <BaseModal :modalActive="modal.deleteModal">
       <DeleteModal />
     </BaseModal>
   </main>
@@ -57,9 +57,11 @@ import CharacterCard from '@/components/landingComponents/CharacterCard.vue'
 import { ref, watch } from 'vue'
 import { supabase } from '@/supabase'
 import type { characterDetails } from '@/interfaces'
+import { useCharListStore } from '@/stores/charList-store'
 import { useModalStore } from '@/stores/modal-store'
 
-const store = useModalStore()
+const modal = useModalStore()
+const store = useCharListStore()
 
 const router = useRouter()
 
@@ -104,7 +106,7 @@ const getUser = async () => {
 }
 getUser()
 
-// watch for changes in the store to update the character list when a character is removed.
+// watch for changes in the store to update the character list when the list of characters has been altered.
 watch(store, () => {
   if (store.characterListWasAltered) {
     getUser()

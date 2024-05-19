@@ -22,31 +22,54 @@ import { BaseH1, BaseButton } from '@/components/baseComponents'
 import { FaTrash, FaXmark } from 'vue3-icons/fa6'
 import { useModalStore } from '@/stores/modal-store'
 import { supabase } from '@/supabase'
+import { useCharListStore } from '@/stores/charList-store'
 
-const store = useModalStore()
+const modal = useModalStore()
+const store = useCharListStore()
 
 const closeModal = () => {
-  store.toggleDeleteModal()
+  store.characterIdToDelete = 0
+  store.characterAvatarToDelete = ''
+  modal.toggleDeleteModal()
 }
 
+// delete the character from the database and it's image from the storage bucket
 const deleteCharacter = async () => {
+  // get the user's profile
   const { data, error } = await supabase.auth.getUser()
+  // if there is an error, log it to the console
   if (error) {
     console.error('Error getting user:', error.message)
   } else {
+    // save the user's id to a variable
     const id = data.user.id
-    // get the characters from the database
+    // remove the character from the database
     const { error: charactersError } = await supabase
       .from('characters')
       .delete()
+      // filter the character to delete by the user's id and the character's id
       .eq('userId', id)
       .eq('id', store.characterIdToDelete)
+    // if there is an error, log it to the console
     if (charactersError) {
       console.error('Error deleting characters:', charactersError.message)
     } else {
-      store.characterIdToDelete = 0
-      store.characterListWasAltered = true
-      store.toggleDeleteModal()
+      // remove the character's avatar from the storage bucket
+      const { error: storageError } = await supabase.storage
+        .from('avatars')
+        .remove([store.characterAvatarToDelete])
+      // if there is an error, log it to the console
+      if (storageError) {
+        console.error('Error deleting avatar:', storageError.message)
+      } else {
+        // reset the characterIdToDelete and characterAvatarToDelete
+        store.characterIdToDelete = 0
+        store.characterAvatarToDelete = ''
+        // alert the store that the character list has been altered
+        store.characterListWasAltered = true
+        // close the modal
+        modal.toggleDeleteModal()
+      }
     }
   }
 }

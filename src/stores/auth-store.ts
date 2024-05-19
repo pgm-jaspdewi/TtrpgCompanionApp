@@ -4,6 +4,7 @@ import type { User } from '@supabase/supabase-js'
 import type { profile } from '@/interfaces'
 import { supabase } from '@/supabase'
 
+// Store for authentication
 export const useAuthStore = defineStore('auth-store', () => {
   const user = ref<User | null>(null)
   const userProfile = ref<profile>({ username: '', email: '' })

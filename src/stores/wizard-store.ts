@@ -4,7 +4,9 @@ import { useModalStore } from './modal-store'
 import { supabase } from '../supabase'
 import type { equipment } from '../interfaces'
 import { useRouter } from 'vue-router'
+import { useCharListStore } from './charList-store'
 
+// Define a new store for the wizard
 export const useWizardStore = defineStore('wizard-store', () => {
   const router = useRouter()
   const step = ref(1)
@@ -48,18 +50,18 @@ export const useWizardStore = defineStore('wizard-store', () => {
 
   function closeModal(formData: object) {
     const store = useWizardStore()
-    const modalStore = useModalStore()
+    const modal = useModalStore()
     store.$patch({
       charStats: {
         ...formData
       }
     })
-    modalStore.toggleStatModal()
+    modal.toggleStatModal()
   }
 
   async function submitCharacter() {
     // submit character to backend
-    const store = useModalStore()
+    const store = useCharListStore()
     try {
       await supabase
         .from('characters')
@@ -86,7 +88,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
         })
         .select()
 
-      // let the modal store know that the character list was altered
+      // let the store know that the character list was altered
       store.characterListWasAltered = true
       // redirect to landing page
       router.push('/')
