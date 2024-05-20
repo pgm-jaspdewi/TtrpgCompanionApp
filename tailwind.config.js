@@ -57,6 +57,9 @@ export default {
       minHeight: {
         'outerContainer': 'calc(100vh - 20px)',
         'innerContainer': 'calc(100vh - 30px)',
+        'statsOuterContainer': 'calc(100vh - 116px)',
+        'statsInnerContainer': 'calc(100vh - 126px)',
+        'statsPage': 'calc(100vh - 96px)',
       },
       margin: {
         'outerContainer': '10px',

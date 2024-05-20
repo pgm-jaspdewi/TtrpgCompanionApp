@@ -2,7 +2,11 @@
   <div v-if="character === null">
     <div>loading character data...</div>
   </div>
-  <div v-if="character != null">Character: {{ character.name }}</div>
+  <div v-if="character != null" class="static">
+    <div class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit">
+      <CharacterPageBorders> </CharacterPageBorders>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,6 +14,7 @@ import type { characterDetails } from '@/interfaces'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
+import { CharacterPageBorders } from '@/components/characterPageComponents'
 
 const route = useRoute()
 
