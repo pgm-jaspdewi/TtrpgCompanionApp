@@ -26,11 +26,11 @@ export const useWizardStore = defineStore('wizard-store', () => {
     charStats: charStats,
     charClass: '',
     charBackground: '',
-    skillProficiencies: [''],
+    skillProficiencies: [] as string[],
     // toolProficiency: '',
-    languageProficiencies: [''],
-    selectedCantrips: [''],
-    selected1stLvlSpells: [''],
+    languageProficiencies: [] as string[],
+    selectedCantrips: [] as string[],
+    selected1stLvlSpells: [] as string[],
     selectedEquipment: [] as equipment[]
   })
 
@@ -59,9 +59,37 @@ export const useWizardStore = defineStore('wizard-store', () => {
     modal.toggleStatModal()
   }
 
+  function resetStore() {
+    const store = useWizardStore()
+    store.$patch({
+      step: 1,
+      charStats: {
+        str: '0',
+        dex: '0',
+        con: '0',
+        int: '0',
+        wis: '0',
+        cha: '0'
+      },
+      characterInfo: {
+        charAvatar: '',
+        charName: '',
+        charRace: '',
+        charClass: '',
+        charBackground: '',
+        skillProficiencies: [] as string[],
+        languageProficiencies: [] as string[],
+        selectedCantrips: [] as string[],
+        selected1stLvlSpells: [] as string[],
+        selectedEquipment: [] as equipment[]
+      }
+    })
+  }
+
   async function submitCharacter() {
     // submit character to backend
     const store = useCharListStore()
+    const thisStore = useWizardStore()
     try {
       await supabase
         .from('characters')
@@ -90,6 +118,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
 
       // let the store know that the character list was altered
       store.characterListWasAltered = true
+      thisStore.resetStore()
       // redirect to landing page
       router.push('/')
     } catch (err) {
@@ -104,6 +133,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     nextStep,
     prevStep,
     closeModal,
+    resetStore,
     submitCharacter
   }
 })
