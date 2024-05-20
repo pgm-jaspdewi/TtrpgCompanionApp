@@ -3,7 +3,26 @@
     <div>loading character data...</div>
   </div>
   <div v-if="character != null" class="static">
-    <div class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit">
+    <div class="pl-10 absolute top-16 h-8 z-10">
+      <button
+        class="border-t-2 border-x-2 border-maroon h-8 px-4 py-1 mx-1 bg-paleGold rounded-t-md text-maroon font-bold"
+      >
+        test
+      </button>
+      <button
+        class="border-2 border-maroon h-8 px-4 py-1 mx-1 bg-paleGoldGrayed rounded-t-md text-maroon font-bold hover:bg-maroon hover:text-paleGold"
+      >
+        test
+      </button>
+      <button
+        class="border-2 border-maroon h-8 px-4 py-1 mx-1 bg-paleGoldGrayed rounded-t-md text-maroon font-bold hover:bg-maroon hover:text-paleGold"
+      >
+        test
+      </button>
+    </div>
+    <div
+      class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit outline outline-2 outline-maroon z-0"
+    >
       <CharacterPageBorders> </CharacterPageBorders>
     </div>
   </div>
