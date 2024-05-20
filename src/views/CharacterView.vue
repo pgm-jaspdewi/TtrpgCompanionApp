@@ -11,7 +11,11 @@
     <div
       class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit outline outline-2 outline-maroon z-0"
     >
-      <CharacterPageBorders> </CharacterPageBorders>
+      <CharacterPageBorders>
+        <CharPage1 v-if="store.step === 1" />
+        <CharPage2 v-if="store.step === 2" />
+        <CharPage3 v-if="store.step === 3" />
+      </CharacterPageBorders>
     </div>
   </div>
 </template>
@@ -21,8 +25,16 @@ import type { characterDetails } from '@/interfaces'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
-import { CharacterPageBorders, NavButton } from '@/components/characterPageComponents'
+import {
+  CharacterPageBorders,
+  NavButton,
+  CharPage1,
+  CharPage2,
+  CharPage3
+} from '@/components/characterPageComponents'
+import { useCharPageStore } from '@/stores/characterPage-store'
 
+const store = useCharPageStore()
 const route = useRoute()
 
 // Get the character id from the route params
