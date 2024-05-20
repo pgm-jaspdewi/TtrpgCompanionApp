@@ -37,9 +37,11 @@ import { supabase } from '@/supabase'
 import { ref, toRefs } from 'vue'
 import { useModalStore } from '@/stores/modal-store'
 import { useCharListStore } from '@/stores/charList-store'
+import { useRouter } from 'vue-router'
 
 const modal = useModalStore()
 const store = useCharListStore()
+const router = useRouter()
 
 const props = defineProps<{
   character: CharacterType
@@ -62,6 +64,7 @@ if (character.value.avatar !== '') downloadImage()
 
 const navigateToCharacter = () => {
   console.log('navigate to character' + character.value.id)
+  router.push(`/character/${character.value.id}`)
   // navigation logic goes here
 }
 
