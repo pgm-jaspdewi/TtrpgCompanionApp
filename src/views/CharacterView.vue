@@ -2,7 +2,7 @@
   <div v-if="character === null">
     <BasePageBorders :relative="true">
       <div class="p-12 border-2 border-maroon rounded-lg bg-paleGold">
-        <p class="text-3xl capitalize text-maroon">loading character data...</p>
+        <p class="text-2xl capitalize text-maroon">loading character data...</p>
       </div>
     </BasePageBorders>
   </div>
