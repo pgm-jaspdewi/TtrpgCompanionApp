@@ -1,6 +1,10 @@
 <template>
   <div v-if="character === null">
-    <div>loading character data...</div>
+    <BasePageBorders :relative="true">
+      <div class="p-12 border-2 border-maroon rounded-lg bg-paleGold">
+        <p class="text-3xl capitalize text-maroon">loading character data...</p>
+      </div>
+    </BasePageBorders>
   </div>
   <div v-if="character != null" class="static">
     <div class="pl-10 absolute top-16 h-8 z-10">
@@ -25,6 +29,7 @@ import type { characterDetails } from '@/interfaces'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
+import { BasePageBorders } from '@/components/baseComponents'
 import {
   CharacterPageBorders,
   NavButton,
