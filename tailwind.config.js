@@ -42,6 +42,7 @@ export default {
       },
       width: {
         'image': '90px',
+        'navButtonsSm': '360px',
         'navButtons': '375px',
         'characterCard': '500px',
         'outerContainer': "calc(100vw - 50px)",
@@ -70,6 +71,7 @@ export default {
       margin: {
         'outerContainer': '10px',
         'innerContainer': '3.4px',
+        'navButtonsSpacingSm': '10%',
         'navButtonsSpacing': '320px'
       },
       padding: {

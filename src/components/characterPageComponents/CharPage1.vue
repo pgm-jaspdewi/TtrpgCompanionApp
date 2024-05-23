@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-maxWidth mx-auto">
     <!-- top row -->
-    <div class="mb-4 h-32 flex tablet:flex-col laptopSm:flex-row justify-between">
+    <div class="mb-4 h-32 flex flex-col laptopSm:flex-row justify-between">
       <div
         class="m-2 border-2 border-darkKhaki rounded-lg laptopSm:w-4/12 flex justify-center items-center"
       >
@@ -54,7 +54,7 @@
           <div
             class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-80 flex justify-center items-center"
           >
-            Attacks & spells
+            Attacks
           </div>
         </div>
       </div>

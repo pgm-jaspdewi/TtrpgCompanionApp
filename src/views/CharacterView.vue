@@ -8,7 +8,7 @@
   </div>
   <div v-if="character != null" class="static">
     <div
-      class="absolute top-16 h-8 z-10 right-1/2 w-navButtons flex justify-between mr-navButtonsSpacing"
+      class="absolute top-16 h-8 z-10 right-1/2 w-navButtonsSm laptopSm:w-navButtons flex justify-between laptopSm:mr-navButtonsSpacingSm laptopLg:mr-navButtonsSpacing"
     >
       <NavButton btnContent="Character" :step="1" />
       <NavButton btnContent="Inventory" :step="2" />
