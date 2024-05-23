@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="max-w">
     <!-- top row -->
-    <div class="mb-4 h-16 w-8/12 mx-auto flex justify-around">
+    <div class="mb-4 h-16 w-full laptopSm:w-10/12 laptopLg:w-8/12 mx-auto flex justify-around">
       <div class="m-2 border-2 border-darkKhaki rounded-lg w-3/12 flex justify-center items-center">
         Spellcasting ability
       </div>

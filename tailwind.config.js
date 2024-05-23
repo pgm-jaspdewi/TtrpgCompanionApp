@@ -42,9 +42,11 @@ export default {
       },
       width: {
         'image': '90px',
+        'navButtons': '375px',
         'characterCard': '500px',
         'outerContainer': "calc(100vw - 50px)",
         'innerContainer': 'calc(100vw - 60px)',
+
       },
       height: {
         'line': '2px',
@@ -53,6 +55,10 @@ export default {
         'characterCardLg': '150px',
         'outerContainer': 'calc(100vh - 20px)',
         'innerContainer': 'calc(100vh - 30px)',
+      },
+      maxWidth: {
+        'innerMaxWidth': '1430px',
+        'maxWidth': '1440px',
       },
       minHeight: {
         'outerContainer': 'calc(100vh - 20px)',
@@ -64,6 +70,7 @@ export default {
       margin: {
         'outerContainer': '10px',
         'innerContainer': '3.4px',
+        'navButtonsSpacing': '320px'
       },
       padding: {
         'characterCard': '15px',

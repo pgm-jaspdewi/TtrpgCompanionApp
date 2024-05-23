@@ -2,7 +2,7 @@
   <!-- columns -->
   <div class="flex justify-between">
     <!-- column 1 -->
-    <div class="w-6/12 mr-10">
+    <div class="w-6/12 laptopSm:mr-10">
       <div
         class="m-2 mt-1 mb-10 border-2 border-darkKhaki rounded-lg h-56 flex justify-center items-center"
       >
@@ -15,7 +15,7 @@
       </div>
     </div>
     <!-- column 2 -->
-    <div class="w-6/12 ml-10">
+    <div class="w-6/12 laptopSm:ml-10">
       <div
         class="m-2 mt-1 mb-10 border-2 border-darkKhaki rounded-lg h-28 flex justify-center items-center"
       >

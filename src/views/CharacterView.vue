@@ -7,7 +7,9 @@
     </BasePageBorders>
   </div>
   <div v-if="character != null" class="static">
-    <div class="pl-10 absolute top-16 h-8 z-10">
+    <div
+      class="absolute top-16 h-8 z-10 right-1/2 w-navButtons flex justify-between mr-navButtonsSpacing"
+    >
       <NavButton btnContent="Character" :step="1" />
       <NavButton btnContent="Inventory" :step="2" />
       <NavButton btnContent="Spell-list" :step="3" />

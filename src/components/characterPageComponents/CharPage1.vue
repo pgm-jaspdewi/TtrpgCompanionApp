@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-maxWidth mx-auto">
     <!-- top row -->
     <div class="mb-4 h-32 flex tablet:flex-col laptopSm:flex-row justify-between">
       <div
