@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mdFrmWidth p-4"
+    class="bg-paleGold border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-5/12 laptopLg:w-1/4 min-w-mnFrmWidth max-w-mdFrmWidth p-4 shadow-lg"
   >
     <BaseH1 title="Register" />
 
@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import {BaseButton,BaseH1, BaseInput } from '@/components/baseComponents'
+import { BaseButton, BaseH1, BaseInput } from '@/components/baseComponents'
 import { FaAngleRight } from 'vue3-icons/fa'
 import { useAuthStore } from '@/stores/auth-store'
 import { useRouter } from 'vue-router'

@@ -2,7 +2,7 @@
   <div class="flex items-start">
     <div
       @click="navigateToCharacter"
-      class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex align-top justify-between p-characterCard my-2 group hover:border-maroon hover:bg-lightKhaki cursor-pointer"
+      class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex align-top justify-between p-characterCard my-2 group hover:border-maroon hover:bg-lightKhaki cursor-pointer shadow-lg"
     >
       <div class="flex">
         <div
@@ -23,7 +23,7 @@
     </div>
     <button
       @click="deleteCharacter"
-      class="w-10 h-10 border-1 my-2 ml-2 rounded-lg group flex justify-center items-center border-darkKhaki hover:bg-maroon"
+      class="w-10 h-10 border-1 my-2 ml-2 rounded-lg group flex justify-center items-center border-darkKhaki hover:bg-maroon shadow-md"
     >
       <FaTrash class="fill-darkKhaki group-hover:fill-lightKhaki w-5 h-5" />
     </button>

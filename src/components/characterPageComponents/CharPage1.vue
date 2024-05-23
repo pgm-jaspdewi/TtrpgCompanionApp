@@ -1,14 +1,34 @@
 <template>
   <div class="max-w-maxWidth mx-auto">
     <!-- top row -->
-    <div class="mb-4 h-32 flex flex-col laptopSm:flex-row justify-between">
+    <div class="mb-4 flex flex-col laptopLg:flex-row justify-between">
+      <!-- avatar + basic info -->
       <div
-        class="m-2 border-2 border-darkKhaki rounded-lg laptopSm:w-4/12 flex justify-center items-center"
+        class="m-2 border-2 border-darkKhaki rounded-lg w-10/12 laptopSm:w-7/12 laptopLg:w-4/12 flex items-start justify-between shadow-lg"
       >
-        Avatar + basic info
+        <div class="flex">
+          <BaseImage :src="src" :size="8" class="m-2" />
+          <div class="m-2 flex flex-col justify-between h-32">
+            <p class="text-3xl laptopLg:text-2xl font-bold text-maroon">{{ character.name }}</p>
+            <div class="flex justify-between">
+              <p class="text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
+              <p class="text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
+            </div>
+            <p class="text-2xl laptopLg:text-xl capitalize">level {{ character.level }}</p>
+          </div>
+        </div>
+        <BaseButtonBig class="m-2 laptopLg:hidden" btnContent="Lvl up">
+          <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
+        </BaseButtonBig>
+
+        <BaseButton class="m-2 hidden laptopLg:flex" btnContent="Lvl up">
+          <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
+        </BaseButton>
       </div>
+
+      <!-- Stats -->
       <div
-        class="m-2 border-2 border-darkKhaki rounded-lg laptopSm:w-7/12 flex justify-center items-center"
+        class="m-2 border-2 border-darkKhaki rounded-lg laptopLg:w-7/12 flex justify-center items-center"
       >
         Stats
       </div>
@@ -75,3 +95,34 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import type { characterDetails } from '@/interfaces'
+import { supabase } from '@/supabase'
+import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
+import { ref } from 'vue'
+import { FaArrowUp } from 'vue3-icons/fa6'
+
+const src = ref('')
+
+const props = defineProps({
+  character: {
+    type: Object as () => characterDetails,
+    required: true
+  }
+})
+
+const downloadImage = async () => {
+  // Download the image from the storage-bucket to show in the UI
+  try {
+    const { data, error } = await supabase.storage.from('avatars').download(props.character.avatar)
+    if (error) throw error
+    src.value = URL.createObjectURL(data)
+  } catch (error) {
+    console.error('Error downloading image: ', (error as Error).message)
+  }
+}
+downloadImage()
+
+console.log(props.character)
+</script>

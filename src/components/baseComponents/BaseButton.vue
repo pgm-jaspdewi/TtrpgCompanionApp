@@ -7,7 +7,7 @@
       'text-maroon hover:bg-none hover:border-darkKhaki hover:text-darkKhaki': secondary,
       'bg-maroon text-lightKhaki hover:bg-lightKhaki hover:text-maroon ': !secondary
     }"
-    class="border-2 border-maroon text-base py-2 px-3 rounded-3xl flex items-center justify-between group"
+    class="border-2 border-maroon text-base py-2 px-3 rounded-3xl flex items-center justify-between group shadow-lg"
   >
     {{ $props.btnContent }}
     <div

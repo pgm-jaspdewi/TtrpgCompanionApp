@@ -14,7 +14,7 @@
           'bg-maroon hover:bg-lightKhaki text-lightKhaki hover:text-maroon border-maroon':
             !uploading
         }"
-        class="text-sm border-2 py-1 px-2 mt-2 rounded-3xl flex items-center justify-between group cursor-pointer w-9/12"
+        class="text-sm border-2 py-1 px-2 mt-2 rounded-3xl flex items-center justify-between group cursor-pointer w-9/12 shadow-lg"
         for="single"
       >
         {{ uploading ? 'Uploading' : 'Add Image' }}

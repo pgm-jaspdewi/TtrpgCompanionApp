@@ -1,7 +1,7 @@
 <template>
   <div v-if="character === null">
     <BasePageBorders :relative="true">
-      <div class="p-12 border-2 border-maroon rounded-lg bg-paleGold">
+      <div class="p-12 border-2 border-maroon rounded-lg bg-paleGold shadow-lg">
         <p class="text-2xl capitalize text-maroon">loading character data...</p>
       </div>
     </BasePageBorders>
@@ -18,7 +18,7 @@
       class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit outline outline-2 outline-maroon z-0"
     >
       <CharacterPageBorders>
-        <CharPage1 v-if="store.step === 1" />
+        <CharPage1 v-if="store.step === 1" :character="character" />
         <CharPage2 v-if="store.step === 2" />
         <CharPage3 v-if="store.step === 3" />
       </CharacterPageBorders>
