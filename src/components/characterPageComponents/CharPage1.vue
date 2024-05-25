@@ -60,9 +60,9 @@
         <div class="w-6/12 laptopSm:w-7/12">
           <div class="w-full h-16 flex">
             <div
-              class="mx-2 my-1 border-2 border-darkKhaki rounded-lg w-1/2 flex justify-center items-center"
+              class="mx-2 my-1 border-2 border-darkKhaki rounded-lg w-1/2 flex justify-center items-center shadow"
             >
-              Proficiency
+              <ProficiencyBonus :level="character.level" />
             </div>
             <div
               class="mx-2 my-1 border-2 border-darkKhaki rounded-lg w-1/2 flex justify-center items-center"
@@ -107,7 +107,7 @@ import { supabase } from '@/supabase'
 import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
 import { ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
-import { CharStat } from '@/components/characterPageComponents'
+import { CharStat, ProficiencyBonus } from '@/components/characterPageComponents'
 
 const src = ref('')
 

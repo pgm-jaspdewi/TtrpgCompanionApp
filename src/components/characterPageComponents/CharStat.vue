@@ -34,6 +34,4 @@ const props = defineProps({
 const bonus = computed(() => {
   return Math.floor((props.stat - 10) / 2)
 })
-
-console.log(bonus.value)
 </script>
