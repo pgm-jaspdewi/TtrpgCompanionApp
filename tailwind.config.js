@@ -36,6 +36,7 @@ export default {
     },
     extend: {
       spacing: {
+        'stats': '100px',
         'mnFrmWidth': '20rem',
         'mdFrmWidth': '35rem',
         'lgFrmWidth': '50rem',

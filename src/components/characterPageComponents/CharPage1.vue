@@ -28,9 +28,14 @@
 
       <!-- Stats -->
       <div
-        class="m-2 border-2 border-darkKhaki rounded-lg laptopLg:w-7/12 flex justify-center items-center"
+        class="m-2 rounded-lg laptopLg:w-7/12 flex justify-center items-start h-36 shadow-lg bg-maroon/50"
       >
-        Stats
+        <CharStat :title="'str'" :stat="parseInt(character.stats.str)" />
+        <CharStat :title="'dex'" :stat="parseInt(character.stats.dex)" />
+        <CharStat :title="'con'" :stat="parseInt(character.stats.con)" />
+        <CharStat :title="'int'" :stat="parseInt(character.stats.int)" />
+        <CharStat :title="'wis'" :stat="parseInt(character.stats.wis)" />
+        <CharStat :title="'cha'" :stat="parseInt(character.stats.cha)" />
       </div>
     </div>
     <!-- columns -->
@@ -102,6 +107,7 @@ import { supabase } from '@/supabase'
 import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
 import { ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
+import { CharStat } from '@/components/characterPageComponents'
 
 const src = ref('')
 
