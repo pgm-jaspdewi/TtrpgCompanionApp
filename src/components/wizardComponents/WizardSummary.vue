@@ -74,7 +74,7 @@
     </div>
   </div>
   <!-- divs with proficiencies -->
-  <div class="flex flex-row items-center justify-center">
+  <div class="flex flex-row items-start justify-start">
     <div
       class="border-2 border-maroon p-2 mt-2 mb-4 mr-1 rounded-lg flex flex-col items-center justify-center w-4/12 laptopSm:w-6/12"
     >

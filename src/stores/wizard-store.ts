@@ -27,8 +27,10 @@ export const useWizardStore = defineStore('wizard-store', () => {
     charClass: '',
     charBackground: '',
     skillProficiencies: [] as string[],
+    backgroundSkills: [] as string[],
     // toolProficiency: '',
     languageProficiencies: [] as string[],
+    backgroundLanguages: [] as string[],
     selectedCantrips: [] as string[],
     selected1stLvlSpells: [] as string[],
     selectedEquipment: [] as equipment[]
@@ -78,7 +80,9 @@ export const useWizardStore = defineStore('wizard-store', () => {
         charClass: '',
         charBackground: '',
         skillProficiencies: [] as string[],
+        backgroundSkills: [] as string[],
         languageProficiencies: [] as string[],
+        backgroundLanguages: [] as string[],
         selectedCantrips: [] as string[],
         selected1stLvlSpells: [] as string[],
         selectedEquipment: [] as equipment[]
