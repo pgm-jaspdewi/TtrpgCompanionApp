@@ -58,16 +58,16 @@
 
         <!-- second column -->
         <div class="w-6/12 laptopSm:w-7/12">
-          <div class="w-full h-16 flex">
+          <div class="w-full flex flex-col laptopSm:flex-row">
             <div
-              class="mx-2 my-1 border-2 border-darkKhaki rounded-lg w-1/2 flex justify-center items-center shadow"
+              class="mx-2 my-1 h-16 border-2 border-darkKhaki rounded-lg laptopSm:w-1/2 flex justify-center items-center shadow-lg"
             >
               <ProficiencyBonus :level="character.level" />
             </div>
             <div
-              class="mx-2 my-1 border-2 border-darkKhaki rounded-lg w-1/2 flex justify-center items-center"
+              class="mx-2 my-1 h-16 border-2 border-darkKhaki rounded-lg laptopSm:w-1/2 flex justify-center items-center shadow-lg"
             >
-              Passive perception
+              <PassivePerception :level="character.level" :wisdom="parseInt(character.stats.wis)" />
             </div>
           </div>
 
@@ -107,7 +107,7 @@ import { supabase } from '@/supabase'
 import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
 import { ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
-import { CharStat, ProficiencyBonus } from '@/components/characterPageComponents'
+import { CharStat, ProficiencyBonus, PassivePerception } from '@/components/characterPageComponents'
 
 const src = ref('')
 

@@ -31,6 +31,7 @@ const props = defineProps({
   }
 })
 
+// calculate the stat-modifier bonus according to the dnd rules
 const bonus = computed(() => {
   return Math.floor((props.stat - 10) / 2)
 })

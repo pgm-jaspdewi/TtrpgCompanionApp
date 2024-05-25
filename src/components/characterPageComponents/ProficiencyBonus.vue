@@ -18,6 +18,7 @@ const props = defineProps({
   }
 })
 
+// Calculate the proficiency bonus according to the dnd rules
 const bonus = computed(() => {
   return Math.floor((props.level - 1) / 4) + 2
 })
