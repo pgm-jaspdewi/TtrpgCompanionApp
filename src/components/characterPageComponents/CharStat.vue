@@ -18,7 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { useCharPageStore } from '@/stores/characterPage-store'
+import { computed, ref } from 'vue'
+
+const store = useCharPageStore()
 
 const props = defineProps({
   stat: {
@@ -30,7 +33,6 @@ const props = defineProps({
     required: true
   }
 })
-
 // calculate the stat-modifier bonus according to the dnd rules
 const bonus = computed(() => {
   return Math.floor((props.stat - 10) / 2)

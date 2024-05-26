@@ -55,19 +55,19 @@
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.str)"
                   name="str"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.dex)"
                   name="dex"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.con)"
                   name="con"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
               </div>
               <div class="w-1/2 p-2">
@@ -75,19 +75,19 @@
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.int)"
                   name="int"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.wis)"
                   name="wis"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
                   :saves="saveThrows"
                   :stat="parseInt(character.stats.cha)"
                   name="cha"
-                  :proficiency-bonus="proficiencyBonus"
+                  :proficiencyBonus="proficiencyBonus"
                 />
               </div>
             </div>
@@ -103,6 +103,9 @@
                 :key="skill.index"
                 :character-skills="character.skills"
                 :skill="skill"
+                :characterStats="character.stats"
+                :saves="saveThrows"
+                :proficiencyBonus="proficiencyBonus"
               />
             </div>
           </div>
@@ -170,9 +173,7 @@ import {
   SkillSave
 } from '@/components/characterPageComponents'
 import axios from 'axios'
-import { useCharPageStore } from '@/stores/characterPage-store'
 
-const store = useCharPageStore()
 const src = ref('')
 const saveThrows = ref<savingThrows[]>([])
 const skills = ref<savingThrows[]>([])
@@ -183,6 +184,7 @@ const props = defineProps({
     required: true
   }
 })
+console.log(saveThrows)
 
 const setupFunction = async () => {
   // Download the image from the storage-bucket to show in the UI
@@ -208,21 +210,5 @@ const proficiencyBonus = computed(() => {
   return Math.floor((props.character.level - 1) / 4) + 2
 })
 
-// Calculate the stat-modifier bonuses according to the dnd rules and store them in the store
-const stats = ref<{ name: string; value: number }[]>([])
-Object.keys(props.character.stats).forEach((key) => {
-  stats.value.push({ name: key, value: props.character.stats[key] })
-})
-
-if (stats.value.length > 0) {
-  const calculatedModifiers = ref<{ name: string; value: number }[]>([])
-  for (const stat of stats.value) {
-    const bonus = computed(() => {
-      return Math.floor((stat.value - 10) / 2)
-    })
-    console.log(`${stat.name}: ${bonus.value}`)
-    calculatedModifiers.value.push({ name: stat.name, value: bonus.value })
-  }
-  store.setModifiers(calculatedModifiers.value)
-}
+console.log(props.character)
 </script>
