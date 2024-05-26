@@ -7,6 +7,7 @@ import NavButton from './NavButton.vue'
 import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
 import SavingThrow from './SavingThrow.vue'
+import SkillSave from './SkillSave.vue'
 
 export {
   CharacterPageBorders,
@@ -17,5 +18,6 @@ export {
   NavButton,
   PassivePerception,
   ProficiencyBonus,
-  SavingThrow
+  SavingThrow,
+  SkillSave
 }

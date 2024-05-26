@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import type { savingThrows } from '@/interfaces'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   name: {
@@ -65,6 +65,4 @@ const saveBonus = computed(() => {
     return modifier.value
   }
 })
-console.log(saveBonus.value)
-console.log(proficient.value)
 </script>

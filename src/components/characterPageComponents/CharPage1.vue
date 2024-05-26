@@ -44,6 +44,7 @@
       <div class="flex w-full laptopSm:w-8/12 mb-3">
         <!-- first column -->
         <div class="w-6/12 laptopSm:w-5/12 flex flex-col">
+          <!-- saving throws -->
           <div
             class="mx-2 mt-1 p-1 border-2 border-darkKhaki rounded-lg flex flex-col items-center shadow-lg"
           >
@@ -91,10 +92,19 @@
               </div>
             </div>
           </div>
+          <!-- skill throws -->
           <div
-            class="mx-2 mt-4 mb-1 border-2 border-darkKhaki rounded-lg grow flex justify-center items-center"
+            class="mx-2 mt-4 mb-1 p-1 border-2 border-darkKhaki rounded-lg grow flex flex-col items-center shadow-lg"
           >
-            Skill throws
+            <h3 class="font-bold text-lg text-maroon">Skills</h3>
+            <div class="flex flex-col w-full p-2">
+              <SkillSave
+                v-for="skill in skills"
+                :key="skill.index"
+                :character-skills="character.skills"
+                :skill="skill"
+              />
+            </div>
           </div>
         </div>
 
@@ -156,12 +166,16 @@ import {
   CharStat,
   ProficiencyBonus,
   PassivePerception,
-  SavingThrow
+  SavingThrow,
+  SkillSave
 } from '@/components/characterPageComponents'
 import axios from 'axios'
+import { useCharPageStore } from '@/stores/characterPage-store'
 
+const store = useCharPageStore()
 const src = ref('')
 const saveThrows = ref<savingThrows[]>([])
+const skills = ref<savingThrows[]>([])
 
 const props = defineProps({
   character: {
@@ -183,8 +197,9 @@ const setupFunction = async () => {
   const fetchClass = await axios.get(
     import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
   )
+  const fetchSkills = await axios.get(import.meta.env.VITE_5E_API_URL + 'skills')
   saveThrows.value = fetchClass.data.saving_throws
-  console.log(saveThrows.value)
+  skills.value = fetchSkills.data.results
 }
 setupFunction()
 
@@ -193,5 +208,21 @@ const proficiencyBonus = computed(() => {
   return Math.floor((props.character.level - 1) / 4) + 2
 })
 
-console.log(props.character)
+// Calculate the stat-modifier bonuses according to the dnd rules and store them in the store
+const stats = ref<{ name: string; value: number }[]>([])
+Object.keys(props.character.stats).forEach((key) => {
+  stats.value.push({ name: key, value: props.character.stats[key] })
+})
+
+if (stats.value.length > 0) {
+  const calculatedModifiers = ref<{ name: string; value: number }[]>([])
+  for (const stat of stats.value) {
+    const bonus = computed(() => {
+      return Math.floor((stat.value - 10) / 2)
+    })
+    console.log(`${stat.name}: ${bonus.value}`)
+    calculatedModifiers.value.push({ name: stat.name, value: bonus.value })
+  }
+  store.setModifiers(calculatedModifiers.value)
+}
 </script>
