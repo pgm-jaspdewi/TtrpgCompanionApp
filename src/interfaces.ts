@@ -42,3 +42,9 @@ export interface characterDetails {
   stats: characterStats
   userId: string
 }
+
+export interface savingThrows {
+  index: string
+  name: string
+  url: string
+}

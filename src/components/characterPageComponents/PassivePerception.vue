@@ -17,15 +17,10 @@ const props = defineProps({
     type: Number,
     required: true
   },
-  level: {
+  proficiencyBonus: {
     type: Number,
     required: true
   }
-})
-
-// Calculate the proficiency bonus according to the dnd rules
-const proficiencyBonus = computed(() => {
-  return Math.floor((props.level - 1) / 4) + 2
 })
 
 // calculate the stat-modifier bonus according to the dnd rules
@@ -35,8 +30,6 @@ const statModifier = computed(() => {
 
 // Calculate the passive perception according to the dnd rules
 const passivePerception = computed(() => {
-  return 10 + proficiencyBonus.value + statModifier.value
+  return 10 + props.proficiencyBonus + statModifier.value
 })
-
-console.log('pp' + passivePerception.value)
 </script>

@@ -6,6 +6,7 @@ import CharStat from './CharStat.vue'
 import NavButton from './NavButton.vue'
 import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
+import SavingThrow from './SavingThrow.vue'
 
 export {
   CharacterPageBorders,
@@ -15,5 +16,6 @@ export {
   CharStat,
   NavButton,
   PassivePerception,
-  ProficiencyBonus
+  ProficiencyBonus,
+  SavingThrow
 }

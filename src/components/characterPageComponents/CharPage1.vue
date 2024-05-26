@@ -9,7 +9,7 @@
         <div class="flex">
           <BaseImage :src="src" :size="8" class="m-2" />
           <div class="m-2 flex flex-col justify-between h-32">
-            <p class="text-3xl laptopLg:text-2xl font-bold text-maroon">{{ character.name }}</p>
+            <h2 class="text-3xl laptopLg:text-2xl font-bold text-maroon">{{ character.name }}</h2>
             <div class="flex justify-between">
               <p class="text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
               <p class="text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
@@ -45,9 +45,51 @@
         <!-- first column -->
         <div class="w-6/12 laptopSm:w-5/12 flex flex-col">
           <div
-            class="mx-2 mt-1 border-2 border-darkKhaki rounded-lg h-32 flex justify-center items-center"
+            class="mx-2 mt-1 p-1 border-2 border-darkKhaki rounded-lg flex flex-col items-center shadow-lg"
           >
-            Saving throws
+            <h3 class="font-bold text-lg text-maroon">Saving Throws</h3>
+            <div class="flex w-full">
+              <div class="w-1/2 p-2">
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.str)"
+                  name="str"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.dex)"
+                  name="dex"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.con)"
+                  name="con"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+              </div>
+              <div class="w-1/2 p-2">
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.int)"
+                  name="int"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.wis)"
+                  name="wis"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+                <SavingThrow
+                  :saves="saveThrows"
+                  :stat="parseInt(character.stats.cha)"
+                  name="cha"
+                  :proficiency-bonus="proficiencyBonus"
+                />
+              </div>
+            </div>
           </div>
           <div
             class="mx-2 mt-4 mb-1 border-2 border-darkKhaki rounded-lg grow flex justify-center items-center"
@@ -62,12 +104,15 @@
             <div
               class="mx-2 my-1 h-16 border-2 border-darkKhaki rounded-lg laptopSm:w-1/2 flex justify-center items-center shadow-lg"
             >
-              <ProficiencyBonus :level="character.level" />
+              <ProficiencyBonus :proficiencyBonus="proficiencyBonus" />
             </div>
             <div
               class="mx-2 my-1 h-16 border-2 border-darkKhaki rounded-lg laptopSm:w-1/2 flex justify-center items-center shadow-lg"
             >
-              <PassivePerception :level="character.level" :wisdom="parseInt(character.stats.wis)" />
+              <PassivePerception
+                :wisdom="parseInt(character.stats.wis)"
+                :proficiencyBonus="proficiencyBonus"
+              />
             </div>
           </div>
 
@@ -102,14 +147,21 @@
 </template>
 
 <script setup lang="ts">
-import type { characterDetails } from '@/interfaces'
+import type { characterDetails, savingThrows } from '@/interfaces'
 import { supabase } from '@/supabase'
 import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
-import { CharStat, ProficiencyBonus, PassivePerception } from '@/components/characterPageComponents'
+import {
+  CharStat,
+  ProficiencyBonus,
+  PassivePerception,
+  SavingThrow
+} from '@/components/characterPageComponents'
+import axios from 'axios'
 
 const src = ref('')
+const saveThrows = ref<savingThrows[]>([])
 
 const props = defineProps({
   character: {
@@ -118,7 +170,7 @@ const props = defineProps({
   }
 })
 
-const downloadImage = async () => {
+const setupFunction = async () => {
   // Download the image from the storage-bucket to show in the UI
   try {
     const { data, error } = await supabase.storage.from('avatars').download(props.character.avatar)
@@ -127,8 +179,19 @@ const downloadImage = async () => {
   } catch (error) {
     console.error('Error downloading image: ', (error as Error).message)
   }
+  // Get the information belonging to the class of the character
+  const fetchClass = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
+  )
+  saveThrows.value = fetchClass.data.saving_throws
+  console.log(saveThrows.value)
 }
-downloadImage()
+setupFunction()
+
+// Calculate the proficiency bonus according to the dnd rules (necessary for multiple child components)
+const proficiencyBonus = computed(() => {
+  return Math.floor((props.character.level - 1) / 4) + 2
+})
 
 console.log(props.character)
 </script>
