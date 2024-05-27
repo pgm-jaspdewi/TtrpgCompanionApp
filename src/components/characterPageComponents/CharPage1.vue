@@ -104,7 +104,6 @@
                 :character-skills="character.skills"
                 :skill="skill"
                 :characterStats="character.stats"
-                :saves="saveThrows"
                 :proficiencyBonus="proficiencyBonus"
               />
             </div>

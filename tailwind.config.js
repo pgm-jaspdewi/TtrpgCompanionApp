@@ -37,6 +37,7 @@ export default {
     extend: {
       spacing: {
         'proficiency': '90%',
+        'proficiencyLg': '97%',
         'stats': '100px',
         'mnFrmWidth': '20rem',
         'mdFrmWidth': '35rem',
