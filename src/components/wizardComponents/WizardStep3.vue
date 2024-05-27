@@ -166,7 +166,8 @@ const handleSubmit = async () => {
       skillProficiencies: formData.selectedProficiencies,
       backgroundSkills: backgroundProficiencies,
       languageProficiencies: formData.selectedLanguages,
-      backgroundlanguages: raceLanguages
+      backgroundlanguages: raceLanguages,
+      hitpoints: chosenClass.data.hit_die
     })
   }
 }
