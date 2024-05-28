@@ -49,22 +49,22 @@
             class="mx-2 mt-1 p-1 border-2 border-darkKhaki rounded-lg flex flex-col items-center shadow-lg"
           >
             <h3 class="font-bold text-lg text-maroon">Saving Throws</h3>
-            <div class="flex w-full">
+            <div v-if="classData" class="flex w-full">
               <div class="w-1/2 p-2">
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.str)"
                   name="str"
                   :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.dex)"
                   name="dex"
                   :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.con)"
                   name="con"
                   :proficiencyBonus="proficiencyBonus"
@@ -72,19 +72,19 @@
               </div>
               <div class="w-1/2 p-2">
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.int)"
                   name="int"
                   :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.wis)"
                   name="wis"
                   :proficiencyBonus="proficiencyBonus"
                 />
                 <SavingThrow
-                  :saves="saveThrows"
+                  :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.cha)"
                   name="cha"
                   :proficiencyBonus="proficiencyBonus"
@@ -159,7 +159,7 @@
 </template>
 
 <script setup lang="ts">
-import type { characterDetails, savingThrows } from '@/interfaces'
+import type { characterDetails, savingThrows, classDetails } from '@/interfaces'
 import { supabase } from '@/supabase'
 import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
 import { computed, ref } from 'vue'
@@ -174,7 +174,7 @@ import {
 import axios from 'axios'
 
 const src = ref('')
-const saveThrows = ref<savingThrows[]>([])
+const classData = ref<classDetails | null>(null)
 const skills = ref<savingThrows[]>([])
 
 const props = defineProps({
@@ -183,7 +183,6 @@ const props = defineProps({
     required: true
   }
 })
-console.log(saveThrows)
 
 const setupFunction = async () => {
   // Download the image from the storage-bucket to show in the UI
@@ -199,7 +198,8 @@ const setupFunction = async () => {
     import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
   )
   const fetchSkills = await axios.get(import.meta.env.VITE_5E_API_URL + 'skills')
-  saveThrows.value = fetchClass.data.saving_throws
+
+  classData.value = fetchClass.data
   skills.value = fetchSkills.data.results
 }
 setupFunction()
@@ -208,6 +208,4 @@ setupFunction()
 const proficiencyBonus = computed(() => {
   return Math.floor((props.character.level - 1) / 4) + 2
 })
-
-console.log(props.character)
 </script>

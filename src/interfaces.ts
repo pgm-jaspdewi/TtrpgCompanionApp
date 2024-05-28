@@ -48,3 +48,11 @@ export interface savingThrows {
   name: string
   url: string
 }
+
+export interface classDetails {
+  index: string
+  name: string
+  hit_die: number
+  proficiencies: savingThrows[]
+  saving_throws: savingThrows[]
+}
