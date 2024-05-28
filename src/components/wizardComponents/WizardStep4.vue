@@ -1,6 +1,6 @@
 <template>
-  <div v-if="noSpellcasting">
-    <div class="flex justify-center">
+  <div v-if="noSpellcasting" class="h-form flex flex-col justify-between">
+    <div class="flex justify-center mt-24">
       <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
         <p class="text-center">
           The
@@ -12,8 +12,8 @@
     <WizardNav :formButton="false" />
   </div>
 
-  <div v-if="!noSpellcasting && !spellcastingAtLvl1">
-    <div class="flex justify-center">
+  <div v-if="!noSpellcasting && !spellcastingAtLvl1" class="h-form flex flex-col justify-between">
+    <div class="flex justify-center mt-24">
       <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
         <p class="text-center">
           The <span class="font-bold">{{ store.characterInfo.charClass }}</span> class does not
@@ -24,8 +24,12 @@
     <WizardNav :formButton="false" />
   </div>
 
-  <form v-if="spellcastingAtLvl1" @submit.prevent="handleSubmit">
-    <div class="flex justify-between py-6">
+  <form
+    v-if="spellcastingAtLvl1"
+    @submit.prevent="handleSubmit"
+    class="h-form flex flex-col justify-between"
+  >
+    <div class="flex justify-between pb-6 mt-8">
       <div class="w-6/12 pl-10 pr-6">
         <BaseLabel pl="small">Cantrips</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">

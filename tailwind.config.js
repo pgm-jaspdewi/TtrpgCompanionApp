@@ -57,6 +57,7 @@ export default {
         'image': '90px',
         'characterCard': '120px',
         'characterCardLg': '150px',
+        'form': '352px',
         'outerContainer': 'calc(100vh - 20px)',
         'innerContainer': 'calc(100vh - 30px)',
       },
@@ -70,6 +71,7 @@ export default {
         'statsOuterContainer': 'calc(100vh - 116px)',
         'statsInnerContainer': 'calc(100vh - 126px)',
         'statsPage': 'calc(100vh - 96px)',
+        'form': '500px',
       },
       margin: {
         'outerContainer': '10px',

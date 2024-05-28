@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="flex justify-between py-6">
+  <form @submit.prevent="handleSubmit" class="h-form flex flex-col justify-between">
+    <div class="flex justify-between pb-6 mt-8">
       <div class="w-5/12 pl-4">
         <BaseLabel pl="small">Skill proficiencies</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">

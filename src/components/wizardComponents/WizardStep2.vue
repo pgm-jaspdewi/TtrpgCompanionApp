@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="flex align-middle justify-center items-center mt-4">
+  <form @submit.prevent="handleSubmit" class="h-form flex flex-col justify-between">
+    <div class="flex align-middle justify-center items-center mt-8">
       <div>
         <BaseLabel pl="small"> Fill in stats </BaseLabel>
         <div class="flex space-x-1">
