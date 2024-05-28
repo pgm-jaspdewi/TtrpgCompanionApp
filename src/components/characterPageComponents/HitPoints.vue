@@ -9,11 +9,11 @@
       <div class="text-3xl flex justify-between items-center w-1/2">
         <p
           :class="{
-            'text-redishBrown font-bold': character.currentHitPoints <= character.maxHitPoints / 4,
-            'text-britishRacingGreen': character.currentHitPoints > character.maxHitPoints / 4
+            'text-redishBrown font-bold': actualHp <= character.maxHitPoints / 4,
+            'text-britishRacingGreen': actualHp > character.maxHitPoints / 4
           }"
         >
-          {{ character.currentHitPoints }}
+          {{ actualHp }}
         </p>
         <p class="text-5xl">/</p>
         <p>{{ character.maxHitPoints }}</p>
@@ -74,10 +74,10 @@
 
 <script setup lang="ts">
 import type { characterDetails } from '@/interfaces'
-import { reactive } from 'vue'
-import { HitPoints } from '.'
+import { supabase } from '@/supabase'
+import { reactive, ref } from 'vue'
 
-defineProps({
+const props = defineProps({
   hitDie: {
     type: Number,
     required: true
@@ -92,11 +92,47 @@ const formData = reactive({
   hitPoints: 0
 })
 
-const submitHeal = () => {
-  console.log(`heal ${formData.hitPoints} hp`)
-}
+const actualHp = ref(0)
 
-const submitDamage = () => {
-  console.log(`take ${formData.hitPoints} hp damage`)
+const currentHp = async () => {
+  const { data, error } = await supabase
+    .from('characters')
+    .select('currentHitPoints')
+    .eq('id', props.character.id)
+    .single()
+  if (error) {
+    console.error('Error getting current hit points:', error)
+  } else {
+    actualHp.value = data.currentHitPoints
+  }
+}
+currentHp()
+
+// Submit the heal or damage form data to the database and update the current hit points
+const submitHeal = async () => {
+  const newHp = actualHp.value + formData.hitPoints
+  const newTotalHp = newHp > props.character.maxHitPoints ? props.character.maxHitPoints : newHp
+  const { error } = await supabase
+    .from('characters')
+    .update({ currentHitPoints: newTotalHp })
+    .eq('id', props.character.id)
+  if (error) {
+    console.error('Error updating hit points:', error)
+  } else {
+    currentHp()
+  }
+}
+const submitDamage = async () => {
+  const newHp = actualHp.value - formData.hitPoints
+  const newTotalHp = newHp < 0 ? 0 : newHp
+  const { error } = await supabase
+    .from('characters')
+    .update({ currentHitPoints: newTotalHp })
+    .eq('id', props.character.id)
+  if (error) {
+    console.error('Error updating hit points:', error)
+  } else {
+    currentHp()
+  }
 }
 </script>

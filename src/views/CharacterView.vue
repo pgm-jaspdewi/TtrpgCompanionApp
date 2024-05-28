@@ -67,6 +67,7 @@ const getCharacterData = async () => {
       console.error('Error getting characters:', charactersError.message)
     } else {
       character.value = charactersData
+      console.log(character.value)
     }
   }
 }
