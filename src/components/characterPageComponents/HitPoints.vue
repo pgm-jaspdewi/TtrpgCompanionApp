@@ -67,15 +67,39 @@
     </p>
   </div>
   <!-- AC, initiative & speed -->
-  <div class="bg-paleGold border-2 w-auto m-2 h-20"></div>
+  <div class="w-auto m-2 flex justify-around">
+    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-8 py-3 bg-lightKhaki">
+        <p class="text-3xl">{{ calculateAC }}</p>
+      </div>
+      <p class="mb-1 mx-1 font-bold text-maroon">Armor Class</p>
+    </div>
+    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-8 py-3 bg-lightKhaki">
+        <p v-if="dexBonus < 0" class="text-3xl">{{ dexBonus }}</p>
+        <p v-else class="text-3xl">+{{ dexBonus }}</p>
+      </div>
+      <p class="mb-1 font-bold text-maroon">Initiative</p>
+    </div>
+    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-6 py-3 bg-lightKhaki">
+        <div class="text-sm flex items-end">
+          <p class="text-3xl">{{ speed }}</p>
+          <p>ft.</p>
+        </div>
+      </div>
+      <p class="mb-1 font-bold text-maroon">Speed</p>
+    </div>
+  </div>
   <!-- death saves -->
-  <div class="bg-paleGold border-2 w-auto m-2 h-20"></div>
+  <!-- <div class="bg-paleGold border-2 w-auto m-2 h-20"></div> -->
 </template>
 
 <script setup lang="ts">
-import type { characterDetails } from '@/interfaces'
+import type { characterDetails, savingThrows } from '@/interfaces'
 import { supabase } from '@/supabase'
-import { reactive, ref } from 'vue'
+import axios from 'axios'
+import { computed, reactive, ref } from 'vue'
 
 const props = defineProps({
   hitDie: {
@@ -85,15 +109,50 @@ const props = defineProps({
   character: {
     type: Object as () => characterDetails,
     required: true
+  },
+  dexterity: {
+    type: Number,
+    required: true
+  },
+  speed: {
+    type: Number,
+    required: true
   }
 })
 
 const formData = reactive({
   hitPoints: 0
 })
-
 const actualHp = ref(0)
+const armorList = ref<savingThrows[]>([])
+const characterArmor = ref<savingThrows>()
+const ACValues = ref<{ base: number; dex_bonus: boolean }>()
 
+const setup = async () => {
+  const fetchArmors = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'equipment-categories/armor'
+  )
+  armorList.value = fetchArmors.data.equipment
+  for (const item of props.character.equipment) {
+    if (armorList.value.some((armor) => armor.index === item.item)) {
+      characterArmor.value = armorList.value.find((armor) => armor.index === item.item)
+    }
+  }
+  if (characterArmor.value) {
+    const fetchEquipedArmor = await axios.get(
+      import.meta.env.VITE_5E_URL + characterArmor.value.url
+    )
+    ACValues.value = fetchEquipedArmor.data.armor_class
+  }
+}
+setup()
+
+// calculate the initiative bonus
+const dexBonus = computed(() => {
+  return Math.floor((props.dexterity - 10) / 2)
+})
+
+// Get the current hit points from the database
 const currentHp = async () => {
   const { data, error } = await supabase
     .from('characters')
@@ -135,4 +194,19 @@ const submitDamage = async () => {
     currentHp()
   }
 }
+
+const test = () => {
+  // const armor = props.armorList.index.includes()
+}
+test()
+
+const calculateAC = computed(() => {
+  if (ACValues.value && ACValues.value.dex_bonus) {
+    return ACValues.value.base + dexBonus.value
+  } else if (ACValues.value) {
+    return ACValues.value.base
+  } else {
+    return 10
+  }
+})
 </script>

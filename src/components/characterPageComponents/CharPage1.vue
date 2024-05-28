@@ -129,13 +129,20 @@
             </div>
           </div>
           <!-- Hit points, AC & death saves -->
-          <div v-if="classData" class="mx-2 my-3 rounded-lg h-80 flex flex-col bg-maroon/50">
-            <HitPoints :character="props.character" :hitDie="classData.hit_die"> </HitPoints>
+          <div v-if="classData" class="mx-2 my-3 rounded-lg flex flex-col bg-maroon/50 shadow-lg">
+            <HitPoints
+              :character="character"
+              :hitDie="classData.hit_die"
+              :dexterity="parseInt(character.stats.dex)"
+              :speed="speed"
+            >
+            </HitPoints>
           </div>
           <div
+            v-if="traits.length > 0"
             class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-80 flex justify-center items-center"
           >
-            Attacks
+            features {{ traits.length }}
           </div>
         </div>
       </div>
@@ -145,7 +152,7 @@
         <div
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg h-96 flex justify-center items-center w-1/2 laptopSm:w-auto"
         >
-          Features & traits
+          Attacks
         </div>
         <div
           class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-72 flex justify-center items-center w-1/2 laptopSm:w-auto"
@@ -176,6 +183,8 @@ import axios from 'axios'
 const src = ref('')
 const classData = ref<classDetails | null>(null)
 const skills = ref<savingThrows[]>([])
+const traits = ref<savingThrows[]>([])
+const speed = ref(0)
 
 const props = defineProps({
   character: {
@@ -197,10 +206,15 @@ const setupFunction = async () => {
   const fetchClass = await axios.get(
     import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
   )
-  const fetchSkills = await axios.get(import.meta.env.VITE_5E_API_URL + 'skills')
-
   classData.value = fetchClass.data
+  const fetchSkills = await axios.get(import.meta.env.VITE_5E_API_URL + 'skills')
   skills.value = fetchSkills.data.results
+  const fetchRace = await axios.get(
+    import.meta.env.VITE_5E_API_URL + `races/${props.character.race}`
+  )
+  traits.value = fetchRace.data.traits
+  console.log(traits.value)
+  speed.value = fetchRace.data.speed
 }
 setupFunction()
 
