@@ -151,6 +151,14 @@ const itemValue = ref([''])
 const characterClass = await axios.get(
   import.meta.env.VITE_5E_API_URL + 'classes/' + store.characterInfo.charClass
 )
+
+// get the standard equipment for the class
+const standardEquipment = characterClass.data.starting_equipment
+const equipment = standardEquipment.map((i: any) => {
+  return { amount: i.quantity, item: i.equipment.index }
+})
+console.log(equipment)
+
 // get the equipment options for the class
 const equipmentOptions = characterClass.data.starting_equipment_options
 console.log(equipmentOptions)
@@ -221,7 +229,8 @@ const handleSubmit = async () => {
 
     const allEquipment = unNestedArray.concat(objects)
     store.nextStep({
-      selectedEquipment: [...allEquipment]
+      selectedEquipment: [...allEquipment],
+      standardEquipment: [...equipment]
     })
   }
 }
