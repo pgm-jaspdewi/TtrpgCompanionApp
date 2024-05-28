@@ -41,6 +41,8 @@ export interface characterDetails {
   skills: string[]
   stats: characterStats
   userId: string
+  currentHitPoints: number
+  maxHitPoints: number
 }
 
 export interface savingThrows {

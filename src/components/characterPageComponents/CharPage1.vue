@@ -112,6 +112,7 @@
 
         <!-- second column -->
         <div class="w-6/12 laptopSm:w-7/12">
+          <!-- proficiency-bonus & passive perception -->
           <div class="w-full flex flex-col laptopSm:flex-row">
             <div
               class="mx-2 my-1 h-16 border-2 border-darkKhaki rounded-lg laptopSm:w-1/2 flex justify-center items-center shadow-lg"
@@ -127,11 +128,9 @@
               />
             </div>
           </div>
-
-          <div
-            class="mx-2 my-3 border-2 border-darkKhaki rounded-lg h-80 flex justify-center items-center"
-          >
-            Hit points and stuff
+          <!-- Hit points, AC & death saves -->
+          <div v-if="classData" class="mx-2 my-3 rounded-lg h-80 flex flex-col bg-maroon/50">
+            <HitPoints :character="props.character" :hitDie="classData.hit_die"> </HitPoints>
           </div>
           <div
             class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-80 flex justify-center items-center"
@@ -166,6 +165,7 @@ import { computed, ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
 import {
   CharStat,
+  HitPoints,
   ProficiencyBonus,
   PassivePerception,
   SavingThrow,
