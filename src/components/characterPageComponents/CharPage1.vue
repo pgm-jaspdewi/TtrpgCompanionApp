@@ -138,11 +138,15 @@
             >
             </HitPoints>
           </div>
+          <!-- Traits -->
           <div
             v-if="traits.length > 0"
-            class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-80 flex justify-center items-center"
+            class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex flex-col items-center shadow-lg p-2"
           >
-            features {{ traits.length }}
+            <h3 class="font-bold text-lg text-maroon">Traits</h3>
+            <div>
+              <CharTraits v-for="(trait, index) of traits" :key="index" :traitUrl="trait.url" />
+            </div>
           </div>
         </div>
       </div>
@@ -172,6 +176,7 @@ import { computed, ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
 import {
   CharStat,
+  CharTraits,
   HitPoints,
   ProficiencyBonus,
   PassivePerception,
@@ -213,7 +218,6 @@ const setupFunction = async () => {
     import.meta.env.VITE_5E_API_URL + `races/${props.character.race}`
   )
   traits.value = fetchRace.data.traits
-  console.log(traits.value)
   speed.value = fetchRace.data.speed
 }
 setupFunction()
