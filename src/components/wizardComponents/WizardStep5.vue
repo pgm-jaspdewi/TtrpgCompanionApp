@@ -157,11 +157,9 @@ const standardEquipment = characterClass.data.starting_equipment
 const equipment = standardEquipment.map((i: any) => {
   return { amount: i.quantity, item: i.equipment.index }
 })
-console.log(equipment)
 
 // get the equipment options for the class
 const equipmentOptions = characterClass.data.starting_equipment_options
-console.log(equipmentOptions)
 
 //  loop through the options to get the type of option set. This will be used to determine how to display the options
 const radioButtonOptions = ref<any[]>([])

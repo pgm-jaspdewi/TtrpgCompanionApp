@@ -58,3 +58,12 @@ export interface classDetails {
   proficiencies: savingThrows[]
   saving_throws: savingThrows[]
 }
+
+export interface weaponDetails {
+  index: string
+  name: string
+  damage_die: string
+  damage_type: string
+  range: string
+  attack_bonus: number
+}

@@ -12,11 +12,12 @@
             'text-redishBrown font-bold': actualHp <= character.maxHitPoints / 4,
             'text-britishRacingGreen': actualHp > character.maxHitPoints / 4
           }"
+          class="w-2/5 text-left"
         >
           {{ actualHp }}
         </p>
         <p class="text-5xl">/</p>
-        <p>{{ character.maxHitPoints }}</p>
+        <p class="w-2/5 text-right">{{ character.maxHitPoints }}</p>
       </div>
       <div class="flex justify-between items-center w-2/3">
         <p class="ml-2">Current</p>

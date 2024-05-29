@@ -1,12 +1,14 @@
 <template>
   <div class="flex justify-center px-2 py-1">
-    <div class="border-2 border-maroon w-9/12 rounded-xl pl-5 py-1 mr-2 relative flex items-center">
+    <button
+      class="border-2 border-maroon w-9/12 rounded-xl pl-5 py-1 mr-2 relative flex items-center hover:bg-lightKhaki hover:text-maroon hover:font-bold"
+    >
       {{ skill.name }} ({{ connectedStat }})
       <div
         :class="proficient ? 'bg-maroon' : 'bg-paleGold'"
         class="absolute border-2 border-maroon rounded-full w-4 h-4 right-proficiencyLg"
       ></div>
-    </div>
+    </button>
     <div
       v-if="skillModifier >= 0"
       class="border-2 border-darkKhaki w-2/12 rounded-xl flex justify-center py-1"

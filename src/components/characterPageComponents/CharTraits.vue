@@ -3,6 +3,10 @@
     <h3 class="text-lg font-bold">{{ traitDetails.name }}</h3>
     <p>{{ traitDetails.desc }}</p>
   </div>
+
+  <div v-else class="bg-lightKhaki rounded-lg mx-1 my-2 p-2">
+    <p>Loading...</p>
+  </div>
 </template>
 
 <script setup lang="ts">

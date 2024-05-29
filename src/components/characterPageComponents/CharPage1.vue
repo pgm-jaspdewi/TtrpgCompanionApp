@@ -154,9 +154,22 @@
       <!-- third column -->
       <div class="laptopSm:w-4/12 flex laptopSm:flex-col">
         <div
+          v-if="weaponList.length > 0"
+          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg w-1/2 laptopSm:w-auto"
+        >
+          <AttackOptions
+            :equipment="character.equipment"
+            :weaponList="weaponList"
+            :proficiency="proficiencyBonus"
+            :dexterity="parseInt(character.stats.dex)"
+            :strength="parseInt(character.stats.str)"
+          />
+        </div>
+        <div
+          v-else
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg h-96 flex justify-center items-center w-1/2 laptopSm:w-auto"
         >
-          Attacks
+          <p class="text-xl font-bold">Checking equipment...</p>
         </div>
         <div
           class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center w-1/2 laptopSm:w-auto"
@@ -175,6 +188,7 @@ import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponent
 import { computed, ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
 import {
+  AttackOptions,
   CharStat,
   CharTraits,
   ClassProficiencies,
@@ -192,6 +206,7 @@ const classData = ref<classDetails>()
 const skills = ref<savingThrows[]>([])
 const traits = ref<savingThrows[]>([])
 const proficiencies = ref<savingThrows[]>([])
+const weaponList = ref<savingThrows[]>([])
 const speed = ref(0)
 
 const props = defineProps({
@@ -239,6 +254,14 @@ const setupFunction = async () => {
   )
   traits.value = fetchRace.data.traits
   speed.value = fetchRace.data.speed
+  // get list of weapons from the API
+  const fetchMeleeWeapons = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'equipment-categories/melee-weapons'
+  )
+  const fetchRangedWeapons = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'equipment-categories/ranged-weapons'
+  )
+  weaponList.value = [...fetchMeleeWeapons.data.equipment, ...fetchRangedWeapons.data.equipment]
 }
 setupFunction()
 

@@ -1,3 +1,4 @@
+import AttackOptions from './AttackOptions.vue'
 import CharacterPageBorders from './CharacterPageBorders.vue'
 import CharPage1 from './CharPage1.vue'
 import CharPage2 from './CharPage2.vue'
@@ -13,6 +14,7 @@ import SavingThrow from './SavingThrow.vue'
 import SkillSave from './SkillSave.vue'
 
 export {
+  AttackOptions,
   CharacterPageBorders,
   CharPage1,
   CharPage2,
