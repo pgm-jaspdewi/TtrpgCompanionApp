@@ -16,11 +16,14 @@
       <NavButton btnContent="Manage" :step="4" />
     </div>
     <div
-      class="absolute top-24 bg-paleGold w-full min-h-statsPage h-fit outline outline-2 outline-maroon z-0"
+      class="absolute top-24 bg-paleGold w-full min-h-statsPage outline outline-2 outline-maroon z-0"
     >
       <CharacterPageBorders>
         <CharPage1 v-if="store.step === 1" :character="character" />
-        <CharPage2 v-if="store.step === 2" />
+        <div v-if="store.step === 2" class="flex">
+          <CharPage2 />
+        </div>
+
         <CharPage3 v-if="store.step === 3" />
       </CharacterPageBorders>
     </div>

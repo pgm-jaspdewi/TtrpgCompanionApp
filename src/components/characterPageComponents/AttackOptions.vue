@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center">
-    <h3 class="text-xl text-maroon font-bold m-1 mt-2">Attacks</h3>
+    <h3 class="text-lg text-maroon font-bold m-1 mt-2">Attacks</h3>
     <div class="flex justify-center w-full">
       <p class="w-2/6 text-center">Name</p>
       <p class="w-1/6 text-center">Bonus</p>

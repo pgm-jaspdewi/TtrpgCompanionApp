@@ -2,7 +2,7 @@
 <template>
   <div class="w-10/12 flex flex-col m-2">
     <div class="border-b-2 border-darkKhaki mt-2">
-      <h2 class="text-xl text-maroon font-bold capitalize mx-2">proficiencies & languages</h2>
+      <h2 class="text-lg text-maroon font-bold capitalize mx-2">proficiencies & languages</h2>
     </div>
     <div class="border-b-2 border-darkKhaki mt-4">
       <h3 class="text-maroon font-bold capitalize mb-1 mx-2">proficiencies</h3>

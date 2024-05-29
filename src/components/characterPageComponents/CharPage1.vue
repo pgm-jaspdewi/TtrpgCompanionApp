@@ -167,7 +167,7 @@
         </div>
         <div
           v-else
-          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg h-96 flex justify-center items-center w-1/2 laptopSm:w-auto"
+          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg flex justify-center items-center w-1/2 laptopSm:w-auto"
         >
           <p class="text-xl font-bold">Checking equipment...</p>
         </div>
