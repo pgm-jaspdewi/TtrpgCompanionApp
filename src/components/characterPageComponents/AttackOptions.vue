@@ -9,7 +9,7 @@
     <button
       v-for="(weapon, index) of weapons"
       :key="index"
-      class="flex justify-center w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg"
+      class="flex justify-center items-center w-full laptopSm:w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg"
     >
       <p
         class="w-2/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"

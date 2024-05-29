@@ -152,7 +152,7 @@
       </div>
 
       <!-- third column -->
-      <div class="laptopSm:w-4/12 flex laptopSm:flex-col">
+      <div class="laptopSm:w-4/12 flex items-start laptopSm:items-stretch laptopSm:flex-col">
         <div
           v-if="weaponList.length > 0"
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg w-1/2 laptopSm:w-auto"
