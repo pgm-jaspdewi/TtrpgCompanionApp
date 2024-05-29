@@ -7,7 +7,8 @@ export default {
   theme: {
     screens: {
       'tablet': "768px",
-      'laptopSm': "1024px",
+      'tabletLg': "950px",
+      'laptopSm': "1340px",
       'laptopLg': "1440px",
     },
     fontFamily: {
@@ -42,12 +43,13 @@ export default {
         'mnFrmWidth': '20rem',
         'mdFrmWidth': '35rem',
         'lgFrmWidth': '50rem',
-        'navBtnSm': '37.5%',
-        'navBtn': '40%',
+        'navBtnXs': '30%',
+        'navBtnSm': '42.5%',
+        'navBtnMd': '50%',
+        'navBtnLg': '40%',
       },
       width: {
         'image': '90px',
-        'navButtonsSm': '500px',
         'navButtons': '500px',
         'characterCard': '500px',
         'outerContainer': "calc(100vw - 50px)",

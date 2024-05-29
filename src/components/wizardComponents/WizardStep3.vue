@@ -165,6 +165,7 @@ const handleSubmit = async () => {
     store.nextStep({
       skillProficiencies: formData.selectedProficiencies,
       backgroundSkills: backgroundProficiencies,
+      racialLanguages: raceLanguages,
       languageProficiencies: formData.selectedLanguages,
       backgroundlanguages: raceLanguages,
       hitpoints: chosenClass.data.hit_die

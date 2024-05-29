@@ -159,9 +159,9 @@
           Attacks
         </div>
         <div
-          class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg h-72 flex justify-center items-center w-1/2 laptopSm:w-auto"
+          class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center w-1/2 laptopSm:w-auto"
         >
-          Proficiencies & languages
+          <ClassProficiencies :proficiencies="proficiencies" :languages="character.languages" />
         </div>
       </div>
     </div>
@@ -177,18 +177,21 @@ import { FaArrowUp } from 'vue3-icons/fa6'
 import {
   CharStat,
   CharTraits,
+  ClassProficiencies,
   HitPoints,
-  ProficiencyBonus,
   PassivePerception,
+  ProficiencyBonus,
   SavingThrow,
   SkillSave
 } from '@/components/characterPageComponents'
 import axios from 'axios'
 
+//  reactive variables to store the different kinds of data retrieved from the API
 const src = ref('')
-const classData = ref<classDetails | null>(null)
+const classData = ref<classDetails>()
 const skills = ref<savingThrows[]>([])
 const traits = ref<savingThrows[]>([])
+const proficiencies = ref<savingThrows[]>([])
 const speed = ref(0)
 
 const props = defineProps({
@@ -198,6 +201,7 @@ const props = defineProps({
   }
 })
 
+// Fetch the necessary data for the character page and it's components
 const setupFunction = async () => {
   // Download the image from the storage-bucket to show in the UI
   try {
@@ -212,6 +216,22 @@ const setupFunction = async () => {
     import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
   )
   classData.value = fetchClass.data
+  // Get the proficiencies of the class
+  if (classData.value) {
+    // Filter out the saving throws from the proficiencies
+    const nonStatProficiencies = classData.value.proficiencies.filter(
+      (a) => !a.index.includes('saving-throw')
+    )
+    nonStatProficiencies.forEach((p, index) => {
+      // if the name contains a comma, it is in the format 'last, first' and needs to be reversed to be readable for the user
+      if (p.name.includes(',')) {
+        const splitProf = p.name.split(', ')
+        const prof = `${splitProf[1]} ${splitProf[0]}`
+        nonStatProficiencies[index].name = prof
+      }
+      proficiencies.value = nonStatProficiencies
+    })
+  }
   const fetchSkills = await axios.get(import.meta.env.VITE_5E_API_URL + 'skills')
   skills.value = fetchSkills.data.results
   const fetchRace = await axios.get(

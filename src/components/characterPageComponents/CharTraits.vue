@@ -25,7 +25,6 @@ const setup = async () => {
     name: details.data.name,
     desc: details.data.desc[0]
   }
-  console.log(traitDetails.value)
 }
 setup()
 </script>

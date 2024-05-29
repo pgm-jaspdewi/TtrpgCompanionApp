@@ -4,6 +4,7 @@ import CharPage2 from './CharPage2.vue'
 import CharPage3 from './CharPage3.vue'
 import CharStat from './CharStat.vue'
 import CharTraits from './CharTraits.vue'
+import ClassProficiencies from './ClassProficiencies.vue'
 import HitPoints from './HitPoints.vue'
 import NavButton from './NavButton.vue'
 import PassivePerception from './PassivePerception.vue'
@@ -18,6 +19,7 @@ export {
   CharPage3,
   CharStat,
   CharTraits,
+  ClassProficiencies,
   HitPoints,
   NavButton,
   PassivePerception,

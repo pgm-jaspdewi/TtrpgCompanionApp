@@ -69,20 +69,26 @@
   <!-- AC, initiative & speed -->
   <div class="w-auto m-2 flex justify-around">
     <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
-      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-8 py-3 bg-lightKhaki">
+      <div
+        class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-4 tabletLg:px-6 laptopSm:px-8 py-3 bg-lightKhaki"
+      >
         <p class="text-3xl">{{ calculateAC }}</p>
       </div>
       <p class="mb-1 mx-1 font-bold text-maroon">Armor Class</p>
     </div>
     <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
-      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-8 py-3 bg-lightKhaki">
+      <div
+        class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-4 tabletLg:px-6 laptopSm:px-8 py-3 bg-lightKhaki"
+      >
         <p v-if="dexBonus < 0" class="text-3xl">{{ dexBonus }}</p>
         <p v-else class="text-3xl">+{{ dexBonus }}</p>
       </div>
       <p class="mb-1 font-bold text-maroon">Initiative</p>
     </div>
     <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
-      <div class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-6 py-3 bg-lightKhaki">
+      <div
+        class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-2 tabletLg:px-4 laptopSm:px-6 py-3 bg-lightKhaki"
+      >
         <div class="text-sm flex items-end">
           <p class="text-3xl">{{ speed }}</p>
           <p>ft.</p>
