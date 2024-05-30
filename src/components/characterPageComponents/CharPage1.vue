@@ -158,7 +158,7 @@
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg w-1/2 laptopSm:w-auto"
         >
           <AttackOptions
-            :equipment="character.equipment"
+            :weapons="character.weapons"
             :weaponList="weaponList"
             :proficiency="proficiencyBonus"
             :dexterity="parseInt(character.stats.dex)"

@@ -7,7 +7,7 @@
       <p class="w-2/6 text-center">Damage</p>
     </div>
     <button
-      v-for="(weapon, index) of weapons"
+      v-for="(weapon, index) of equipedWeapons"
       :key="index"
       class="flex justify-center items-center w-full laptopSm:w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg"
     >
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import type { savingThrows, weaponDetails } from '@/interfaces'
+import type { equipment, savingThrows, weaponDetails } from '@/interfaces'
 import axios from 'axios'
 import { ref } from 'vue'
 
@@ -47,8 +47,8 @@ const props = defineProps({
     type: Array as () => savingThrows[],
     required: true
   },
-  equipment: {
-    type: Array as () => { amount: Number; item: String }[],
+  weapons: {
+    type: Array as () => equipment[],
     required: true
   },
   proficiency: {
@@ -65,11 +65,11 @@ const props = defineProps({
   }
 })
 
-const weapons = ref<weaponDetails[]>([])
+const equipedWeapons = ref<weaponDetails[]>([])
 
 // Get the details for weapons that the character has equipped
 const filteredWeapons = props.weaponList.filter((weapon) =>
-  props.equipment.some((equipment) => equipment.item === weapon.index)
+  props.weapons.some((equipment) => equipment.item === weapon.index)
 )
 filteredWeapons.forEach((weapon) => {
   const fetchWeaponDetails = async () => {
@@ -80,7 +80,7 @@ filteredWeapons.forEach((weapon) => {
     } else {
       attackBonus.value = Math.floor((props.dexterity - 10) / 2) + props.proficiency
     }
-    weapons.value.push({
+    equipedWeapons.value.push({
       index: response.data.index,
       name: response.data.name,
       damage_die: response.data.damage.damage_dice,

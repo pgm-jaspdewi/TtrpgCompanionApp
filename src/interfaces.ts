@@ -37,6 +37,7 @@ export interface characterDetails {
   class: string
   created_at: string
   equipment: equipment[]
+  weapons: equipment[]
   first_level_spells: string[]
   id: number
   languages: string[]
