@@ -3,28 +3,37 @@
     <div class="flex">
       <h3
         v-if="type === 'weapons'"
-        class="capitalize font-bold text-maroon w-5/6 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+        class="capitalize font-bold text-maroon w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
       >
         weapon
       </h3>
       <h3
         v-if="type === 'items'"
-        class="capitalize font-bold text-maroon w-5/6 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+        class="capitalize font-bold text-maroon w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
       >
         Item
       </h3>
 
-      <h3 class="capitalize font-bold text-maroon w-1/6 mt-2 border-darkKhaki border-b-2 p-2">
+      <h3
+        class="capitalize font-bold text-maroon w-2/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+      >
         quantity
+      </h3>
+      <h3 class="capitalize font-bold text-maroon w-1/12 mt-2 border-darkKhaki border-b-2 p-2">
+        delete
       </h3>
     </div>
     <ItemDisplay
       v-for="(item, index) of items"
       @update-item="updateItem"
+      @delete-item="deleteItem"
       :key="index"
       :item="item"
       :index="index"
     />
+    <h2 class="mt-6 text-lg text-maroon font-bold w-10/12 mx-auto">Add new item</h2>
+
+    <p>searchbar voor extra items</p>
   </div>
 </template>
 
@@ -33,12 +42,10 @@ import type { equipment } from '@/interfaces'
 import { ItemDisplay } from '@/components/characterPageComponents'
 import { ref } from 'vue'
 import { supabase } from '@/supabase'
+import { FaPlus } from 'vue3-icons/fa6'
+
 
 const props = defineProps({
-  // items: {
-  //   type: Array as () => equipment[],
-  //   required: true
-  // },
   characterId: {
     type: Number,
     required: true
@@ -103,7 +110,17 @@ const updateItem = (newAmount: number, i: number) => {
     return item
   })
   items.value = updatedItems
-  console.log(items.value)
   updatedItem()
+}
+
+const deleteItem = (i: number) => {
+  const updatedItems = items.value.filter((item, index) => index !== i)
+  items.value = updatedItems
+  updatedItem()
+}
+
+const handleSubmit = () => {
+  console.log('submit')
+  // items.value.push({ item: '', amount: 0 })
 }
 </script>

@@ -142,19 +142,6 @@ const downloadImage = async () => {
 // Call the downloadImage function when the component is mounted
 downloadImage()
 
-// spells & cantrips are saved as their index in the array (lowercase, "-" between the words),
-// so we need to convert them to their actual name
-// const spells = ref<string[]>([])
-// const cantrips = ref<string[]>([])
-// for (const spell of store.characterInfo.selected1stLvlSpells) {
-//   const changed = spell.replace(/-/g, ' ')
-//   spells.value.push(changed)
-// }
-// for (const cantrip of store.characterInfo.selectedCantrips) {
-//   const changed = cantrip.replace(/-/g, ' ')
-//   cantrips.value.push(changed)
-// }
-
 const items = [...store.characterInfo.selectedEquipment, ...store.characterInfo.standardEquipment]
 
 //  seperate weapons from other equipment
