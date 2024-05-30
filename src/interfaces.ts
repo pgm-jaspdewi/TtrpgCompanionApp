@@ -25,6 +25,13 @@ export interface characterStats {
   cha: string
 }
 
+export interface characterWealth {
+  copper: number
+  silver: number
+  gold: number
+  platinum: number
+}
+
 export interface characterDetails {
   avatar: string
   background: string
@@ -43,6 +50,7 @@ export interface characterDetails {
   userId: string
   currentHitPoints: number
   maxHitPoints: number
+  wealth: characterWealth
 }
 
 export interface savingThrows {

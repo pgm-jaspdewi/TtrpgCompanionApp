@@ -20,9 +20,8 @@
     >
       <CharacterPageBorders>
         <CharPage1 v-if="store.step === 1" :character="character" />
-        <div v-if="store.step === 2" class="flex">
-          <CharPage2 />
-        </div>
+
+        <CharPage2 v-if="store.step === 2" :character="character" />
 
         <CharPage3 v-if="store.step === 3" />
       </CharacterPageBorders>

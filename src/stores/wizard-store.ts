@@ -124,7 +124,8 @@ export const useWizardStore = defineStore('wizard-store', () => {
           equipment: [...characterInfo.selectedEquipment, ...characterInfo.standardEquipment],
           level: 1,
           maxHitPoints: characterInfo.hitpoints,
-          currentHitPoints: characterInfo.hitpoints
+          currentHitPoints: characterInfo.hitpoints,
+          wealth: { copper: 0, silver: 0, gold: 0, platinum: 0 }
         })
         .select()
 
