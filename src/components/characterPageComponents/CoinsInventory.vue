@@ -40,7 +40,6 @@ const currentCoins = async () => {
     console.error('Error getting current hit points:', error)
   } else {
     coins.value = data.wealth
-    console.log(data.wealth)
   }
 }
 currentCoins()

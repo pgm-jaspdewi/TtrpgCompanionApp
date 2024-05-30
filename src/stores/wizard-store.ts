@@ -2,9 +2,10 @@ import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { useModalStore } from './modal-store'
 import { supabase } from '../supabase'
-import type { equipment } from '../interfaces'
+import type { equipment, savingThrows } from '../interfaces'
 import { useRouter } from 'vue-router'
 import { useCharListStore } from './charList-store'
+import axios from 'axios'
 
 // Define a new store for the wizard
 export const useWizardStore = defineStore('wizard-store', () => {
@@ -96,10 +97,11 @@ export const useWizardStore = defineStore('wizard-store', () => {
     })
   }
 
-  async function submitCharacter() {
+  async function submitCharacter(items: equipment[], weapons: equipment[]) {
     // submit character to backend
     const store = useCharListStore()
     const thisStore = useWizardStore()
+
     try {
       await supabase
         .from('characters')
@@ -121,7 +123,8 @@ export const useWizardStore = defineStore('wizard-store', () => {
           languages: [...characterInfo.racialLanguages, ...characterInfo.languageProficiencies],
           cantrips: characterInfo.selectedCantrips,
           first_level_spells: characterInfo.selected1stLvlSpells,
-          equipment: [...characterInfo.selectedEquipment, ...characterInfo.standardEquipment],
+          equipment: items,
+          weapons: weapons,
           level: 1,
           maxHitPoints: characterInfo.hitpoints,
           currentHitPoints: characterInfo.hitpoints,

@@ -120,6 +120,8 @@ import WizardNav from './WizardNav.vue'
 import { useWizardStore } from '@/stores/wizard-store'
 import { ref } from 'vue'
 import { supabase } from '@/supabase'
+import type { savingThrows, equipment } from '@/interfaces'
+import axios from 'axios'
 
 const store = useWizardStore()
 
@@ -153,9 +155,37 @@ downloadImage()
 //   cantrips.value.push(changed)
 // }
 
+const items = [...store.characterInfo.selectedEquipment, ...store.characterInfo.standardEquipment]
+
+//  seperate weapons from other equipment
+const apiWeaponList = ref<savingThrows[]>([])
+const characterWeaponList = ref<equipment[]>([])
+const characterEquipment = ref<equipment[]>([])
+
+// Fetch the necessary data for the character page and it's components
+const setupFunction = async () => {
+  // get list of weapons from the API
+  const fetchMeleeWeapons = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'equipment-categories/melee-weapons'
+  )
+  const fetchRangedWeapons = await axios.get(
+    import.meta.env.VITE_5E_API_URL + 'equipment-categories/ranged-weapons'
+  )
+  apiWeaponList.value = [...fetchMeleeWeapons.data.equipment, ...fetchRangedWeapons.data.equipment]
+  const filteredWeapons = items.filter((equipment) =>
+    apiWeaponList.value.some((weapon) => equipment.item === weapon.index)
+  )
+  const otherEquipment = items.filter(
+    (equipment) => !apiWeaponList.value.some((weapon) => equipment.item === weapon.index)
+  )
+  characterWeaponList.value = filteredWeapons
+  characterEquipment.value = otherEquipment
+  console.log(characterWeaponList.value)
+}
+setupFunction()
+
 const handleSubmit = async () => {
   // Save the character to the database
-  console.log('submitting character')
-  store.submitCharacter()
+  store.submitCharacter(characterEquipment.value, characterWeaponList.value)
 }
 </script>

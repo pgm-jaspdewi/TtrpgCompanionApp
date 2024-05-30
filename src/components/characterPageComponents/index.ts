@@ -14,6 +14,8 @@ import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
 import SavingThrow from './SavingThrow.vue'
 import SkillSave from './SkillSave.vue'
+import ItemDisplay from './ItemDisplay.vue'
+import ItemsOwned from './ItemsOwned.vue'
 
 export {
   AttackOptions,
@@ -31,5 +33,7 @@ export {
   PassivePerception,
   ProficiencyBonus,
   SavingThrow,
-  SkillSave
+  SkillSave,
+  ItemDisplay,
+  ItemsOwned
 }
