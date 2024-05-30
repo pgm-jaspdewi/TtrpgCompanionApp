@@ -2,7 +2,7 @@
   <div v-if="coins.length > 0" class="flex justify-center ml-2 bg-maroon/50 rounded-lg">
     <CoinInput
       v-for="(coin, index) of coins"
-      @update-coin="test"
+      @update-coin="updateCoin"
       :key="index"
       :character-id="characterId"
       :coinType="coin.type"
@@ -44,7 +44,7 @@ const currentCoins = async () => {
 }
 currentCoins()
 
-const UpdatedCoin = async () => {
+const updatedCoin = async () => {
   const { error } = await supabase
     .from('characters')
     .update({ wealth: coins.value })
@@ -55,7 +55,7 @@ const UpdatedCoin = async () => {
   }
 }
 
-const test = (newAmount: number, i: number) => {
+const updateCoin = (newAmount: number, i: number) => {
   const updatedCoins = coins.value.map((coin, index) => {
     if (index === i) {
       coin.amount = newAmount
@@ -63,7 +63,6 @@ const test = (newAmount: number, i: number) => {
     return coin
   })
   coins.value = updatedCoins
-  console.log(coins.value)
-  UpdatedCoin()
+  updatedCoin()
 }
 </script>

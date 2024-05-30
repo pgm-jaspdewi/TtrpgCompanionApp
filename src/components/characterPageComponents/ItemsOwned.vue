@@ -18,17 +18,29 @@
         quantity
       </h3>
     </div>
-    <ItemDisplay v-for="(item, index) of items" :key="index" :item="item" />
+    <ItemDisplay
+      v-for="(item, index) of items"
+      @update-item="updateItem"
+      :key="index"
+      :item="item"
+      :index="index"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { equipment } from '@/interfaces'
 import { ItemDisplay } from '@/components/characterPageComponents'
+import { ref } from 'vue'
+import { supabase } from '@/supabase'
 
-defineProps({
-  items: {
-    type: Array as () => equipment[],
+const props = defineProps({
+  // items: {
+  //   type: Array as () => equipment[],
+  //   required: true
+  // },
+  characterId: {
+    type: Number,
     required: true
   },
   type: {
@@ -37,4 +49,61 @@ defineProps({
     required: true
   }
 })
+//  variable to change the fetch based on the type of items to fetch
+const selector = props.type === 'weapons' ? 'weapons' : 'equipment'
+
+const items = ref<equipment[]>([])
+
+// fetch for current items based on the value of selector & the characterId
+const currentItems = async () => {
+  const { data, error } = await supabase
+    .from('characters')
+    .select(selector)
+    .eq('id', props.characterId)
+    .single()
+  if (error) {
+    console.error('Error getting current hit points:', error)
+  } else {
+    if ((data as { weapons: any }).weapons) {
+      items.value = (data as { weapons: equipment[] }).weapons
+    } else {
+      items.value = (data as { equipment: equipment[] }).equipment
+    }
+  }
+}
+currentItems()
+
+const updatedItem = async () => {
+  if (selector === 'weapons') {
+    const { error } = await supabase
+      .from('characters')
+      .update({ weapons: items.value })
+      .eq('id', props.characterId)
+      .single()
+    if (error) {
+      console.error('Error getting current hit points:', error)
+    }
+  } else {
+    const { error } = await supabase
+      .from('characters')
+      .update({ equipment: items.value })
+      .eq('id', props.characterId)
+      .single()
+    if (error) {
+      console.error('Error getting current hit points:', error)
+    }
+  }
+}
+
+const updateItem = (newAmount: number, i: number) => {
+  const updatedItems = items.value.map((item, index) => {
+    if (index === i) {
+      item.amount = newAmount
+    }
+    return item
+  })
+  items.value = updatedItems
+  console.log(items.value)
+  updatedItem()
+}
 </script>

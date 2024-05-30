@@ -13,26 +13,28 @@
       <div>
         <h2 class="text-xl ml-4 capitalize font-bold text-maroon">weapons</h2>
         <div class="mx-2 mb-10 border-2 border-darkKhaki rounded-lg w-full flex justify-center">
-          <ItemsOwned :items="character.weapons" type="weapons" />
+          <ItemsOwned :character-id="character.id" type="weapons" />
         </div>
       </div>
     </div>
     <!-- column 2 -->
+
     <div class="laptopSm:w-6/12 laptopSm:ml-10">
-      <div class="m-2 mt-1 border-2 border-darkKhaki rounded-lg flex justify-center">
-        <ItemsOwned :items="character.equipment" type="items" />
+      <div>
+        <h2 class="text-xl ml-4 capitalize font-bold text-maroon">Equipment</h2>
+        <div class="m-2 mt-1 border-2 border-darkKhaki rounded-lg flex justify-center">
+          <ItemsOwned :character-id="character.id" type="items" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { characterDetails, equipment, savingThrows } from '@/interfaces'
+import type { characterDetails } from '@/interfaces'
 import { ItemsOwned, CoinsInventory } from '@/components/characterPageComponents'
-import axios from 'axios'
-import { ref } from 'vue'
 
-const props = defineProps({
+defineProps({
   character: {
     type: Object as () => characterDetails,
     required: true
