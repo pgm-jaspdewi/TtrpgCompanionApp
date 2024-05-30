@@ -1,5 +1,5 @@
 <template>
-  <div v-if="coins.length > 0">
+  <div v-if="coins.length > 0" class="flex justify-center ml-2 bg-maroon/50 rounded-lg">
     <CoinInput
       v-for="(coin, index) of coins"
       @update-coin="test"
@@ -11,7 +11,7 @@
     />
   </div>
   <div v-else>
-    <p>Coins are being counted...</p>
+    <p class="text-lg font-semibold my-4">Coins are being counted...</p>
   </div>
 </template>
 

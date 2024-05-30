@@ -37,6 +37,7 @@ export default {
     },
     extend: {
       spacing: {
+        'coins': '75%',
         'proficiency': '90%',
         'proficiencyLg': '97%',
         'stats': '100px',
