@@ -31,7 +31,7 @@
 import type { characterDetails } from '@/interfaces'
 import { CoinsInventory } from '@/components/characterPageComponents'
 
-const props = defineProps({
+defineProps({
   character: {
     type: Object as () => characterDetails,
     required: true

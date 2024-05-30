@@ -46,7 +46,7 @@ const currentCoins = async () => {
 currentCoins()
 
 const UpdatedCoin = async () => {
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from('characters')
     .update({ wealth: coins.value })
     .eq('id', props.characterId)
