@@ -31,7 +31,6 @@ const store = useCharPageStore()
 const { step } = toRefs(props)
 
 const handleClick = () => {
-  console.log('clicked')
   store.setStep(step.value)
 }
 </script>

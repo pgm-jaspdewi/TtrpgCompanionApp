@@ -125,7 +125,12 @@ export const useWizardStore = defineStore('wizard-store', () => {
           level: 1,
           maxHitPoints: characterInfo.hitpoints,
           currentHitPoints: characterInfo.hitpoints,
-          wealth: { copper: 0, silver: 0, gold: 0, platinum: 0 }
+          wealth: [
+            { type: 'pp', amount: 0 },
+            { type: 'gp', amount: 0 },
+            { type: 'sp', amount: 0 },
+            { type: 'cp', amount: 0 }
+          ]
         })
         .select()
 

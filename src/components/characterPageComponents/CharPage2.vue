@@ -6,7 +6,7 @@
       <div
         class="m-2 mt-1 mb-10 border-2 border-darkKhaki rounded-lg h-28 flex justify-center items-center"
       >
-        Coins
+        <CoinsInventory :character-id="character.id" />
       </div>
       <div
         class="m-2 mt-1 mb-10 border-2 border-darkKhaki rounded-lg h-56 flex justify-center items-center"
@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 import type { characterDetails } from '@/interfaces'
+import { CoinsInventory } from '@/components/characterPageComponents'
 
 const props = defineProps({
   character: {
@@ -34,6 +35,4 @@ const props = defineProps({
     required: true
   }
 })
-
-console.log('character:', props.character)
 </script>
