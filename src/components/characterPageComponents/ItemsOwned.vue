@@ -31,18 +31,22 @@
       :item="item"
       :index="index"
     />
-    <h2 class="mt-6 text-lg text-maroon font-bold w-10/12 mx-auto">Add new item</h2>
+    <h2 class="mt-6 ml-1 text-lg text-maroon font-bold ">Add new item</h2>
 
-    <p>searchbar voor extra items</p>
+   <div>
+   <ItemSearchbar/>
+     
+   </div>
+
+   
   </div>
 </template>
 
 <script setup lang="ts">
 import type { equipment } from '@/interfaces'
-import { ItemDisplay } from '@/components/characterPageComponents'
+import { ItemDisplay, ItemSearchbar } from '@/components/characterPageComponents'
 import { ref } from 'vue'
 import { supabase } from '@/supabase'
-import { FaPlus } from 'vue3-icons/fa6'
 
 
 const props = defineProps({

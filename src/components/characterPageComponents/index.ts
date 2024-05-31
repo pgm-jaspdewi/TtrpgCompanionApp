@@ -9,13 +9,14 @@ import ClassProficiencies from './ClassProficiencies.vue'
 import CoinInput from './CoinInput.vue'
 import CoinsInventory from './CoinsInventory.vue'
 import HitPoints from './HitPoints.vue'
+import ItemDisplay from './ItemDisplay.vue'
+import ItemSearchbar from './ItemSearchbar.vue'
+import ItemsOwned from './ItemsOwned.vue'
 import NavButton from './NavButton.vue'
 import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
 import SavingThrow from './SavingThrow.vue'
 import SkillSave from './SkillSave.vue'
-import ItemDisplay from './ItemDisplay.vue'
-import ItemsOwned from './ItemsOwned.vue'
 
 export {
   AttackOptions,
@@ -29,11 +30,12 @@ export {
   CoinInput,
   CoinsInventory,
   HitPoints,
+  ItemDisplay,
+  ItemSearchbar,
+  ItemsOwned,
   NavButton,
   PassivePerception,
   ProficiencyBonus,
   SavingThrow,
-  SkillSave,
-  ItemDisplay,
-  ItemsOwned
+  SkillSave
 }

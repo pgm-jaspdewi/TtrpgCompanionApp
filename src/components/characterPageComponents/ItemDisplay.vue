@@ -5,7 +5,7 @@
     </div>
     <div class="capitalize w-2/12 border-darkKhaki border-b-2 border-r-2 p-1 text-center">
       <input
-        min="0"
+        min="1"
         type="number"
         @blur="$emit('update-item', amount, index)"
         v-model="amount"

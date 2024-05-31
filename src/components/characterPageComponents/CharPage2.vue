@@ -77,7 +77,7 @@ const setup = async () => {
     (equipment) => !apiWeaponList.value.some((weapon) => equipment.index === weapon.index)
   )
   equipmentItems.value = otherEquipment
-  console.log(equipmentItems.value)
+  // console.log(equipmentItems.value)
   // // set the select options based on the type of items
   // if (props.type === 'weapons') {
   // selectOptions.value = equipmentWeapons.value
