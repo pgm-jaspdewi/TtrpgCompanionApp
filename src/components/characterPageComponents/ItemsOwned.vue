@@ -33,17 +33,17 @@
     />
     <h2 class="mt-6 ml-1 text-lg text-maroon font-bold ">Add new item</h2>
 
-   <div>
+   
    <ItemSearchbar/>
      
-   </div>
+   
 
    
   </div>
 </template>
 
 <script setup lang="ts">
-import type { equipment } from '@/interfaces'
+import type { equipment, savingThrows } from '@/interfaces'
 import { ItemDisplay, ItemSearchbar } from '@/components/characterPageComponents'
 import { ref } from 'vue'
 import { supabase } from '@/supabase'
@@ -58,7 +58,12 @@ const props = defineProps({
     type: String,
     validator: (value: string) => ['weapons', 'items'].includes(value),
     required: true
-  }
+  },
+  availableEquipment: {
+    type: Array as () => savingThrows[],
+    required: true
+  },
+ 
 })
 //  variable to change the fetch based on the type of items to fetch
 const selector = props.type === 'weapons' ? 'weapons' : 'equipment'

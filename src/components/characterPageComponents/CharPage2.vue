@@ -15,7 +15,7 @@
         <div
           class="mx-2 mb-10 border-2 border-darkKhaki rounded-lg w-full flex justify-center shadow-lg"
         >
-          <ItemsOwned :character-id="character.id" type="weapons" />
+          <ItemsOwned :character-id="character.id" type="weapons" :availableEquipment="equipmentWeapons"/>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
       <div>
         <h2 class="text-xl ml-4 capitalize font-bold text-maroon">Equipment</h2>
         <div class="m-2 mt-1 border-2 border-darkKhaki rounded-lg flex justify-center shadow-lg">
-          <ItemsOwned :character-id="character.id" type="items" />
+          <ItemsOwned :character-id="character.id" type="items" :availableEquipment="equipmentItems"/>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@ import { ItemsOwned, CoinsInventory } from '@/components/characterPageComponents
 import { ref } from 'vue';
 import axios from 'axios';
 
-defineProps({
+const props = defineProps({
   character: {
     type: Object as () => characterDetails,
     required: true
@@ -71,19 +71,16 @@ const setup = async () => {
   const filteredWeapons = allEquipment.value.filter((equipment) =>
     apiWeaponList.value.some((weapon) => equipment.index === weapon.index)
   )
-  equipmentWeapons.value = filteredWeapons
+  // filter out items already owned by the character (they will not show up in the search bar)
+  const removeOwnedWeapons = filteredWeapons.filter((weapon) => !props.character.weapons.some((ownedWeapon) => ownedWeapon.item === weapon.index))
+  equipmentWeapons.value = removeOwnedWeapons
 
   const otherEquipment = allEquipment.value.filter(
     (equipment) => !apiWeaponList.value.some((weapon) => equipment.index === weapon.index)
   )
-  equipmentItems.value = otherEquipment
-  // console.log(equipmentItems.value)
-  // // set the select options based on the type of items
-  // if (props.type === 'weapons') {
-  // selectOptions.value = equipmentWeapons.value
-  // } else {
-  // selectOptions.value = equipmentItems.value
-  // }
+  // filter out items already owned by the character (they will not show up in the search bar)
+  const removeOwnedItems = otherEquipment.filter((item) => !props.character.equipment.some((ownedItem) => ownedItem.item === item.index))
+  equipmentItems.value = removeOwnedItems
 }
 setup()
 
