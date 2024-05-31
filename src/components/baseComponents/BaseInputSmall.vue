@@ -8,8 +8,8 @@
       :value="modelValue"
       @change="$emit('update:modelValue', parseInt(($event.target as HTMLInputElement).value))"
       type="number"
-      min=0
-      max=20
+      min='0'
+      max='20'
       v-bind:id="id"
     />
   </div>
@@ -34,4 +34,6 @@ defineProps({
     default: false
   }
 })
+
+
 </script>

@@ -106,6 +106,12 @@ const delayedFunction = () => {
 }
 
 watch(rollResult, (newValue: number) => {
+  if (newValue < 0) {
+    rollResult.value = 0
+  } else if (newValue > 20) {
+    rollResult.value = 20
+  }
+
   if (newValue > 0) {
     delayedFunction()
   }
