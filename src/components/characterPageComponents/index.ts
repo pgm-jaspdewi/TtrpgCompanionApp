@@ -1,5 +1,6 @@
 import AttackOptions from './AttackOptions.vue'
 import CharacterPageBorders from './CharacterPageBorders.vue'
+import CharModal from './CharModal.vue'
 import CharPage1 from './CharPage1.vue'
 import CharPage2 from './CharPage2.vue'
 import CharPage3 from './CharPage3.vue'
@@ -21,6 +22,7 @@ import SkillSave from './SkillSave.vue'
 export {
   AttackOptions,
   CharacterPageBorders,
+  CharModal,
   CharPage1,
   CharPage2,
   CharPage3,

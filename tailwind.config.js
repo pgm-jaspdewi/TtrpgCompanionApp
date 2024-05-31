@@ -37,6 +37,8 @@ export default {
     },
     extend: {
       spacing: {
+        'modalCancelBottom': '80%',
+        'modalCancelLeft': '95%',
         'coins': '75%',
         'proficiency': '90%',
         'proficiencyLg': '97%',

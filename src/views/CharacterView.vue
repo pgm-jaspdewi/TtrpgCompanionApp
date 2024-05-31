@@ -27,6 +27,9 @@
       </CharacterPageBorders>
     </div>
   </div>
+  <BaseModal :modalActive="modal.diceThrowModal">
+      <CharModal/>
+  </BaseModal>
 </template>
 
 <script setup lang="ts">
@@ -34,16 +37,19 @@ import type { characterDetails } from '@/interfaces'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
-import { BasePageBorders } from '@/components/baseComponents'
+import { BasePageBorders, BaseModal  } from '@/components/baseComponents'
 import {
   CharacterPageBorders,
+  CharModal,
   NavButton,
   CharPage1,
   CharPage2,
   CharPage3
 } from '@/components/characterPageComponents'
 import { useCharPageStore } from '@/stores/characterPage-store'
+import { useModalStore } from '@/stores/modal-store'
 
+const modal = useModalStore()
 const store = useCharPageStore()
 const route = useRoute()
 

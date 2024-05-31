@@ -1,6 +1,6 @@
 <template>
   <div 
-  @click="console.log('clicked')"
+  @click="openModal"
   class="flex justify-center px-2 py-1 cursor-pointer hover:bg-maroon/50 p-1 rounded-lg group">
     <button
       class="border-2 border-maroon w-9/12 rounded-xl pl-5 py-1 mr-2 relative flex items-center group-hover:text-lightKhaki group-hover:bg-maroon group-hover:border-darkKhaki"
@@ -26,8 +26,10 @@
 <script setup lang="ts">
 import type { savingThrows } from '@/interfaces'
 import axios from 'axios'
-
 import { computed, ref, watch } from 'vue'
+import { useModalStore } from '@/stores/modal-store'
+
+const modal = useModalStore()
 
 const props = defineProps({
   skill: {
@@ -87,4 +89,14 @@ const skillModifier = computed(() => {
     return statModifier.value
   }
 })
+
+const openModal = () => {
+  
+  modal.diceThrowInfo = {
+    type: 'skill check',
+    name: props.skill.name,
+    bonus: skillModifier.value
+  }
+  modal.toggleDiceThrowModal()
+}
 </script>

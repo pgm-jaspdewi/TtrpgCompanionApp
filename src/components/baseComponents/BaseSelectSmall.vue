@@ -9,7 +9,7 @@
 
     <select
       class="outline-none p-2 px-1 rounded-lg border-2 border-darkKhaki bg-lightKhaki focus:border-maroon focus:ring-1 focus:ring-maroon w-12"
-      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
+      @input="$emit('update:modelValue', parseInt(($event.target as HTMLSelectElement).value))"
     >
       <option value="" disabled selected>{{ fillerValue }}</option>
       <option v-for="(option, index) in options" :key="index" :value="option">
@@ -23,8 +23,8 @@
 defineProps({
   // modelValue prop is required, it is the v-model binding
   modelValue: {
-    type: String,
-    default: '',
+    type: Number,
+    default: 0,
     required: true
   },
   // label prop is optional, if not provided, it will not render the label
@@ -39,7 +39,7 @@ defineProps({
   },
   // fillerValue prop is the value that should be displayed by default
   fillerValue: {
-    type: String,
+    type: Number,
     default: null,
     required: true
   }

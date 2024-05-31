@@ -5,19 +5,18 @@ import { supabase } from '../supabase'
 import type { equipment, savingThrows } from '../interfaces'
 import { useRouter } from 'vue-router'
 import { useCharListStore } from './charList-store'
-import axios from 'axios'
 
 // Define a new store for the wizard
 export const useWizardStore = defineStore('wizard-store', () => {
   const router = useRouter()
   const step = ref(1)
   const charStats = reactive({
-    str: '0',
-    dex: '0',
-    con: '0',
-    int: '0',
-    wis: '0',
-    cha: '0'
+    str: 0,
+    dex: 0,
+    con: 0,
+    int: 0,
+    wis: 0,
+    cha: 0
   })
 
   const characterInfo = reactive({
@@ -70,12 +69,12 @@ export const useWizardStore = defineStore('wizard-store', () => {
     store.$patch({
       step: 1,
       charStats: {
-        str: '0',
-        dex: '0',
-        con: '0',
-        int: '0',
-        wis: '0',
-        cha: '0'
+        str: 0,
+        dex: 0,
+        con: 0,
+        int: 0,
+        wis: 0,
+        cha: 0
       },
       characterInfo: {
         charAvatar: '',

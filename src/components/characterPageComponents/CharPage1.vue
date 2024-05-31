@@ -176,7 +176,7 @@
           v-else
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg flex justify-center items-center w-1/2 laptopSm:w-auto"
         >
-          <p class="text-xl font-bold">Checking equipment...</p>
+          <p class="text-xl font-bold my-5">Checking equipment...</p>
         </div>
         <div
           class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center w-1/2 laptopSm:w-auto"
@@ -191,7 +191,7 @@
 <script setup lang="ts">
 import type { characterDetails, savingThrows, classDetails } from '@/interfaces'
 import { supabase } from '@/supabase'
-import { BaseImage, BaseButton, BaseButtonBig } from '@/components/baseComponents'
+import { BaseImage } from '@/components/baseComponents'
 import { computed, ref } from 'vue'
 import { FaArrowUp } from 'vue3-icons/fa6'
 import {

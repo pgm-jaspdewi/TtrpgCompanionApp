@@ -1,6 +1,6 @@
 <template>
   <div 
-  @click="console.log('clicked')"
+  @click="openModal"
   class="flex justify-center cursor-pointer hover:bg-maroon/50 p-1 rounded-lg group">
     <div
       class="border-2 border-maroon rounded-xl uppercase py-0.5 w-1/2 flex justify-center items-center mr-2 relative group-hover:text-lightKhaki group-hover:bg-maroon group-hover:border-darkKhaki"
@@ -26,6 +26,9 @@
 <script setup lang="ts">
 import type { savingThrows } from '@/interfaces'
 import { computed } from 'vue'
+import { useModalStore } from '@/stores/modal-store'
+
+const modal = useModalStore()
 
 const props = defineProps({
   name: {
@@ -67,4 +70,14 @@ const saveBonus = computed(() => {
     return modifier.value
   }
 })
+
+const openModal = () => {
+  
+  modal.diceThrowInfo = {
+    type: 'saving throw',
+    name: props.name,
+    bonus: saveBonus.value
+  }
+  modal.toggleDiceThrowModal()
+}
 </script>

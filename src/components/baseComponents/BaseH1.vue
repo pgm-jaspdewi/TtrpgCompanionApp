@@ -1,5 +1,5 @@
 <template>
-  <h1 :class="smallerTitle ? 'text-3xl' : 'text-4xl'" class="font-bold font-title text-maroon">
+  <h1 :class="smallerTitle ? 'text-3xl' : 'text-4xl'" class="font-bold font-title text-maroon ml-2">
     {{ title }}
   </h1>
   <hr class="mb-6 border-2 border-maroon" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-form flex flex-col justify-between">
+  <div class="flex flex-col justify-between">
     <div>
       <div class="mt-3 flex justify-center">
         <h1 class="text-xl font-bols text-maroon">Overview</h1>
@@ -76,7 +76,7 @@
         </div>
       </div>
       <!-- divs with proficiencies -->
-      <div class="flex flex-row items-start justify-start">
+      <div class="flex flex-row items-start justify-center laptopLg:justify-start">
         <div
           class="border-2 border-maroon p-2 mt-2 mb-4 mr-1 rounded-lg flex flex-col items-center justify-center w-4/12 laptopSm:w-6/12"
         >
