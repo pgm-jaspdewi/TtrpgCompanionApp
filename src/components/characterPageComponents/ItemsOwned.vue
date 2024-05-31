@@ -97,7 +97,7 @@ const currentItems = async () => {
     .eq('id', props.characterId)
     .single()
   if (error) {
-    console.error('Error getting current hit points:', error)
+    console.error('Error:', error)
   } else {
     if ((data as { weapons: any }).weapons) {
       items.value = (data as { weapons: equipment[] }).weapons
@@ -107,7 +107,15 @@ const currentItems = async () => {
   }
 }
 currentItems()
+watch((items), () => {
+  const removeOwnedItems = props.availableEquipment.filter((item) => {
+    return !items.value.some((ownedItem) => ownedItem.item === item.name)
+  })
+  console.log(removeOwnedItems)
+})
 
+
+// update the items in the database
 const updatedItem = async () => {
   if (selector === 'weapons') {
     const { error } = await supabase
@@ -116,7 +124,7 @@ const updatedItem = async () => {
       .eq('id', props.characterId)
       .single()
     if (error) {
-      console.error('Error getting current hit points:', error)
+      console.error('Error:', error)
     }
   } else {
     const { error } = await supabase
@@ -125,7 +133,7 @@ const updatedItem = async () => {
       .eq('id', props.characterId)
       .single()
     if (error) {
-      console.error('Error getting current hit points:', error)
+      console.error('Error:', error)
     }
   }
 }
@@ -159,7 +167,7 @@ const addNewItem = (amount: number, i: number) => {
 
 // searchbar functionality
 watch(searchItem, () => {
-  if (searchItem.value.length >= 3) {
+  if (searchItem.value.length >= 2) {
     searched.value = true
     const filteredEquipment = props.availableEquipment.filter((equipment) =>
     equipment.name.toLowerCase().includes(searchItem.value.toLowerCase())

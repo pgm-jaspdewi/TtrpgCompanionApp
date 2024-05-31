@@ -69,7 +69,7 @@ const equipedWeapons = ref<weaponDetails[]>([])
 
 // Get the details for weapons that the character has equipped
 const filteredWeapons = props.weaponList.filter((weapon) =>
-  props.weapons.some((equipment) => equipment.item === weapon.index)
+  props.weapons.some((equipment) => equipment.item === weapon.name)
 )
 filteredWeapons.forEach((weapon) => {
   const fetchWeaponDetails = async () => {

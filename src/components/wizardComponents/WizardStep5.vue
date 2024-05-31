@@ -20,7 +20,7 @@
               <input
                 type="radio"
                 v-model="selectedOption[index]"
-                :value="{ amount: option.count, item: option.of.index }"
+                :value="{ amount: option.count, item: option.of.name }"
               />
               <p class="m-2 my-1 text-sm">{{ option.of.name }} ( {{ option.count }} )</p>
             </label>
@@ -40,7 +40,7 @@
                 v-model="selectedOption[index]"
                 :value="[
                   { amount: 1, item: itemValue[index] },
-                  { amount: option.items[1].count, item: option.items[1].of.index }
+                  { amount: option.items[1].count, item: option.items[1].of.name}
                 ]"
               />
               <div class="flex items-center">
@@ -67,8 +67,8 @@
                 type="radio"
                 v-model="selectedOption[index]"
                 :value="[
-                  { amount: option.items[0].count, item: option.items[0].of.index },
-                  { amount: option.items[1].count, item: option.items[1].of.index }
+                  { amount: option.items[0].count, item: option.items[0].of.name },
+                  { amount: option.items[1].count, item: option.items[1].of.name }
                 ]"
               />
               <p class="m-2 my-1 text-sm">
@@ -86,9 +86,9 @@
                 type="radio"
                 v-model="selectedOption[index]"
                 :value="[
-                  { amount: option.items[0].count, item: option.items[0].of.index },
-                  { amount: option.items[1].count, item: option.items[1].of.index },
-                  { amount: option.items[2].count, item: option.items[2].of.index }
+                  { amount: option.items[0].count, item: option.items[0].of.name },
+                  { amount: option.items[1].count, item: option.items[1].of.name },
+                  { amount: option.items[2].count, item: option.items[2].of.name }
                 ]"
               />
               <p class="m-2 my-1 text-sm">
@@ -155,7 +155,7 @@ const characterClass = await axios.get(
 // get the standard equipment for the class
 const standardEquipment = characterClass.data.starting_equipment
 const equipment = standardEquipment.map((i: any) => {
-  return { amount: i.quantity, item: i.equipment.index }
+  return { amount: i.quantity, item: i.equipment.name }
 })
 
 // get the equipment options for the class

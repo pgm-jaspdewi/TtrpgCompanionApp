@@ -1,21 +1,23 @@
 <template>
-  <div class="flex justify-center mb-2">
-    <button
-      class="border-2 border-maroon rounded-xl uppercase py-0.5 w-1/2 flex justify-center items-center mr-2 relative hover:bg-lightKhaki hover:text-maroon hover:font-bold"
+  <div 
+  @click="console.log('clicked')"
+  class="flex justify-center cursor-pointer hover:bg-maroon/50 p-1 rounded-lg group">
+    <div
+      class="border-2 border-maroon rounded-xl uppercase py-0.5 w-1/2 flex justify-center items-center mr-2 relative group-hover:text-lightKhaki group-hover:bg-maroon group-hover:border-darkKhaki"
     >
       {{ name }}
       <div
         :class="proficient ? 'bg-maroon' : 'bg-paleGold'"
-        class="absolute border-2 border-maroon rounded-full w-4 h-4 right-proficiency"
+        class="absolute border-2 border-maroon rounded-full w-4 h-4 right-proficiency group-hover:border-darkKhaki"
       ></div>
-    </button>
+    </div>
     <div
       v-if="saveBonus >= 0"
-      class="border-2 border-darkKhaki rounded-xl py-0.5 w-1/4 flex justify-center"
+      class="border-2 border-darkKhaki rounded-xl py-0.5 w-1/4 flex justify-center group-hover:text-lightKhaki group-hover:bg-maroon"
     >
       +{{ saveBonus }}
     </div>
-    <div v-else class="border-2 border-darkKhaki rounded-xl py-1 w-1/4 flex justify-center">
+    <div v-else class="border-2 border-darkKhaki rounded-xl py-0.5 w-1/4 flex justify-center group-hover:text-lightKhaki group-hover:bg-maroon">
       {{ saveBonus }}
     </div>
   </div>

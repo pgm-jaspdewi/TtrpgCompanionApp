@@ -1,21 +1,23 @@
 <template>
-  <div class="flex justify-center px-2 py-1">
+  <div 
+  @click="console.log('clicked')"
+  class="flex justify-center px-2 py-1 cursor-pointer hover:bg-maroon/50 p-1 rounded-lg group">
     <button
-      class="border-2 border-maroon w-9/12 rounded-xl pl-5 py-1 mr-2 relative flex items-center hover:bg-lightKhaki hover:text-maroon hover:font-bold"
+      class="border-2 border-maroon w-9/12 rounded-xl pl-5 py-1 mr-2 relative flex items-center group-hover:text-lightKhaki group-hover:bg-maroon group-hover:border-darkKhaki"
     >
       {{ skill.name }} ({{ connectedStat }})
       <div
         :class="proficient ? 'bg-maroon' : 'bg-paleGold'"
-        class="absolute border-2 border-maroon rounded-full w-4 h-4 right-proficiencyLg"
+        class="absolute border-2 border-maroon rounded-full w-4 h-4 right-proficiencyLg group-hover:border-darkKhaki"
       ></div>
     </button>
     <div
       v-if="skillModifier >= 0"
-      class="border-2 border-darkKhaki w-2/12 rounded-xl flex justify-center py-1"
+      class="border-2 border-darkKhaki w-2/12 rounded-xl flex justify-center py-1 group-hover:text-lightKhaki group-hover:bg-maroon" 
     >
       +{{ skillModifier }}
     </div>
-    <div v-else class="border-2 border-darkKhaki w-2/12 rounded-xl flex justify-center py-1">
+    <div v-else class="border-2 border-darkKhaki w-2/12 rounded-xl flex justify-center py-1 group-hover:text-lightKhaki group-hover:bg-maroon">
       {{ skillModifier }}
     </div>
   </div>

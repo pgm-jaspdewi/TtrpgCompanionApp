@@ -82,7 +82,7 @@ const setup = async () => {
   )
   // filter out items already owned by the character (they will not show up in the search bar)
   const removeOwnedWeapons = filteredWeapons.filter((weapon) => !props.character.weapons.some((ownedWeapon) => ownedWeapon.item === weapon.index))
-  equipmentWeapons.value = removeOwnedWeapons
+  equipmentWeapons.value = filteredWeapons
 
   const otherEquipment = allEquipment.value.filter(
     (equipment) => !apiWeaponList.value.some((weapon) => equipment.index === weapon.index)
@@ -94,7 +94,7 @@ const setup = async () => {
 
   // filter out items already owned by the character (they will not show up in the search bar)
   const removeOwnedItems = removeNonEquipableItems.filter((item) => !props.character.equipment.some((ownedItem) => ownedItem.item === item.index))
-  equipmentItems.value = removeOwnedItems
+  equipmentItems.value = removeNonEquipableItems
 }
 setup()
 

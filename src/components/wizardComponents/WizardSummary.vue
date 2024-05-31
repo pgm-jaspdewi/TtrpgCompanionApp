@@ -160,10 +160,10 @@ const setupFunction = async () => {
   )
   apiWeaponList.value = [...fetchMeleeWeapons.data.equipment, ...fetchRangedWeapons.data.equipment]
   const filteredWeapons = items.filter((equipment) =>
-    apiWeaponList.value.some((weapon) => equipment.item === weapon.index)
+    apiWeaponList.value.some((weapon) => equipment.item === weapon.name)
   )
   const otherEquipment = items.filter(
-    (equipment) => !apiWeaponList.value.some((weapon) => equipment.item === weapon.index)
+    (equipment) => !apiWeaponList.value.some((weapon) => equipment.item === weapon.name)
   )
   characterWeaponList.value = filteredWeapons
   characterEquipment.value = otherEquipment

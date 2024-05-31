@@ -17,13 +17,20 @@
             <p class="text-2xl laptopLg:text-xl capitalize">level {{ character.level }}</p>
           </div>
         </div>
-        <BaseButtonBig class="m-2 laptopLg:hidden" btnContent="Lvl up">
+        <button
+       
+        class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mr-2 mt-2"
+      >
+      <p class="pr-1 uppercase font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
+      <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
+      </button>
+        <!-- <BaseButtonBig class="m-2 laptopLg:hidden" btnContent="Lvl up">
           <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
         </BaseButtonBig>
 
         <BaseButton class="m-2 hidden laptopLg:flex" btnContent="Lvl up">
           <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButton>
+        </BaseButton> -->
       </div>
 
       <!-- Stats -->

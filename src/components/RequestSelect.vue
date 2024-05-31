@@ -12,7 +12,7 @@
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
     >
       <option value="" disabled :selected="'' === modelValue">Select equipment</option>
-      <option v-for="item in options" :key="item.index" :value="item.index">
+      <option v-for="item in options" :key="item.index" :value="item.name">
         {{ item.name }}
       </option>
     </select>
