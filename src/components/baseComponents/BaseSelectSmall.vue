@@ -9,7 +9,7 @@
 
     <select
       class="outline-none p-2 px-1 rounded-lg border-2 border-darkKhaki bg-lightKhaki focus:border-maroon focus:ring-1 focus:ring-maroon w-12"
-      @input="$emit('update:modelValue', parseInt(($event.target as HTMLSelectElement).value))"
+      @change="$emit('update:modelValue', parseInt(($event.target as HTMLSelectElement).value))"
     >
       <option value="" disabled selected>{{ fillerValue }}</option>
       <option v-for="(option, index) in options" :key="index" :value="option">

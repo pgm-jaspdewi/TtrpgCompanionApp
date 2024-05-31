@@ -38,7 +38,7 @@ import { ItemsOwned, CoinsInventory } from '@/components/characterPageComponents
 import { ref } from 'vue';
 import axios from 'axios';
 
-const props = defineProps({
+defineProps({
   character: {
     type: Object as () => characterDetails,
     required: true

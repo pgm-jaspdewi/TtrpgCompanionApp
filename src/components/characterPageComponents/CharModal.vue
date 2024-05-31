@@ -1,26 +1,40 @@
 <template>
-  <div class="relative w-96">
-    <BaseH1 :title="`${rollName} ${modal.diceThrowInfo.type}`" :smaller-title="true"/>
-    <div class="flex items-center justify-center mb-2">
-      <p>Input the result of your roll or roll digitally</p>
+  <div class="relative w-96 h-56 flex flex-col justify-between">
+    <div>
+      <BaseH1 :title="`${rollName} ${modal.diceThrowInfo.type}`" :smaller-title="true"/>
     </div>
     
-    <div class="flex items-center justify-center mb-2">
-      <div>
-        <div class="flex space-x-1 mr-2">
-          <BaseInputSmall v-model="rollResult" id="result" />
+    <div v-if="!loading && !totalCalculated">
+      <div class="flex items-center justify-center mb-2">
+        <p>Input the result of your roll or roll digitally</p>
+      </div>
+    
+      <div class="flex items-center justify-center mb-2">
+        <div>
+          <div class="flex space-x-1 mr-2">
+            <BaseInputSmall v-model="rollResult" id="result" />
+          </div>
+        </div>
+      
+        <div>
+          <BaseButton type="button" btnContent="Roll digitally" @click="rollDigitally">
+            <FaDiceD20 class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
+          </BaseButton>
         </div>
       </div>
+    </div>
+
+    <div v-if="loading">
+      <h3 class="text-center text-2xl font-semibold">Calculating total...</h3>
+    </div>
     
-      <div>
-        <BaseButton type="button" btnContent="Roll digitally" @click="rollDigitally">
-          <FaDiceD20 class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButton>
+    <div v-if="!loading && totalCalculated" class="flex flex-col items-center">
+      <p class="mb-2">The total result of your roll is:</p>
+      <div class="border-2 border-darkKhaki rounded-lg bg-lightKhaki w-14 h-14 flex justify-center items-center mb-4 shadow-lg">
+        <p class="text-center text-2xl font-semibold">{{ rollTotal }}</p>
       </div>
     </div>
-    <div class="flex items-center justify-center mb-2">
-      <p> </p>
-    </div>
+    
     
 
     <div class="flex justify-center">
@@ -45,6 +59,9 @@ const modal = useModalStore()
 
 const rollName = ref(modal.diceThrowInfo.name)
 const rollResult = ref(0)
+const loading = ref(false)
+const rollTotal = ref(0)
+const totalCalculated = ref(false)
 
 // function to rework the name passed from the store if it is a 3-letter abbreviation
 const nameReform = () => {
@@ -76,10 +93,22 @@ const closeModal = () => {
   modal.toggleDiceThrowModal()
 }
 
-// watch(rollResult, (newValue) => {
-//   if (newValue > 0) {
-//     console.log('new value:', newValue)
-//   }
-// })
+
+const delayedFunction = () => {
+  setTimeout(() => {
+  loading.value = true
+  rollTotal.value = rollResult.value + modal.diceThrowInfo.bonus
+  totalCalculated.value = true
+  setTimeout(() => {
+  loading.value = false
+}, 1000)
+}, 500)
+}
+
+watch(rollResult, (newValue: number) => {
+  if (newValue > 0) {
+    delayedFunction()
+  }
+})
 
 </script>

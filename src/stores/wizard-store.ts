@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { useModalStore } from './modal-store'
 import { supabase } from '../supabase'
-import type { equipment, savingThrows } from '../interfaces'
+import type { equipment } from '../interfaces'
 import { useRouter } from 'vue-router'
 import { useCharListStore } from './charList-store'
 
