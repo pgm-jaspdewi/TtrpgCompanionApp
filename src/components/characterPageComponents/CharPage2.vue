@@ -45,10 +45,15 @@ const props = defineProps({
   }
 })
 
-// fetch for the list of weapons and items from the API
+// variable to store the list of weapons from the API
 const apiWeaponList = ref<savingThrows[]>([])
+// variable to store the list of non-equipable items (mounts & vehicles) from the API
+const nonEquipableItems = ref<savingThrows[]>([])
+// variable to store the list of all equipment from the API
 const allEquipment = ref<savingThrows[]>([])
+// variable to store the list of weapons that can be added to the characters inventory
 const equipmentWeapons = ref<savingThrows[]>([])
+// variable to store the list of other equipment that can be added to the characters inventory
 const equipmentItems = ref<savingThrows[]>([])
 
 const setup = async () => {
@@ -60,7 +65,11 @@ const setup = async () => {
     import.meta.env.VITE_5E_API_URL + 'equipment-categories/ranged-weapons'
   )
   apiWeaponList.value = [...fetchMeleeWeapons.data.equipment, ...fetchRangedWeapons.data.equipment]
-  // console.log(apiWeaponList.value)
+  
+
+  // get list of mounts and vehicles from the API
+  const fetchMounts = await axios.get(import.meta.env.VITE_5E_API_URL + 'equipment-categories/mounts-and-vehicles')
+  nonEquipableItems.value = fetchMounts.data.equipment
 
   //  get list of all equipment from the API
   const fetchEquipment = await axios.get(import.meta.env.VITE_5E_API_URL + 'equipment')
@@ -78,8 +87,13 @@ const setup = async () => {
   const otherEquipment = allEquipment.value.filter(
     (equipment) => !apiWeaponList.value.some((weapon) => equipment.index === weapon.index)
   )
+  // filter out items that cannot be equipped (mounts & vehicles)
+  const removeNonEquipableItems = otherEquipment.filter(
+    (item) => !nonEquipableItems.value.some((nonEquipableItem) => item.index === nonEquipableItem.index)
+  )
+
   // filter out items already owned by the character (they will not show up in the search bar)
-  const removeOwnedItems = otherEquipment.filter((item) => !props.character.equipment.some((ownedItem) => ownedItem.item === item.index))
+  const removeOwnedItems = removeNonEquipableItems.filter((item) => !props.character.equipment.some((ownedItem) => ownedItem.item === item.index))
   equipmentItems.value = removeOwnedItems
 }
 setup()

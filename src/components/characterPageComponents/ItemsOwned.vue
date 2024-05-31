@@ -34,8 +34,22 @@
     <h2 class="mt-6 ml-1 text-lg text-maroon font-bold ">Add new item</h2>
 
    
-   <ItemSearchbar/>
-     
+   <ItemSearchbar
+   v-model="searchItem"
+   />
+    <div v-if="searched && searchResult.length > 0" class="flex  flex-col pt-2 ">
+      <ItemDisplay
+      v-for="(item, index) of searchResult"
+      @add-item="addNewItem"
+      :key="index"
+      :item="item"
+      :index="index"
+      :searchResults="true"
+    />
+    </div>
+    <div v-if="searched && searchResult.length === 0">
+      <p class="p-2 pl-4 my-2 border-y-2 border-darkKhaki">No items matching your search</p>
+    </div>
    
 
    
@@ -45,8 +59,10 @@
 <script setup lang="ts">
 import type { equipment, savingThrows } from '@/interfaces'
 import { ItemDisplay, ItemSearchbar } from '@/components/characterPageComponents'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { supabase } from '@/supabase'
+
+
 
 
 const props = defineProps({
@@ -69,6 +85,9 @@ const props = defineProps({
 const selector = props.type === 'weapons' ? 'weapons' : 'equipment'
 
 const items = ref<equipment[]>([])
+const searchResult = ref<equipment[]>([])
+const searched = ref(false)
+const searchItem = ref('')
 
 // fetch for current items based on the value of selector & the characterId
 const currentItems = async () => {
@@ -128,8 +147,33 @@ const deleteItem = (i: number) => {
   updatedItem()
 }
 
-const handleSubmit = () => {
-  console.log('submit')
-  // items.value.push({ item: '', amount: 0 })
+const addNewItem = (amount: number, i: number) => {
+  const newItem = searchResult.value[i]
+  newItem.amount = amount
+  items.value = [...items.value, newItem]
+  updatedItem()
+  searchResult.value = []
+  searchItem.value = ''
+  searched.value = false
 }
+
+// searchbar functionality
+watch(searchItem, () => {
+  if (searchItem.value.length >= 3) {
+    searched.value = true
+    const filteredEquipment = props.availableEquipment.filter((equipment) =>
+    equipment.name.toLowerCase().includes(searchItem.value.toLowerCase())
+  )
+  searchResult.value = filteredEquipment.map((item) => {
+    return {
+      amount: 1,
+      item: item.name
+    }
+  })
+  } else {
+    searched.value = false
+    searchResult.value = []
+  }
+})
+
 </script>

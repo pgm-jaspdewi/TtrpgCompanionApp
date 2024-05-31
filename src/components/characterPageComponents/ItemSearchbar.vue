@@ -9,18 +9,22 @@
     type="text"
     placeholder="Search an item..."
     class="outline-none w-full  py-1 pl-4  border-2 border-darkKhaki rounded-lg focus:border-maroon focus:ring-1 focus:ring-maroon"
-    v-model="searchItem"
-    @input="test"
+    :value="modelValue"
+    @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+defineProps({
+  // modelValue prop is required, it is the v-model binding
+  modelValue: {
+    type: String,
+    default: ''
+  },
+
+})
 
 
-const searchItem = ref('')
-const test = () => {
-  console.log(searchItem.value)
-}
+
 </script>
