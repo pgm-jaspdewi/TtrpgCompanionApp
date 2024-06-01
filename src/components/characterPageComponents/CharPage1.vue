@@ -166,6 +166,7 @@
         >
           <AttackOptions
             :weapons="character.weapons"
+            :characterId="character.id"
             :weaponList="weaponList"
             :proficiency="proficiencyBonus"
             :dexterity="parseInt(character.stats.dex)"
@@ -176,7 +177,7 @@
           v-else
           class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg flex justify-center items-center w-1/2 laptopSm:w-auto"
         >
-          <p class="text-xl font-bold my-5">Checking equipment...</p>
+          <p class="text-xl font-bold my-5 text-maroon">Readying weapons...</p>
         </div>
         <div
           class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center w-1/2 laptopSm:w-auto"
@@ -222,6 +223,8 @@ const props = defineProps({
     required: true
   }
 })
+
+console.log(props.character)
 
 // Fetch the necessary data for the character page and it's components
 const setupFunction = async () => {
