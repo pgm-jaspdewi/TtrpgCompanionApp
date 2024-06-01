@@ -8,6 +8,7 @@
     </div>
     <button
       v-for="(weapon, index) of equipedWeapons"
+      @click="openModal(weapon)"
       :key="index"
       class="flex justify-center items-center w-full laptopSm:w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg"
     >
@@ -42,16 +43,15 @@ import type { equipment, savingThrows, weaponDetails } from '@/interfaces'
 import { supabase } from '@/supabase';
 import axios from 'axios'
 import { ref } from 'vue'
+import { useModalStore } from '@/stores/modal-store'
+
+const modal = useModalStore()
 
 const props = defineProps({
   weaponList: {
     type: Array as () => savingThrows[],
     required: true
   },
-  // weapons: {
-  //   type: Array as () => equipment[],
-  //   required: true
-  // },
   proficiency: {
     type: Number,
     required: true
@@ -113,10 +113,13 @@ const fetchCharacterWeapons = async () => {
 }
 fetchCharacterWeapons()
 
-
-
-
-
-
-
+const openModal = (weapon: weaponDetails) => {
+  modal.diceThrowInfo = {
+    type: 'attack',
+    name: weapon.name ,
+    bonus: weapon.attack_bonus,
+    damageDie: weapon.damage_die,
+  }
+  modal.toggleDiceThrowModal()
+}
 </script>

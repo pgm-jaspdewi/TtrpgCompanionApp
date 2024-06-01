@@ -13,7 +13,8 @@ export const useModalStore = defineStore('modal-store', () => {
   const diceThrowInfo = ref({
     type: '',
     bonus: 0,
-    name: ''
+    name: '',
+    damageDie: ''
   })
 
   // Toggle the stat modal
