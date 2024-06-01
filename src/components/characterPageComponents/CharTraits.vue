@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import axios from 'axios'
-import { defineProps, ref } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   traitUrl: {
