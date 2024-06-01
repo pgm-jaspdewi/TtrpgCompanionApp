@@ -32,6 +32,9 @@
   <BaseModal :modalActive="modal.diceThrowModal">
       <CharModal/>
   </BaseModal>
+  <BaseModal :modalActive="modal.deleteModal">
+      <DeleteModal />
+    </BaseModal>
 </template>
 
 <script setup lang="ts">
@@ -40,6 +43,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
 import { BasePageBorders, BaseModal  } from '@/components/baseComponents'
+import { DeleteModal } from '@/components/landingComponents'
 import {
   CharacterPageBorders,
   CharModal,

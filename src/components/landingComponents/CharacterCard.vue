@@ -21,26 +21,16 @@
         </div>
       </div>
     </div>
-    <button
-      @click="deleteCharacter"
-      class="w-10 h-10 border-1 my-2 ml-2 rounded-lg group flex justify-center items-center border-darkKhaki hover:bg-maroon shadow-md"
-    >
-      <FaTrash class="fill-darkKhaki group-hover:fill-lightKhaki w-5 h-5" />
-    </button>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import type { characterDetails as CharacterType } from '@/interfaces'
-import { FaTrash } from 'vue3-icons/fa6'
 import { supabase } from '@/supabase'
 import { ref, toRefs } from 'vue'
-import { useModalStore } from '@/stores/modal-store'
-import { useCharListStore } from '@/stores/charList-store'
 import { useRouter } from 'vue-router'
 
-const modal = useModalStore()
-const store = useCharListStore()
 const router = useRouter()
 
 const props = defineProps<{
@@ -66,11 +56,5 @@ const navigateToCharacter = () => {
   console.log('navigate to character' + character.value.id)
   router.push(`/character/${character.value.id}`)
   // navigation logic goes here
-}
-
-const deleteCharacter = () => {
-  store.characterIdToDelete = character.value.id
-  store.characterAvatarToDelete = character.value.avatar
-  modal.toggleDeleteModal()
 }
 </script>

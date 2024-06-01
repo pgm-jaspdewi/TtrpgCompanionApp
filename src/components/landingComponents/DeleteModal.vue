@@ -23,9 +23,11 @@ import { FaTrash, FaXmark } from 'vue3-icons/fa6'
 import { useModalStore } from '@/stores/modal-store'
 import { supabase } from '@/supabase'
 import { useCharListStore } from '@/stores/charList-store'
+import { useRouter } from 'vue-router'
 
 const modal = useModalStore()
 const store = useCharListStore()
+const router = useRouter()
 
 const closeModal = () => {
   store.characterIdToDelete = 0
@@ -69,6 +71,8 @@ const deleteCharacter = async () => {
         store.characterListWasAltered = true
         // close the modal
         modal.toggleDeleteModal()
+        // navigate back to the character list
+        router.push('/')
       }
     }
   }
