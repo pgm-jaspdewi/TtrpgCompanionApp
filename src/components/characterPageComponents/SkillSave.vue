@@ -91,12 +91,11 @@ const skillModifier = computed(() => {
 })
 
 const openModal = () => {
-  
-  modal.diceThrowInfo = {
+  modal.saveDiceInfo({
     type: 'skill check',
     name: props.skill.name,
     bonus: skillModifier.value
-  }
+  })
   modal.toggleDiceThrowModal()
 }
 </script>

@@ -9,7 +9,7 @@
         <div class="flex">
           <BaseImage :src="src" :size="8" class="m-2" />
           <div class="m-2 flex flex-col justify-between h-32">
-            <h2 class="text-3xl laptopLg:text-2xl font-bold text-maroon">{{ character.name }}</h2>
+            <h2 class="text-2xl laptopLg:text-3xl font-bold text-maroon ">{{ character.name }}</h2>
             <div class="flex justify-between">
               <p class="text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
               <p class="text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
@@ -18,19 +18,11 @@
           </div>
         </div>
         <button
-       
-        class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mr-2 mt-2"
-      >
-      <p class="pr-1 uppercase font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
-      <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
-      </button>
-        <!-- <BaseButtonBig class="m-2 laptopLg:hidden" btnContent="Lvl up">
-          <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButtonBig>
-
-        <BaseButton class="m-2 hidden laptopLg:flex" btnContent="Lvl up">
-          <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
-        </BaseButton> -->
+          class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mr-2 mt-2"
+        >
+          <p class="pr-1 uppercase font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
+          <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
+        </button>
       </div>
 
       <!-- Stats -->

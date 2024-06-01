@@ -2,7 +2,7 @@
   <div
     class="border-2 border-maroon m-2 h-28 w-1/6 rounded-lg flex flex-col items-center bg-paleGold shadow-lg relative"
   >
-    <p class="my-2 uppercase text-maroon">{{ title }}</p>
+    <p class="mt-2 mb-1 uppercase text-maroon font-bold">{{ title }}</p>
     <div
       class="border-2 border-darkKhaki mb-2 h-1/2 rounded-lg w-10/12 flex justify-center items-center bg-lightKhaki"
     >
@@ -18,10 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCharPageStore } from '@/stores/characterPage-store'
-import { computed, ref } from 'vue'
-
-const store = useCharPageStore()
+import { computed } from 'vue'
 
 const props = defineProps({
   stat: {

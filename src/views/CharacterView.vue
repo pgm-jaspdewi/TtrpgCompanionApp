@@ -24,6 +24,8 @@
         <CharPage2 v-if="store.step === 2" :character="character" />
 
         <CharPage3 v-if="store.step === 3" />
+
+        <ManagePage v-if="store.step === 4" :character="character" />
       </CharacterPageBorders>
     </div>
   </div>
@@ -44,7 +46,8 @@ import {
   NavButton,
   CharPage1,
   CharPage2,
-  CharPage3
+  CharPage3,
+  ManagePage,
 } from '@/components/characterPageComponents'
 import { useCharPageStore } from '@/stores/characterPage-store'
 import { useModalStore } from '@/stores/modal-store'

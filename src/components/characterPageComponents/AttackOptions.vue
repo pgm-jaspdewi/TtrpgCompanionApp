@@ -114,12 +114,12 @@ const fetchCharacterWeapons = async () => {
 fetchCharacterWeapons()
 
 const openModal = (weapon: weaponDetails) => {
-  modal.diceThrowInfo = {
+  modal.saveDiceInfo({
     type: 'attack',
     name: weapon.name ,
     bonus: weapon.attack_bonus,
     damageDie: weapon.damage_die,
-  }
+  })
   modal.toggleDiceThrowModal()
 }
 </script>

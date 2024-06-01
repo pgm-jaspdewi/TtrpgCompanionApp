@@ -13,6 +13,7 @@ import HitPoints from './HitPoints.vue'
 import ItemDisplay from './ItemDisplay.vue'
 import ItemSearchbar from './ItemSearchbar.vue'
 import ItemsOwned from './ItemsOwned.vue'
+import ManagePage from './ManagePage.vue'
 import NavButton from './NavButton.vue'
 import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
@@ -35,6 +36,7 @@ export {
   ItemDisplay,
   ItemSearchbar,
   ItemsOwned,
+  ManagePage,
   NavButton,
   PassivePerception,
   ProficiencyBonus,

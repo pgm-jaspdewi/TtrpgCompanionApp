@@ -72,12 +72,12 @@ const saveBonus = computed(() => {
 })
 
 const openModal = () => {
-  
-  modal.diceThrowInfo = {
+  modal.saveDiceInfo({
     type: 'saving throw',
     name: props.name,
     bonus: saveBonus.value
-  }
+  })
+
   modal.toggleDiceThrowModal()
 }
 </script>

@@ -17,6 +17,20 @@ export const useModalStore = defineStore('modal-store', () => {
     damageDie: ''
   })
 
+  function saveDiceInfo(diceInfo: {
+    type: string
+    bonus: number
+    name: string
+    damageDie?: string
+  }) {
+    const store = useModalStore()
+    store.$patch({
+      diceThrowInfo: {
+        ...diceInfo
+      }
+    })
+  }
+
   // Toggle the stat modal
   function toggleStatModal() {
     statModal.value = !statModal.value
@@ -35,6 +49,7 @@ export const useModalStore = defineStore('modal-store', () => {
     deleteModal,
     diceThrowModal,
     diceThrowInfo,
+    saveDiceInfo,
     toggleStatModal,
     toggleDeleteModal,
     toggleDiceThrowModal
