@@ -43,7 +43,8 @@
 <script setup lang="ts">
 import type { equipment } from '@/interfaces'
 import { FaTrash, FaPlus } from 'vue3-icons/fa6'
-import { ref } from 'vue'
+import { ref,  watch  } from 'vue'
+
 
 
 const props = defineProps({
@@ -63,4 +64,9 @@ const props = defineProps({
 })
 
 const amount = ref(props.item.amount)
+
+watch(() => props.item.amount, (newVal) => {
+  amount.value = newVal
+  console.log('watcher', amount.value)
+})
 </script>

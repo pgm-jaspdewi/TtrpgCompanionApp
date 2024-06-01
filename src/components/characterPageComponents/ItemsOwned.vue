@@ -50,9 +50,6 @@
     <div v-if="searched && searchResult.length === 0">
       <p class="p-2 pl-4 my-2 border-y-2 border-darkKhaki">No items matching your search</p>
     </div>
-   
-
-   
   </div>
 </template>
 
@@ -61,9 +58,6 @@ import type { equipment, savingThrows } from '@/interfaces'
 import { ItemDisplay, ItemSearchbar } from '@/components/characterPageComponents'
 import { ref, watch } from 'vue'
 import { supabase } from '@/supabase'
-
-
-
 
 const props = defineProps({
   characterId: {
@@ -105,15 +99,9 @@ const currentItems = async () => {
       items.value = (data as { equipment: equipment[] }).equipment
     }
   }
+  console.log(items.value)
 }
 currentItems()
-watch((items), () => {
-  const removeOwnedItems = props.availableEquipment.filter((item) => {
-    return !items.value.some((ownedItem) => ownedItem.item === item.name)
-  })
-  console.log(removeOwnedItems)
-})
-
 
 // update the items in the database
 const updatedItem = async () => {
@@ -169,7 +157,10 @@ const addNewItem = (amount: number, i: number) => {
 watch(searchItem, () => {
   if (searchItem.value.length >= 2) {
     searched.value = true
-    const filteredEquipment = props.availableEquipment.filter((equipment) =>
+    const removeOwnedItems = props.availableEquipment.filter((item) => {
+      return !items.value.some((ownedItem) => ownedItem.item === item.name)
+    })
+    const filteredEquipment = removeOwnedItems.filter((equipment) =>
     equipment.name.toLowerCase().includes(searchItem.value.toLowerCase())
   )
   searchResult.value = filteredEquipment.map((item) => {
