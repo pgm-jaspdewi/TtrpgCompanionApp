@@ -69,6 +69,7 @@ export default {
         'innerContainer': 'calc(100vh - 30px)',
       },
       maxWidth: {
+        'editForm': '600px',
         'innerMaxWidth': '1430px',
         'maxWidth': '1440px',
       },

@@ -9,15 +9,14 @@
 
     <div :style="{ width: size + 'em' }" class="flex justify-center">
       <label
-        :class="{
-          'bg-paleGold text-darkKhaki': uploading,
-          'bg-maroon hover:bg-lightKhaki text-lightKhaki hover:text-maroon border-maroon':
-            !uploading
-        }"
-        class="text-sm border-2 py-1 px-2 mt-2 rounded-3xl flex items-center justify-between group cursor-pointer w-9/12 shadow-lg"
+        :class="[
+          uploading ? 'bg-paleGold text-darkKhaki': 'bg-maroon hover:bg-lightKhaki text-lightKhaki hover:text-maroon border-maroon',
+          editForm ? 'w-11/12' : 'w-9/12'
+        ]"
+        class="text-sm border-2 py-1 px-2 mt-2 rounded-3xl flex items-center justify-between group cursor-pointer shadow-lg"
         for="single"
       >
-        {{ uploading ? 'Uploading' : 'Add Image' }}
+        {{  uploading ? 'Uploading' : editForm ? 'Change Avatar' : 'Add Image'  }}
         <div
           :class="{
             'bg-darkKhaki': uploading,
@@ -60,6 +59,10 @@ const props = defineProps({
   size: {
     type: Number,
     default: 10
+  },
+  editForm: {
+    type: Boolean,
+    default: false
   }
 })
 
