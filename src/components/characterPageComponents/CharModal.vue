@@ -37,7 +37,7 @@
         <div class="flex flex-col items-center">
           <p class="mb-2">{{ damageRollContent? "The total damage you deal is:": "The total result of your roll is:" }}</p>
           <div class="border-2 border-darkKhaki rounded-lg bg-lightKhaki w-14 h-14 flex justify-center items-center mb-4 shadow-lg">
-            <p class="text-center text-2xl font-semibold">{{ rollTotal }}</p>
+            <p class="text-center text-2xl font-semibold">{{ damageTotalCalculated ? damageRollTotal : rollTotal }}</p>
           </div>
         </div>
         <div class="flex justify-center">
@@ -88,11 +88,6 @@
 
     </div>
     
-    
-    
-
-    
-
     <button
     @click="closeModal"
     class="absolute top-0 right-0 rounded-full w-8 h-8 flex justify-center items-center hover:bg-maroon group"
@@ -113,7 +108,8 @@ import { DiceRoll } from '@dice-roller/rpg-dice-roller'
 const modal = useModalStore()
 
 const d20 = new DiceRoll('1d20')
-const damageDice = new DiceRoll(modal.diceThrowInfo.damageDie)
+
+
 
 const rollName = ref(modal.diceThrowInfo.name)
 const rollResult = ref(0)
@@ -151,6 +147,7 @@ const rollDigitally = () => {
 }
 
 const rollDamageDigitally = () => {
+  const damageDice = new DiceRoll(modal.diceThrowInfo.damageDie)
   damageDice.roll()
   damageRollResult.value = damageDice.total
 }
@@ -180,6 +177,7 @@ const delayedDamageFunction = () => {
   setTimeout(() => {
   loading.value = true
   damageRollTotal.value = damageRollResult.value + modal.diceThrowInfo.bonus
+  console.log(damageRollTotal.value)
   damageTotalCalculated.value = true
   setTimeout(() => {
   loading.value = false
@@ -202,10 +200,13 @@ watch(damageRollResult, (newValue: number) => {
   const string = modal.diceThrowInfo.damageDie
   const parts = string.split('d')
   const maxValue = parseInt(parts[1])
+  console.log("max" + maxValue)
+  console.log("roll" + newValue)
   if (newValue < 0) {
     damageRollResult.value = 0
   } else if (newValue > maxValue) {
     damageRollResult.value = maxValue
+    console.log("test" + damageRollResult.value)
   }
   if (newValue > 0) {
     delayedDamageFunction()
