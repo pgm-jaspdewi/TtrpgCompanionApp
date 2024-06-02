@@ -167,7 +167,6 @@ const setupFunction = async () => {
   )
   characterWeaponList.value = filteredWeapons
   characterEquipment.value = otherEquipment
-  console.log(characterWeaponList.value)
 }
 setupFunction()
 

@@ -67,6 +67,5 @@ const amount = ref(props.item.amount)
 
 watch(() => props.item.amount, (newVal) => {
   amount.value = newVal
-  console.log('watcher', amount.value)
 })
 </script>

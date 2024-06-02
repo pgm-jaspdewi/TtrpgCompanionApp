@@ -216,7 +216,6 @@ const props = defineProps({
   }
 })
 
-console.log(props.character)
 
 // Fetch the necessary data for the character page and it's components
 const setupFunction = async () => {

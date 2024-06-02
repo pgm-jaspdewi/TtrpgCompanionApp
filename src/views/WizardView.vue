@@ -40,7 +40,6 @@ const router = useRouter()
 
 const doCancel = async () => {
   if (store.characterInfo.charAvatar !== '') {
-    console.log('deleting avatar')
     try {
       const { error } = await supabase.storage.from('avatars').remove([store.characterInfo.charAvatar])
       if (error) throw error

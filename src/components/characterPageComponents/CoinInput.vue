@@ -38,5 +38,4 @@ const props = defineProps({
 })
 const amount = ref(props.coinAmount)
 
-// console.log(props.index)
 </script>

@@ -78,7 +78,6 @@ getSkillStat()
 // Watch the stat value and update the modifier accordingly
 watch(stat, () => {
   statModifier.value = Math.floor((stat.value - 10) / 2)
-  // console.log(modifier.value)
 })
 
 // Return the skill modifier, which is the stat modifier with the proficiency bonus added if the character is proficient in the stat

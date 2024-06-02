@@ -200,7 +200,6 @@ const v$ = useVuelidate(rules, formData)
 const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
-    // console.log(formData)
     // filter out any nested arrays
     const filterArray = formData.selectedEquipment
       .map((i) => {

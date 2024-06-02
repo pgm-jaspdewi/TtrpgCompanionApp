@@ -53,7 +53,6 @@ const downloadImage = async () => {
 if (character.value.avatar !== '') downloadImage()
 
 const navigateToCharacter = () => {
-  console.log('navigate to character' + character.value.id)
   router.push(`/character/${character.value.id}`)
   // navigation logic goes here
 }

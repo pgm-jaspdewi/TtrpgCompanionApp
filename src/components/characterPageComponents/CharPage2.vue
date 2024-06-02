@@ -74,7 +74,6 @@ const setup = async () => {
   //  get list of all equipment from the API
   const fetchEquipment = await axios.get(import.meta.env.VITE_5E_API_URL + 'equipment')
   allEquipment.value = fetchEquipment.data.results
-  // console.log(allEquipment.value)
  
   // divide the equipment into weapons and other equipment
   const filteredWeapons = allEquipment.value.filter((equipment) =>

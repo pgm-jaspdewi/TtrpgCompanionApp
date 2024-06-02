@@ -99,7 +99,6 @@ const currentItems = async () => {
       items.value = (data as { equipment: equipment[] }).equipment
     }
   }
-  console.log(items.value)
 }
 currentItems()
 

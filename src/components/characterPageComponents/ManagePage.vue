@@ -87,9 +87,8 @@ watch([characterName, characterRace, characterAvatar], () => {
   changesMade.value = true
   pagesStore.setUnsavedChanges()
   pagesStore.setAvatars(props.character.avatar, characterAvatar.value)
-  console.log(characterAvatar.value)
-
 })
+
 // Delete the character from the database
 const deleteCharacter = () => {
   store.characterIdToDelete = props.character.id
