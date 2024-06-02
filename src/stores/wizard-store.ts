@@ -39,6 +39,10 @@ export const useWizardStore = defineStore('wizard-store', () => {
     hitpoints: 0
   })
 
+  function setImage(avatar: string) {
+    characterInfo.charAvatar = avatar
+  }
+
   function nextStep(formData: object) {
     const store = useWizardStore()
     store.$patch({
@@ -150,6 +154,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     step,
     charStats,
     characterInfo,
+    setImage,
     nextStep,
     prevStep,
     closeModal,

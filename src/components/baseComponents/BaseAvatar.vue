@@ -44,6 +44,9 @@ import { ref, toRefs, watch } from 'vue'
 import { supabase } from '@/supabase'
 import { FaPlus } from 'vue3-icons/fa'
 import BaseImage from '../baseComponents/BaseImage.vue'
+import { useWizardStore } from '@/stores/wizard-store'
+
+const store = useWizardStore()
 
 const props = defineProps({
   path: {
@@ -99,7 +102,7 @@ const uploadAvatar = async (evt: any) => {
     const file = files.value[0]
     const fileExt = file.name.split('.').pop()
     const filePath = `${Math.random()}.${fileExt}`
-
+    store.setImage(filePath)
     const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
 
     emit('update:path', filePath)

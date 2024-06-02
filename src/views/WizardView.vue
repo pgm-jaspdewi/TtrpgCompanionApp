@@ -30,12 +30,25 @@ import { WizardMain, WizardStatsModal } from '@/components/wizardComponents'
 import { useRouter } from 'vue-router'
 import { FaXmark } from 'vue3-icons/fa6'
 import { useModalStore } from '@/stores/modal-store'
+import { useWizardStore } from '@/stores/wizard-store'
+import { supabase } from '@/supabase'
 
+const store = useWizardStore()
 const modal = useModalStore()
 
 const router = useRouter()
 
-const doCancel = () => {
+const doCancel = async () => {
+  if (store.characterInfo.charAvatar !== '') {
+    console.log('deleting avatar')
+    try {
+      const { error } = await supabase.storage.from('avatars').remove([store.characterInfo.charAvatar])
+      if (error) throw error
+    } catch (error) {
+      console.error('Error removing image: ', (error as Error).message)
+    }
+  }
+  store.resetStore()
   router.push('/')
 }
 </script>
