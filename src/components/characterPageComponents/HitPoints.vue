@@ -8,10 +8,7 @@
       <h3 class="text-xl text-maroon font-bold">Hit points</h3>
       <div class="text-3xl flex justify-between items-center w-1/2">
         <p
-          :class="{
-            'text-redishBrown font-bold': actualHp <= character.maxHitPoints / 4,
-            'text-britishRacingGreen': actualHp > character.maxHitPoints / 4
-          }"
+          :class="actualHp <= character.maxHitPoints / 4 ? 'text-redishBrown font-bold' : 'text-britishRacingGreen'"
           class="w-2/5 text-left"
         >
           {{ actualHp }}
@@ -29,11 +26,7 @@
       <button
         :disabled="formData.hitPoints === 0"
         @click="submitHeal"
-        :class="{
-          'text-britishRacingGreen border-britishRacingGreen hover:bg-britishRacingGreen hover:text-paleGold':
-            formData.hitPoints > 0,
-          'text-britishRacingGreen/50 border-britishRacingGreen/50': formData.hitPoints === 0
-        }"
+        :class=" formData.hitPoints > 0 ? 'text-britishRacingGreen border-britishRacingGreen hover:bg-britishRacingGreen hover:text-paleGold' : 'text-britishRacingGreen/50 border-britishRacingGreen/50'"
         class="border-2 rounded-lg px-2 m-1 w-1/2"
       >
         Heal
@@ -47,11 +40,7 @@
       <button
         :disabled="formData.hitPoints === 0"
         @click="submitDamage"
-        :class="{
-          'text-redishBrown border-redishBrown hover:bg-redishBrown hover:text-paleGold':
-            formData.hitPoints > 0,
-          'text-redishBrown/50 border-redishBrown/50': formData.hitPoints === 0
-        }"
+        :class=" formData.hitPoints > 0 ? 'text-redishBrown border-redishBrown hover:bg-redishBrown hover:text-paleGold' : 'text-redishBrown/50 border-redishBrown/50'"
         class="border-2 rounded-lg px-2 m-1 w-1/2"
       >
         Damage

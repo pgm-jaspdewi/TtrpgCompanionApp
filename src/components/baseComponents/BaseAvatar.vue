@@ -18,17 +18,11 @@
       >
         {{  uploading ? 'Uploading' : editForm ? 'Change Avatar' : 'Add Image'  }}
         <div
-          :class="{
-            'bg-darkKhaki': uploading,
-            'bg-lightKhaki group-hover:bg-maroon ': !uploading
-          }"
+          :class=" uploading ? 'bg-darkKhaki': 'bg-lightKhaki group-hover:bg-maroon'"
           class="rounded-full w-5 h-5 flex justify-center items-center"
         >
           <FaPlus
-            :class="{
-              'fill-paleGold': uploading,
-              'fill-maroon group-hover:fill-lightKhaki': !uploading
-            }"
+            :class=" uploading ? 'fill-paleGold' : 'fill-maroon group-hover:fill-lightKhaki'"
             class="w-4 h-4"
           />
         </div>

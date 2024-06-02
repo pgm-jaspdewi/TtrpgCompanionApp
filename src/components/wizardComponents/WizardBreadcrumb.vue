@@ -3,7 +3,7 @@
     <p class="mb-1 text-xs">{{ text }}</p>
     <div
       class="border-3 rounded-full h-5 w-5 border-maroon"
-      v-bind:class="{ 'bg-maroon': nr === step, 'bg-lightKhaki': nr !== step }"
+      v-bind:class=" nr === step ?  'bg-maroon' :'bg-lightKhaki'"
     ></div>
   </div>
 </template>
