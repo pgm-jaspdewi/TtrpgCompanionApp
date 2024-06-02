@@ -37,7 +37,7 @@ const currentCoins = async () => {
     .eq('id', props.characterId)
     .single()
   if (error) {
-    console.error('Error getting current hit points:', error)
+    console.error('Error:', error)
   } else {
     coins.value = data.wealth
   }
@@ -51,7 +51,7 @@ const updatedCoin = async () => {
     .eq('id', props.characterId)
     .single()
   if (error) {
-    console.error('Error getting current hit points:', error)
+    console.error('Error:', error)
   }
 }
 

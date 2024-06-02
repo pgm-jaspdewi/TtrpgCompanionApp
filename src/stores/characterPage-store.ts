@@ -6,9 +6,11 @@ export const useCharPageStore = defineStore('charPageStore', () => {
 
   // This is a flag to check if any changes were made to the character on the manage page and wether they were saved or not
   const unsavedChanges = ref(false)
-  //
+  // These are the avatars that are being changed
   const oldAvatar = ref('')
   const newAvatar = ref('')
+
+  const refreshNecessary = ref(false)
 
   function setStep(newStep: number) {
     step.value = newStep
@@ -28,13 +30,19 @@ export const useCharPageStore = defineStore('charPageStore', () => {
     }
   }
 
+  function setRefreshNecessary() {
+    refreshNecessary.value = !refreshNecessary.value
+  }
+
   return {
     step,
     unsavedChanges,
     oldAvatar,
     newAvatar,
+    refreshNecessary,
     setStep,
     setUnsavedChanges,
-    setAvatars
+    setAvatars,
+    setRefreshNecessary
   }
 })

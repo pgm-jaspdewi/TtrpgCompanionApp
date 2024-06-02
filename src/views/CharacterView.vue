@@ -99,4 +99,9 @@ watch(() => [store.unsavedChanges , store.step], async () => {
     }
   }
 })
+
+// Watch for changes in the store that indicate that the character data needs to be refreshed
+watch(() => store.refreshNecessary, () => {
+  getCharacterData()
+})
 </script>

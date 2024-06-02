@@ -58,6 +58,7 @@ import { useModalStore } from '@/stores/modal-store'
 import { ref, watch } from 'vue';
 import axios from 'axios';
 import { useCharPageStore } from '@/stores/characterPage-store';
+import { supabase } from '@/supabase';
 
 const modal = useModalStore()
 const store = useCharListStore()
@@ -81,6 +82,7 @@ const setup = async () => {
 }
 setup()
 
+//  watch for changes in the form
 watch([characterName, characterRace, characterAvatar], () => {
   changesMade.value = true
   pagesStore.setUnsavedChanges()
@@ -88,21 +90,44 @@ watch([characterName, characterRace, characterAvatar], () => {
   console.log(characterAvatar.value)
 
 })
-
+// Delete the character from the database
 const deleteCharacter = () => {
   store.characterIdToDelete = props.character.id
   store.characterAvatarToDelete = props.character.avatar
   modal.toggleDeleteModal()
 }
 
-
-const handleSubmit = () => {
-  console.log('submit' + characterName.value)
-  changesMade.value = false
-  pagesStore.setUnsavedChanges()
+// Update the character in the database
+const updateCharacter = async () => {
+  const { error } = await supabase
+    .from('characters')
+    .update({ 
+      name: characterName.value,
+      race: characterRace.value,
+      avatar: characterAvatar.value
+      })
+    .eq('id', props.character.id)
+    .single()
+  if (error) {
+    console.error('Error:', error)
+  }
 }
 
-watch(() => pagesStore.step, (newValue) => {
-  console.log('step changed to: ' + newValue)
-})
+// Remove the old avatar from the storage
+const removeOldAvatar = async () => {
+  const oldAvatar = props.character.avatar
+  const { error } = await supabase.storage.from('avatars').remove([oldAvatar])
+  if (error) {
+    console.error('Error:', error)
+  }
+}
+
+
+const handleSubmit = () => {
+  removeOldAvatar()
+  updateCharacter()
+  changesMade.value = false
+  pagesStore.setUnsavedChanges()
+  pagesStore.setRefreshNecessary()
+}
 </script>
