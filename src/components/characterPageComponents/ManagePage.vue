@@ -24,6 +24,17 @@
             </div>
           </div>
         </div>
+        <div class="flex items-center justify-center">
+          <BaseButton
+          v-if="changesMade"
+          @click="handleSubmit"
+          btnContent="Update Character"
+          class="bg-maroon hover:bg-lightKhaki text-lightKhaki hover:text-maroon"
+          >
+            <FaFilePen class="fill-maroon group-hover:fill-lightKhaki w-4 h-4"/>
+          </BaseButton>
+        </div>
+        
       </form>
     </div>
 
@@ -34,20 +45,23 @@
       </BaseButton>
     </div>
 
+    
   </div>
 </template>
 
 <script setup lang="ts">
 import type { characterDetails } from '@/interfaces';
 import {BaseButton, BaseInput, BaseAvatar, BaseSelect} from '@/components/baseComponents';
-import { FaTrash } from 'vue3-icons/fa6'
+import { FaTrash, FaFilePen } from 'vue3-icons/fa6'
 import { useCharListStore } from '@/stores/charList-store'
 import { useModalStore } from '@/stores/modal-store'
 import { ref, watch } from 'vue';
 import axios from 'axios';
+import { useCharPageStore } from '@/stores/characterPage-store';
 
 const modal = useModalStore()
 const store = useCharListStore()
+const pagesStore = useCharPageStore()
 
 const props = defineProps({
   character: {
@@ -59,7 +73,7 @@ const characterAvatar = ref(props.character.avatar)
 const characterName = ref(props.character.name)
 const characterRace = ref(props.character.race)
 const allRaces = ref([])
-const showUpdateButton = ref(false)
+const changesMade = ref(false)
 
 const setup = async () => {
   const fetchRaces = await axios.get(import.meta.env.VITE_5E_API_URL + 'races')
@@ -67,9 +81,12 @@ const setup = async () => {
 }
 setup()
 
-watch(characterName, (newValue) => {
-  console.log('new value: ' + newValue)
-  showUpdateButton.value = true
+watch([characterName, characterRace, characterAvatar], () => {
+  changesMade.value = true
+  pagesStore.setUnsavedChanges()
+  pagesStore.setAvatars(props.character.avatar, characterAvatar.value)
+  console.log(characterAvatar.value)
+
 })
 
 const deleteCharacter = () => {
@@ -81,5 +98,11 @@ const deleteCharacter = () => {
 
 const handleSubmit = () => {
   console.log('submit' + characterName.value)
+  changesMade.value = false
+  pagesStore.setUnsavedChanges()
 }
+
+watch(() => pagesStore.step, (newValue) => {
+  console.log('step changed to: ' + newValue)
+})
 </script>

@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import type { characterDetails } from '@/interfaces'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { supabase } from '@/supabase'
 import { BasePageBorders, BaseModal  } from '@/components/baseComponents'
@@ -87,4 +87,16 @@ const getCharacterData = async () => {
   }
 }
 getCharacterData()
+
+// Watch for changes in the charPageStore that point to unused images in the storage-bucket & remove those images when necessary
+watch(() => [store.unsavedChanges , store.step], async () => {
+  if (store.unsavedChanges && store.step !== 4) {
+    try {
+      const { error } = await supabase.storage.from('avatars').remove([store.newAvatar])
+      if (error) throw error
+    } catch (error) {
+      console.error('Error removing image: ', (error as Error).message)
+    }
+  }
+})
 </script>

@@ -79,7 +79,7 @@ const downloadImage = async () => {
 }
 
 const uploadAvatar = async (evt: any) => {
-  if (path.value !== '') {
+  if (path.value !== '' && !props.editForm) {
     // Remove the existing image before uploading a new one to avoid cluttering the storage-bucket
     try {
       const { error } = await supabase.storage.from('avatars').remove([path.value])
