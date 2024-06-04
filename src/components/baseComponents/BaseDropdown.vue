@@ -1,6 +1,6 @@
 <template>
 
-  <section class="z-50 relative">
+  <section class="z-50 relative mr-5">
 
     <button class="flex items-center group" @click="openClose">
       <p class="text-xl text-darkKhaki mr-2 group-hover:text-maroon"> {{ menuTitle }}</p>

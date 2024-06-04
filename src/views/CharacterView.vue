@@ -30,7 +30,7 @@
 
         <CharPage2 v-if="store.step === 2" :character="character" />
 
-        <CharPage3 v-if="store.step === 3" :character="character"/>
+        <CharPage3 v-if="store.step === 3" :character="character" :spellList="spellList"/>
 
         <ManagePage v-if="store.step === 4" :character="character" />
       </CharacterPageBorders>
