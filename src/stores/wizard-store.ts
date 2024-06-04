@@ -34,6 +34,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     backgroundLanguages: [] as string[],
     selectedCantrips: [] as string[],
     selected1stLvlSpells: [] as string[],
+    selectedSpells: [] as { name: string; level: number }[],
     selectedEquipment: [] as equipment[],
     standardEquipment: [] as equipment[],
     hitpoints: 0
@@ -93,6 +94,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
         backgroundLanguages: [] as string[],
         selectedCantrips: [] as string[],
         selected1stLvlSpells: [] as string[],
+        selectedSpells: [] as { name: string; level: number }[],
         selectedEquipment: [] as equipment[],
         standardEquipment: [] as equipment[],
         hitpoints: 0
@@ -124,8 +126,9 @@ export const useWizardStore = defineStore('wizard-store', () => {
           background: characterInfo.charBackground,
           skills: characterInfo.skillProficiencies,
           languages: [...characterInfo.racialLanguages, ...characterInfo.languageProficiencies],
-          cantrips: characterInfo.selectedCantrips,
-          first_level_spells: characterInfo.selected1stLvlSpells,
+          // cantrips: characterInfo.selectedCantrips,
+          // first_level_spells: characterInfo.selected1stLvlSpells,
+          spells: characterInfo.selectedSpells,
           equipment: items,
           weapons: weapons,
           level: 1,

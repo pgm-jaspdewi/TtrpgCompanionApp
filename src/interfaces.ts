@@ -75,6 +75,11 @@ export interface weaponDetails {
   attack_bonus: number
 }
 
+export interface simplifiedSpell {
+  name: string
+  level: number
+}
+
 export interface spell {
   index: string
   name: string

@@ -45,7 +45,7 @@
       :item="item"
       :index="index"
       :searchResults="true"
-    />
+      />
     </div>
     <div v-if="searched && searchResult.length === 0">
       <p class="p-2 pl-4 my-2 border-y-2 border-darkKhaki">No items matching your search</p>
@@ -103,7 +103,7 @@ const currentItems = async () => {
 currentItems()
 
 // update the items in the database
-const updatedItem = async () => {
+const updateItemDB = async () => {
   if (selector === 'weapons') {
     const { error } = await supabase
       .from('characters')
@@ -133,20 +133,20 @@ const updateItem = (newAmount: number, i: number) => {
     return item
   })
   items.value = updatedItems
-  updatedItem()
+  updateItemDB()
 }
 
 const deleteItem = (i: number) => {
   const updatedItems = items.value.filter((item, index) => index !== i)
   items.value = updatedItems
-  updatedItem()
+  updateItemDB()
 }
 
 const addNewItem = (amount: number, i: number) => {
   const newItem = searchResult.value[i]
   newItem.amount = amount
   items.value = [...items.value, newItem]
-  updatedItem()
+  updateItemDB()
   searchResult.value = []
   searchItem.value = ''
   searched.value = false

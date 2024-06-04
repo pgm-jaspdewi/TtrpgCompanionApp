@@ -14,7 +14,7 @@
       <option
         v-for="item in options"
         :key="item.index"
-        :value="item.index"
+        :value="spellSelect? item.name : item.index"
         :selected="item.index === modelValue"
       >
         {{ item.name }}
@@ -40,10 +40,14 @@ defineProps({
   },
   // options prop is required, it is the options for the select element
   options: {
-    type: Array as () => Array<{ index: string; name: string }>,
+    type: Array as () => Array<{ index: string; name: string; level?: number; url?: string}>,
     required: true
   },
   smallFormMode: {
+    type: Boolean,
+    default: false
+  },
+  spellSelect: {
     type: Boolean,
     default: false
   }

@@ -39,6 +39,7 @@
             v-model="selectedCantrips[index]"
             :options="cantrips"
             :smallFormMode="true"
+            :spellSelect="true"
             class="m-2"
           />
         </div>
@@ -48,10 +49,11 @@
         <div class="border-2 border-darkKhaki rounded-lg">
           <BaseSelect
             v-for="(spell, index) in spellSlots"
-            :key="'cantrip' + index"
+            :key="'spell' + index"
             v-model="selectedSpells[index]"
             :options="firstLevelSpells"
             :smallFormMode="true"
+            :spellSelect="true"
             class="m-2"
           />
         </div>
@@ -150,9 +152,17 @@ const selectedSpells = ref(v$.value.selectedSpells.$model)
 const handleSubmit = async () => {
   const result = await v$.value.$validate()
   if (result) {
+    const cantrips = selectedCantrips.value.map((cantrip: string) => {
+      return { name: cantrip, level: 0 }
+    })
+    const spells = selectedSpells.value.map((spell: string) => {
+      return { name: spell, level: 1 }
+    })
+
     store.nextStep({
       selectedCantrips: formData.selectedCantrips,
-      selected1stLvlSpells: formData.selectedSpells
+      selected1stLvlSpells: formData.selectedSpells,
+      selectedSpells: [...cantrips, ...spells]
     })
   }
 }

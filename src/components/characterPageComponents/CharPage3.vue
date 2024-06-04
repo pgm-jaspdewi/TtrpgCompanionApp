@@ -24,58 +24,18 @@
     
     <!-- second row cantrips -> level 4 -->
     <div class="flex flex-col tablet:flex-row tablet:flex-wrap justify-center">
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        Cantrips
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 1 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 2 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 3 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 4 spells
-      </div>
-
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 5 spells
-      </div>
-
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 6 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 7 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 8 spells
-      </div>
-      <div
-        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
-      >
-        level 9 spells
-      </div>
+      <LeveledSpellsList :spells="availableSpellsCantrips" :character="{id: character.id, name: character.name}" title="Cantrips" :spellLevel="0"/>
+      
+      <LeveledSpellsList :spells="availableSpellsLevel1" :character="{id: character.id, name: character.name}" title="1st level spells" :spellLevel="1"/>
+      <LeveledSpellsList :spells="availableSpellsLevel2" :character="{id: character.id, name: character.name}" title="2nd level spells" :spellLevel="2"/>
+      <LeveledSpellsList :spells="availableSpellsLevel3" :character="{id: character.id, name: character.name}" title="3rd level spells" :spellLevel="3"/>
+      <LeveledSpellsList :spells="availableSpellsLevel4" :character="{id: character.id, name: character.name}" title="4th level spells" :spellLevel="4"/>
+      <LeveledSpellsList :spells="availableSpellsLevel5" :character="{id: character.id, name: character.name}" title="5th level spells" :spellLevel="5"/>
+      <LeveledSpellsList :spells="availableSpellsLevel6" :character="{id: character.id, name: character.name}" title="6th level spells" :spellLevel="6"/>
+      <LeveledSpellsList :spells="availableSpellsLevel7" :character="{id: character.id, name: character.name}" title="7th level spells" :spellLevel="7"/>
+      <LeveledSpellsList :spells="availableSpellsLevel8" :character="{id: character.id, name: character.name}" title="8th level spells" :spellLevel="8"/>
+      <LeveledSpellsList :spells="availableSpellsLevel9" :character="{id: character.id, name: character.name}" title="9th level spells" :spellLevel="9"/>
+    
     </div>
 
   </div>
@@ -85,6 +45,7 @@
 import type { characterDetails, characterStats, savingThrows, spell } from '@/interfaces';
 import axios from 'axios';
 import { computed, ref, watch } from 'vue';
+import LeveledSpellsList from './LeveledSpellsList.vue';
  
 const props = defineProps({
   character: {
