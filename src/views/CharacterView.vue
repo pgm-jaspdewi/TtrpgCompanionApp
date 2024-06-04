@@ -7,6 +7,13 @@
     </BasePageBorders>
   </div>
   <div v-if="character != null" class="static">
+    <div class="max-w-maxWidth mx-auto my-5 flex justify-end">
+      <BaseDropdown :menuTitle="user"> 
+        <p class="text-xl text-darkKhaki hover:text-maroon hover:font-bold cursor-pointer border-b-2 border-darkKhaki py-2" @click="goHome">Home</p>
+        <p class="text-xl text-darkKhaki hover:text-maroon hover:font-bold cursor-pointer py-2" @click="doLogout">Logout</p>
+
+      </BaseDropdown>
+    </div>
     <div
       class="absolute top-16 h-8 z-10 right-navBtnXs tabletLg:right-navBtnSm laptopSm:right-navBtnMd laptopLg:right-navBtnLg w-navButtons flex justify-between laptopSm:mr-navButtonsSpacingSm laptopLg:mr-navButtonsSpacing"
     >
@@ -40,7 +47,7 @@
 <script setup lang="ts">
 import type { characterDetails } from '@/interfaces'
 import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { supabase } from '@/supabase'
 import { BasePageBorders, BaseModal  } from '@/components/baseComponents'
 import { DeleteModal } from '@/components/landingComponents'
@@ -55,6 +62,13 @@ import {
 } from '@/components/characterPageComponents'
 import { useCharPageStore } from '@/stores/characterPage-store'
 import { useModalStore } from '@/stores/modal-store'
+import BaseDropdown from '@/components/baseComponents/BaseDropdown.vue'
+import { useAuthStore } from '@/stores/auth-store'
+
+// get the logout function from the auth store
+const { logout } = useAuthStore()
+
+const router = useRouter()
 
 const modal = useModalStore()
 const store = useCharPageStore()
@@ -62,6 +76,7 @@ const route = useRoute()
 
 // Get the character id from the route params
 const characterId = route.params.id
+const user = ref('')
 
 // Fetch the character data from the API
 const character = ref<characterDetails | null>(null)
@@ -71,6 +86,7 @@ const getCharacterData = async () => {
   if (error) {
     console.error('Error getting user:', error.message)
   } else {
+    user.value = data.user.user_metadata.username
     const id = data.user.id
     // get the character from the database
     const { data: charactersData, error: charactersError } = await supabase
@@ -104,4 +120,18 @@ watch(() => [store.unsavedChanges , store.step], async () => {
 watch(() => store.refreshNecessary, () => {
   getCharacterData()
 })
+
+// logout function
+const doLogout = async () => {
+  const { error } = await logout()
+  if (error) {
+    console.error('Error logging out:', error.message)
+  }
+  router.replace('/login')
+}
+
+// route to the landing page
+const goHome = () => {
+  router.push('/')
+}
 </script>
