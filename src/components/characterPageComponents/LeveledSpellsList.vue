@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-2 border-darkKhaki rounded-lg tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6  m-1"
+    class="border-2 border-darkKhaki rounded-lg tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6  m-1 shadow-lg"
   >
   <div class="flex flex-col items-center h-full">
     <h2 class="text-lg text-maroon font-bold py-1">{{ title }}</h2>
