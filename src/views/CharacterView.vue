@@ -19,7 +19,7 @@
     >
       <NavButton btnContent="Character" :step="1" />
       <NavButton btnContent="Inventory" :step="2" />
-      <NavButton btnContent="Spell-list" :step="3" />
+      <NavButtonSpells btnContent="Spell-list" :step="3" :spellcaster="spellCaster"/>
       <NavButton btnContent="Manage" :step="4" />
     </div>
     <div
@@ -30,7 +30,7 @@
 
         <CharPage2 v-if="store.step === 2" :character="character" />
 
-        <CharPage3 v-if="store.step === 3" />
+        <CharPage3 v-if="store.step === 3" :character="character"/>
 
         <ManagePage v-if="store.step === 4" :character="character" />
       </CharacterPageBorders>
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import type { characterDetails } from '@/interfaces'
+import type { characterDetails, spell } from '@/interfaces'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { supabase } from '@/supabase'
@@ -55,6 +55,7 @@ import {
   CharacterPageBorders,
   CharModal,
   NavButton,
+  NavButtonSpells,
   CharPage1,
   CharPage2,
   CharPage3,
@@ -64,6 +65,7 @@ import { useCharPageStore } from '@/stores/characterPage-store'
 import { useModalStore } from '@/stores/modal-store'
 import BaseDropdown from '@/components/baseComponents/BaseDropdown.vue'
 import { useAuthStore } from '@/stores/auth-store'
+import axios from 'axios'
 
 // get the logout function from the auth store
 const { logout } = useAuthStore()
@@ -77,6 +79,8 @@ const route = useRoute()
 // Get the character id from the route params
 const characterId = route.params.id
 const user = ref('')
+const spellCaster = ref(true)
+const spellList = ref<spell[]>([])
 
 // Fetch the character data from the API
 const character = ref<characterDetails | null>(null)
@@ -99,6 +103,20 @@ const getCharacterData = async () => {
       console.error('Error getting characters:', charactersError.message)
     } else {
       character.value = charactersData
+    }
+    // get a spell-list based on the character class
+    if (character.value !== null) {
+      // get a spell-list based on the character class
+      const fetchSpellList = await axios.get(
+      import.meta.env.VITE_5E_API_URL + 'classes/' + character.value.class + '/spells'
+      )
+      if (fetchSpellList.data.count === 0) {
+        spellCaster.value = false
+      } else {
+        spellCaster.value = true
+        spellList.value = fetchSpellList.data.results
+      }
+      
     }
   }
 }

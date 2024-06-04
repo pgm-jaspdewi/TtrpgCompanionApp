@@ -19,6 +19,7 @@ const props = defineProps({
     type: Number,
     required: true
   }
+
 })
 
 import { useCharPageStore } from '@/stores/characterPage-store'

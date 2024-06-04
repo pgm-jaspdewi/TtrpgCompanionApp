@@ -74,3 +74,10 @@ export interface weaponDetails {
   range: string
   attack_bonus: number
 }
+
+export interface spell {
+  index: string
+  name: string
+  level: number
+  url: string
+}

@@ -15,6 +15,7 @@ import ItemSearchbar from './ItemSearchbar.vue'
 import ItemsOwned from './ItemsOwned.vue'
 import ManagePage from './ManagePage.vue'
 import NavButton from './NavButton.vue'
+import NavButtonSpells from './NavButtonSpells.vue'
 import PassivePerception from './PassivePerception.vue'
 import ProficiencyBonus from './ProficiencyBonus.vue'
 import SavingThrow from './SavingThrow.vue'
@@ -38,6 +39,7 @@ export {
   ItemsOwned,
   ManagePage,
   NavButton,
+  NavButtonSpells,
   PassivePerception,
   ProficiencyBonus,
   SavingThrow,
