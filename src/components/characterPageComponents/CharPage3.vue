@@ -102,15 +102,12 @@ const spellCastAbility = ref<savingThrows>()
 const spellCastingStat = ref<number>()
 const spellModifier = ref<number>()
 const spellSaveDC = ref<number>()
-// console.log(props.character.stats)
 
 const setup = async () => {
   const characterClass = await axios.get(
     import.meta.env.VITE_5E_API_URL + 'classes/' + props.character.class
   )
-  // console.log(characterClass.data)
   spellCastAbility.value = characterClass.data.spellcasting.spellcasting_ability
-  // console.log(spellCastAbility.value)
   const jsonObject: characterStats = props.character.stats
   if (!spellCastAbility.value) {
     console.log('no spellcasting ability')
@@ -123,12 +120,10 @@ const setup = async () => {
 }
 setup()
 
-// Calculate the proficiency bonus according to the dnd rules
 const proficiencyBonus = computed(() => {
   return Math.floor((props.character.level - 1) / 4) + 2
 })
 
-// Calculate the spell modifier according to the dnd rules
 watch(spellCastingStat, () => {
   const modifier = computed(() => {
     if (!spellCastingStat.value) {
@@ -141,7 +136,36 @@ spellModifier.value = modifier.value
 spellSaveDC.value = 8 + proficiencyBonus.value + spellModifier.value
 })
 
-
-
+// sort spells by level
+const availableSpellsCantrips = computed(() => {
+  return props.spellList.filter(spell => spell.level === 0)
+})
+const availableSpellsLevel1 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 1)
+})
+const availableSpellsLevel2 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 2)
+})
+const availableSpellsLevel3 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 3)
+})
+const availableSpellsLevel4 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 4)
+})
+const availableSpellsLevel5 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 5)
+})
+const availableSpellsLevel6 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 6)
+})
+const availableSpellsLevel7 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 7)
+})
+const availableSpellsLevel8 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 8)
+})
+const availableSpellsLevel9 = computed(() => {
+  return props.spellList.filter(spell => spell.level === 9)
+})
 
 </script>
