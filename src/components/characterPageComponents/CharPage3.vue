@@ -21,81 +21,60 @@
         </div>
       </div>
     </div>
-
-    <!-- second row -->
-    <div class="flex flex-col laptopLg:flex-row laptopLg:items-end">
-      <!-- spell slots & cantrips -->
-      <div class="flex flex-col tablet:flex-row mx-7 mb-4 justify-between tablet:items-end laptopLg:w-1/2 laptopLg:mr-1">
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-80 tablet:w-1/2 flex justify-center items-center"
-        >
-          Spell slots
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Cantrips
-        </div>
+    
+    <!-- second row cantrips -> level 4 -->
+    <div class="flex flex-col tablet:flex-row tablet:flex-wrap justify-center">
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        Cantrips
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 1 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 2 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 3 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 4 spells
       </div>
 
-      <!-- spells level 1 - 3 -->
-      <div class="flex flex-col tablet:flex-row mx-7 mb-4 justify-between laptopLg:w-1/2 laptopLg:ml-1">
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 1 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 2 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 3 spells
-        </div>
-      </div>
-    </div>
-
-    <!-- third row -->
-    <div class="flex flex-col laptopLg:flex-row laptopLg:items-end">
-      <!-- spells level 4 - 6 -->
-      <div class="flex flex-col tablet:flex-row  mx-7 mb-4 justify-between laptopLg:w-1/2 laptopLg:mr-1">
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 4 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 5 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 6 spells
-        </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 5 spells
       </div>
 
-      <!-- spells level 7 - 9 -->
-      <div class="flex flex-col tablet:flex-row  mx-7 mb-4 justify-between laptopLg:w-1/2 laptopLg:ml-1">
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 7 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 8 spells
-        </div>
-        <div
-          class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-1/3 flex justify-center items-center mx-1"
-        >
-          Level 9 spells
-        </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 6 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 7 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 8 spells
+      </div>
+      <div
+        class="border-2 border-darkKhaki rounded-lg h-72 tablet:w-2/5 tabletLg:w-3/12 laptopLg:w-1/6 flex justify-center items-center m-1"
+      >
+        level 9 spells
       </div>
     </div>
 
