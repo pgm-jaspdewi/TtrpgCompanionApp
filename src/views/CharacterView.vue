@@ -7,7 +7,38 @@
     </BasePageBorders>
   </div>
   <div v-if="character != null" class="static">
-    <div class="max-w-maxWidth mx-auto my-5 flex justify-end">
+    <div class="max-w-maxWidth mx-auto my-5 flex justify-between tablet:justify-end">
+      <!-- dropdown navigation for smartphone-sized screens -->
+      <BaseDropdown :menuTitle="'Navigate'" class="tablet:hidden" :mirror="true">
+        <p 
+        :class="store.step === 1 ? 'text-maroon font-bold' : 'text-darkKhaki'"
+        class="text-xl border-b-2 border-darkKhaki hover:text-maroon hover:font-bold cursor-pointer py-2" 
+        @click="handleClick(1)"
+        >
+          Character
+        </p>
+        <p 
+        :class="store.step === 2 ? 'text-maroon font-bold' : 'text-darkKhaki'"
+        class="text-xl border-b-2 border-darkKhaki hover:text-maroon hover:font-bold cursor-pointer py-2" 
+        @click="handleClick(2)"
+        >
+        Inventory
+        </p>
+        <p v-if="spellCaster"
+        :class="store.step === 3 ? 'text-maroon font-bold' : 'text-darkKhaki'"
+        class="text-xl hover:text-maroon hover:font-bold cursor-pointer border-b-2 border-darkKhaki py-2" 
+        @click="handleClick(3)"
+        >
+          Spell-list
+        </p>
+        <p 
+        :class="store.step === 4 ? 'text-maroon font-bold' : 'text-darkKhaki'"
+        class="text-xl text-darkKhaki hover:text-maroon hover:font-bold cursor-pointer py-2" 
+        @click="handleClick(4)"
+        >
+        Manage
+        </p>
+      </BaseDropdown>
       <BaseDropdown :menuTitle="user"> 
         <p class="text-xl text-darkKhaki hover:text-maroon hover:font-bold cursor-pointer border-b-2 border-darkKhaki py-2" @click="goHome">Home</p>
         <p class="text-xl text-darkKhaki hover:text-maroon hover:font-bold cursor-pointer py-2" @click="doLogout">Logout</p>
@@ -15,7 +46,7 @@
       </BaseDropdown>
     </div>
     <div
-      class="absolute top-16 h-8 z-10 right-navBtnXs tabletLg:right-navBtnSm laptopSm:right-navBtnMd laptopLg:right-navBtnLg w-navButtons flex justify-between laptopSm:mr-navButtonsSpacingSm laptopLg:mr-navButtonsSpacing"
+      class="invisible tablet:visible absolute top-16 h-8 z-10 right-navBtnXs tabletLg:right-navBtnSm laptopSm:right-navBtnMd laptopLg:right-navBtnLg w-navButtons flex justify-between laptopSm:mr-navButtonsSpacingSm laptopLg:mr-navButtonsSpacing"
     >
       <NavButton btnContent="Character" :step="1" />
       <NavButton btnContent="Inventory" :step="2" />
@@ -146,6 +177,10 @@ const doLogout = async () => {
     console.error('Error logging out:', error.message)
   }
   router.replace('/login')
+}
+
+const handleClick = (i: number) => {
+  store.setStep(i)
 }
 
 // route to the landing page

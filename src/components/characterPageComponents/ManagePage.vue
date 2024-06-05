@@ -3,14 +3,14 @@
     <div class="m-2 mb-6 pb-4 border-b-2 border-silverChalice">
       <h2 class="text-2xl text-maroon font-bold">Edit character</h2>
       <form @submit.prevent="handleSubmit" class="flex flex-col justify-between max-w-editForm">
-        <div class="flex my-6 mt-8">
-          <div class="w-5/12 flex justify-center">
+        <div class="flex flex-col tablet:flex-row my-6 mt-8">
+          <div class="w-full tablet:w-5/12 flex justify-center">
             <div>
               <BaseAvatar v-model:path="characterAvatar" :editForm="true"/>
               
             </div>
           </div>
-          <div class="w-7/12 pr-10">
+          <div class="w-full tablet:w-7/12 pt-10 tablet:pt-0 tablet:pr-10">
             <div class="mb-2">
               <BaseInput v-model="characterName" label="Character Name" id="charName" />
             </div>
