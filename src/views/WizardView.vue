@@ -16,10 +16,11 @@
       >
         <FaXmark class="fill-maroon group-hover:fill-lightKhaki w-6 h-6" />
       </button>
-    </BasePageBorders>
-    <BaseModal :modalActive="modal.statModal">
+      <BaseModal :modalActive="modal.statModal">
       <WizardStatsModal />
     </BaseModal>
+    </BasePageBorders>
+   
   </main>
 </template>
 

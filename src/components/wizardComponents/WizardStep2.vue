@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="h-form flex flex-col justify-between">
-    <div class="flex align-middle justify-center items-center mt-8">
+  <form @submit.prevent="handleSubmit" class="tablet:h-form flex flex-col justify-between">
+    <div class="flex flex-col tablet:flex-row align-middle justify-center items-center mt-8">
       <div>
         <BaseLabel pl="small"> Fill in stats </BaseLabel>
         <div class="flex space-x-1">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="flex flex-col items-center mt-4">
-      <div class="mb-2 w-7/12">
+      <div class="mb-2 w-full tablet:w-7/12">
         <BaseSelect
           label="Character Class"
           v-model="v$.charClass.$model"
@@ -34,7 +34,7 @@
           {{ error.$message }}
         </span>
       </div>
-      <div class="mb-4 w-7/12">
+      <div class="mb-4  w-full tablet:w-7/12">
         <BaseSelect
           label="Character Background"
           v-model="v$.charBackground.$model"

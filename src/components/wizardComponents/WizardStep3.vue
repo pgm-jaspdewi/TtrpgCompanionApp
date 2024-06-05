@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="h-form flex flex-col justify-between">
-    <div class="flex justify-between pb-6 mt-8">
-      <div class="w-5/12 pl-4">
+  <form @submit.prevent="handleSubmit" class="tablet:h-form flex flex-col justify-between">
+    <div class="flex flex-col tablet:flex-row justify-between pb-6 mt-8">
+      <div class="tablet:w-5/12 tablet:pl-4">
         <BaseLabel pl="small">Skill proficiencies</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">
           <BaseLabel pl="small" class="pt-1 text-maroon text-xs">Background skills:</BaseLabel>
@@ -33,7 +33,7 @@
           /> -->
         </div>
       </div>
-      <div class="w-5/12 pr-4">
+      <div class="mt-4 tablet:mt-0 tablet:w-5/12 tablet:pr-4">
         <!-- 
           Tool proficiency is only available with one or two classes and has no direct impact on gameplay, 
           therefore it can be ignored for now. 

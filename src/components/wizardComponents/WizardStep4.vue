@@ -1,5 +1,5 @@
 <template>
-  <div v-if="noSpellcasting" class="h-form flex flex-col justify-between">
+  <div v-if="noSpellcasting" class="tablet:h-form flex flex-col justify-between">
     <div class="flex justify-center mt-24">
       <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
         <p class="text-center">
@@ -12,7 +12,7 @@
     <WizardNav :formButton="false" />
   </div>
 
-  <div v-if="!noSpellcasting && !spellcastingAtLvl1" class="h-form flex flex-col justify-between">
+  <div v-if="!noSpellcasting && !spellcastingAtLvl1" class="tablet:h-form flex flex-col justify-between">
     <div class="flex justify-center mt-24">
       <div class="border-2 border-darkKhaki w-5/6 p-4 m-4 rounded-lg">
         <p class="text-center">
@@ -27,10 +27,10 @@
   <form
     v-if="spellcastingAtLvl1"
     @submit.prevent="handleSubmit"
-    class="h-form flex flex-col justify-between"
+    class="tablet:h-form flex flex-col justify-between"
   >
-    <div class="flex justify-between pb-6 mt-8">
-      <div class="w-6/12 pl-10 pr-6">
+    <div class="flex flex-col tablet:flex-row justify-between pb-6 mt-8">
+      <div class="tablet:w-6/12 tablet:pl-10 tablet:pr-6">
         <BaseLabel pl="small">Cantrips</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">
           <BaseSelect
@@ -44,7 +44,7 @@
           />
         </div>
       </div>
-      <div class="w-6/12 pr-10 pl-6">
+      <div class="mt-4 tablet:mt-0 tablet:w-6/12 tablet:pr-10 tablet:pl-6">
         <BaseLabel pl="small">1st-level spells</BaseLabel>
         <div class="border-2 border-darkKhaki rounded-lg">
           <BaseSelect

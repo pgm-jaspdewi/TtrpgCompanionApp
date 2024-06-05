@@ -7,7 +7,7 @@
       <div class="flex flex-col laptopSm:flex-row items-center justify-center">
         <!-- div with character details -->
         <div
-          class="border-2 border-maroon p-2 mt-2 mb-1 rounded-lg flex items-center w-8/12 laptopSm:w-6/12 laptopSm:mr-1 laptopSm:h-28"
+          class="border-2 border-maroon p-2 mt-2 mb-1 rounded-lg flex items-center w-11/12 tablet:w-8/12 laptopSm:w-6/12 laptopSm:mr-1 laptopSm:h-28"
         >
           <BaseImage :src="src" :size="6" />
           <div class="pl-2">
@@ -31,7 +31,7 @@
         </div>
         <!-- div with stats -->
         <div
-          class="border-2 border-maroon px-2 my-1 laptopSm:mt-2 rounded-lg flex justify-around items-center w-8/12 laptopSm:w-6/12 laptopSm:ml-1 laptopSm:h-28"
+          class="border-2 border-maroon px-2 my-1 laptopSm:mt-2 rounded-lg flex justify-around items-center w-11/12 tablet:w-8/12 laptopSm:w-6/12 laptopSm:ml-1 laptopSm:h-28"
         >
           <div class="flex flex-col">
             <div class="flex items-center my-1">
@@ -76,9 +76,9 @@
         </div>
       </div>
       <!-- divs with proficiencies -->
-      <div class="flex flex-row items-start justify-center laptopLg:justify-start">
+      <div class="flex flex-col tablet:flex-row items-center tablet:items-start justify-center laptopLg:justify-start">
         <div
-          class="border-2 border-maroon p-2 mt-2 mb-4 mr-1 rounded-lg flex flex-col items-center justify-center w-4/12 laptopSm:w-6/12"
+          class="border-2 border-maroon p-2 my-1tablet:mt-2 tablet:mb-4 tablet:mr-1 rounded-lg flex flex-col items-center justify-center w-11/12 tablet:w-4/12 laptopSm:w-6/12"
         >
           <p class="text-maroon font-bold">Skill proficiencies</p>
           <ul class="laptopSm:w-full flex flex-wrap justify-center">
@@ -92,7 +92,7 @@
           </ul>
         </div>
         <div
-          class="border-2 border-maroon p-2 mt-2 mb-4 ml-1 rounded-lg flex flex-col items-center justify-center w-4/12 laptopSm:w-6/12"
+          class="border-2 border-maroon p-2 my-1 tablet:mt-2 mb-4 tablet:ml-1 rounded-lg flex flex-col items-center justify-center w-11/12 tablet:w-4/12 laptopSm:w-6/12"
         >
           <p class="text-maroon font-bold">Languages</p>
           <ul class="laptopSm:w-full flex flex-wrap justify-center">

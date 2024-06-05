@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" >
     <h2 class="text-3xl font-bold font-title text-maroon">Roll Stats</h2>
     <hr class="mb-2 border-2 border-maroon" />
 
@@ -33,7 +33,7 @@
     <div class="m-4">
       <p class="font-bold">Assign the values to your stat of choice & confirm.</p>
 
-      <div class="flex justify-center my-2">
+      <div class="flex flex-wrap tablet:flex-nowrap justify-center my-2">
         <BaseSelectSmall
           label="Str"
           v-model="v$.str.$model"
@@ -71,7 +71,7 @@
           :fillerValue="wizardStore.charStats.cha"
         />
       </div>
-      <p class="text-xs ml-3">
+      <p class="text-xs ml-3 hidden tablet:block">
         For more information on how the stats are rolled or where the standard values come from, see
         the explanation of ability scores on page 9 of the
         <a

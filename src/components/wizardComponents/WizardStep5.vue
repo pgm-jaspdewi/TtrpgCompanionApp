@@ -13,8 +13,8 @@
       <div v-for="(choice, index) in radioButtonOptions" :key="index" class="flex flex-col pb-4">
         <p class="pb-2">{{ choice.desc }}</p>
 
-        <div class="flex items-center px-5">
-          <div v-for="(option, i) in choice.from.options" :key="i" class="w-6/12">
+        <div class="flex flex-col tablet:flex-row tablet:items-center tablet:px-5">
+          <div v-for="(option, i) in choice.from.options" :key="i" class="tablet:w-6/12">
             <!-- display for  items of type 'counted reference' -->
             <label v-if="option.option_type === 'counted_reference'" class="flex">
               <input

@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="h-form flex flex-col justify-between">
-    <div class="flex my-6 mt-8">
-      <div class="w-5/12 flex justify-center">
+  <form @submit.prevent="handleSubmit" class="tablet:h-form flex flex-col justify-between">
+    <div class="flex flex-col items-center tablet:flex-row my-6 mt-8">
+      <div class="tablet:w-5/12 flex justify-center">
         <div>
           <BaseAvatar v-model:path="v$.charAvatar.$model" />
           <span
@@ -13,7 +13,7 @@
           </span>
         </div>
       </div>
-      <div class="w-7/12 pr-10">
+      <div class="w-8/12 tablet:w-7/12 tablet:pr-10 pt-5 tablet:pt-0">
         <div class="mb-2">
           <BaseInput v-model="v$.charName.$model" label="Character Name" id="charName" />
           <span

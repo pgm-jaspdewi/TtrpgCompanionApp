@@ -2,7 +2,7 @@
 <template>
   <!-- Code for the breadcrumbs at the top of the form-->
   <div class="flex justify-center items-end relative">
-    <div class="h-line bg-maroon w-[400px] absolute bottom-2"></div>
+    <div class="h-line bg-maroon w-[225px] tablet:w-[400px] absolute bottom-2"></div>
     <WizardBreadcrumb text="Basics" :nr="1" :step="store.step" />
     <WizardBreadcrumb text="Stats" :nr="2" :step="store.step" />
     <WizardBreadcrumb text="Proficiencies" :nr="3" :step="store.step" />
