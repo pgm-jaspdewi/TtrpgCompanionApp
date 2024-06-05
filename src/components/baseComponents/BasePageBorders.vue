@@ -1,7 +1,7 @@
 <!-- Borders used on landing-, login-, and wizard-views -->
 <template>
   <div
-    class="border-2 border-silverChalice w-outerContainer min-h-outerContainer h-full my-outerContainer m-auto rounded-lg"
+    class="border-2 border-silverChalice w-outerContainer min-h-outerContainer  my-outerContainer m-auto rounded-lg"
   >
     <div
       :class="{ relative: relative }"

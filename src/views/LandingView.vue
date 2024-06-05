@@ -5,7 +5,7 @@
       <div>
         <!-- Title & subtitle -->
         <div class="flex flex-col items-center pb-5">
-          <h1 class="text-4xl laptopSm:text-5xl text-maroon border-b-3 p-1 font-title font-bold">
+          <h1 class="text-3xl tablet:text-4xl laptopSm:text-5xl text-maroon border-b-3 p-1 font-title font-bold mt-3 tablet:mt-0">
             Welcome, {{ userProfile?.username }}
           </h1>
           <h2 class="text-md laptopSm:text-xl">Select a character or create a new one</h2>
@@ -18,10 +18,17 @@
           </li>
         </ul>
 
-        <!-- Create character button -->
-        <BaseButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5">
-          <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
-        </BaseButtonBig>
+        <!-- Create character buttons -->
+        <div class="flex items-center justify-center ">
+          <BaseButton @click="createCharacter" btnContent="Create new Character" class="mt-5 tablet:hidden">
+            <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-4 h-4" />
+          </BaseButton>
+          <BaseButtonBig @click="createCharacter" btnContent="Create new Character" class="mt-5 hidden tablet:inline-block">
+            <FaUserPlus class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
+          </BaseButtonBig>
+        </div>
+        
+        
 
         <!-- logout button -->
         <button
@@ -40,7 +47,7 @@
 
 <!-- Script tag -->
 <script setup lang="ts">
-import { BasePageBorders, BaseButtonBig, BaseModal } from '@/components/baseComponents'
+import { BasePageBorders, BaseButtonBig, BaseModal, BaseButton } from '@/components/baseComponents'
 import { DeleteModal } from '@/components/landingComponents'
 import { useAuthStore } from '@/stores/auth-store'
 import { FaPowerOff, FaUserPlus } from 'vue3-icons/fa6'

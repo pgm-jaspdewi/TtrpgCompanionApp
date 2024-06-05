@@ -2,11 +2,11 @@
   <div class="flex items-start">
     <div
       @click="navigateToCharacter"
-      class="bg-paleGold border-1 border-darkKhaki rounded-lg w-characterCard h-characterCard flex align-top justify-between p-characterCard my-2 group hover:border-maroon hover:bg-lightKhaki cursor-pointer shadow-lg"
+      class="bg-paleGold border-1 border-darkKhaki rounded-lg w-60 tablet:w-characterCard h-characterCard flex align-top justify-between p-2 tablet:p-characterCard my-2 group hover:border-maroon hover:bg-lightKhaki cursor-pointer shadow-lg"
     >
-      <div class="flex">
+      <div class="flex items-center">
         <div
-          class="border-1 border-darkKhaki group-hover:border-maroon w-image h-image overflow-hidden bg-lightKhaki rounded-lg mr-4"
+          class="border-1 border-darkKhaki group-hover:border-maroon w-image h-image overflow-hidden bg-lightKhaki rounded-lg mr-2 tablet:mr-4"
         >
           <img :src="src" alt="character image" class="group-hover:grayscale" />
         </div>
@@ -14,7 +14,7 @@
         <div class="flex flex-col justify-between">
           <p class="font-title font-bold text-maroon text-xl">{{ character.name }}</p>
           <p><span class="text-maroon">Race: </span>{{ character.race }}</p>
-          <div class="flex">
+          <div class="flex flex-col tablet:flex-row">
             <p class="mr-2"><span class="text-maroon">Lvl: </span>{{ character.level }}</p>
             <p><span class="text-maroon">Class: </span>{{ character.class }}</p>
           </div>
