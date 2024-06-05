@@ -5,7 +5,7 @@
   >
     <div
       :class="{ relative: relative }"
-      class="border-2 border-silverChalice w-innerContainer max-w-innerMaxWidth min-h-statsInnerContainer h-full m-innerContainer rounded-lg p-4"
+      class="border-2 border-silverChalice w-innerContainer max-w-innerMaxWidth min-h-statsInnerContainer h-full m-innerContainer rounded-lg tablet:p-4"
     >
       <slot></slot>
     </div>

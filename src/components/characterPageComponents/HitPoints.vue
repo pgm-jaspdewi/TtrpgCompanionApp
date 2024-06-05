@@ -27,7 +27,7 @@
         :disabled="formData.hitPoints === 0"
         @click="submitHeal"
         :class=" formData.hitPoints > 0 ? 'text-britishRacingGreen border-britishRacingGreen hover:bg-britishRacingGreen hover:text-paleGold' : 'text-britishRacingGreen/50 border-britishRacingGreen/50'"
-        class="border-2 rounded-lg px-2 m-1 w-1/2"
+        class="border-2 rounded-lg px-1 tablet:px-2 m-1 w-2/3 tablet:w-1/2"
       >
         Heal
       </button>
@@ -35,13 +35,13 @@
         type="number"
         min="0"
         v-model="formData.hitPoints"
-        class="border-2 border-darkKhaki rounded-lg px-2 w-1/2 outline-none focus:ring-1 focus:ring-darkKhaki"
+        class="border-2 border-darkKhaki rounded-lg px-2 w-2/3 tablet:w-1/2 outline-none focus:ring-1 focus:ring-darkKhaki"
       />
       <button
         :disabled="formData.hitPoints === 0"
         @click="submitDamage"
         :class=" formData.hitPoints > 0 ? 'text-redishBrown border-redishBrown hover:bg-redishBrown hover:text-paleGold' : 'text-redishBrown/50 border-redishBrown/50'"
-        class="border-2 rounded-lg px-2 m-1 w-1/2"
+        class="border-2 rounded-lg px-1 tablet:px-2 m-1 w-2/3 tablet:w-1/2"
       >
         Damage
       </button>
@@ -58,7 +58,7 @@
   </div>
   <!-- AC, initiative & speed -->
   <div class="w-auto m-2 flex justify-around">
-    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+    <div class="border-2 border-maroon rounded-lg tablet:w-1/4 flex flex-col items-center tablet:m-2 bg-paleGold">
       <div
         class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-4 tabletLg:px-6 laptopSm:px-8 py-3 bg-lightKhaki"
       >
@@ -66,7 +66,7 @@
       </div>
       <p class="mb-1 mx-1 font-bold text-maroon">Armor Class</p>
     </div>
-    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+    <div class="border-2 border-maroon rounded-lg tablet:w-1/4 flex flex-col items-center tablet:m-2 bg-paleGold">
       <div
         class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-4 tabletLg:px-6 laptopSm:px-8 py-3 bg-lightKhaki"
       >
@@ -75,7 +75,7 @@
       </div>
       <p class="mb-1 font-bold text-maroon">Initiative</p>
     </div>
-    <div class="border-2 border-maroon rounded-lg w-1/4 flex flex-col items-center m-2 bg-paleGold">
+    <div class="border-2 border-maroon rounded-lg tablet:w-1/4 flex flex-col items-center tablet:m-2 bg-paleGold">
       <div
         class="border-2 border-darkKhaki rounded-lg m-1 mt-2 mb-0.5 px-2 tabletLg:px-4 laptopSm:px-6 py-3 bg-lightKhaki"
       >

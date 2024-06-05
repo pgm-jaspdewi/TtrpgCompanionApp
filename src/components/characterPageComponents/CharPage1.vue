@@ -4,21 +4,21 @@
     <div class="mb-4 flex flex-col laptopLg:flex-row justify-between">
       <!-- avatar + basic info -->
       <div
-        class="m-2 border-2 border-darkKhaki rounded-lg w-10/12 laptopSm:w-7/12 laptopLg:w-4/12 flex items-start justify-between shadow-lg"
+        class="m-2 border-2 border-darkKhaki rounded-lg  tablet:w-10/12 laptopSm:w-7/12 laptopLg:w-4/12 flex flex-col tablet:flex-row items-start justify-between shadow-lg"
       >
-        <div class="flex">
-          <BaseImage :src="src" :size="8" class="m-2" />
-          <div class="m-2 flex flex-col justify-between h-32">
+        <div class="flex flex-col tablet:flex-row">
+          <BaseImage :src="src" :size="8" class="mx-auto my-2 tablet:m-2" />
+          <div class="m-2 flex flex-col justify-between tablet:h-32">
             <h2 class="text-2xl laptopLg:text-3xl font-bold text-maroon ">{{ character.name }}</h2>
             <div class="flex justify-between">
-              <p class="text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
-              <p class="text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
+              <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
+              <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
             </div>
-            <p class="text-2xl laptopLg:text-xl capitalize">level {{ character.level }}</p>
+            <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize">level {{ character.level }}</p>
           </div>
         </div>
         <button
-          class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mr-2 mt-2"
+          class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mx-auto mb-2 tablet:mr-2 tablet:mt-2 tablet:ml-0 tablet:mb-0"
         >
           <p class="pr-1 uppercase font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
           <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
@@ -27,7 +27,7 @@
 
       <!-- Stats -->
       <div
-        class="m-2 rounded-lg laptopLg:w-7/12 flex justify-center items-start h-36 shadow-lg bg-maroon/50"
+        class="m-2 rounded-lg laptopLg:w-7/12 flex flex-wrap tablet:flex-nowrap justify-center items-start shadow-lg bg-maroon/50"
       >
         <CharStat :title="'str'" :stat="parseInt(character.stats.str)" />
         <CharStat :title="'dex'" :stat="parseInt(character.stats.dex)" />
@@ -40,16 +40,16 @@
     <!-- columns -->
     <div class="flex flex-col laptopSm:flex-row justify-between w-full">
       <!-- first two colums -->
-      <div class="flex w-full laptopSm:w-8/12 mb-3">
+      <div class="flex flex-col tablet:flex-row w-full laptopSm:w-8/12 mb-3">
         <!-- first column -->
-        <div class="w-6/12 laptopSm:w-5/12 flex flex-col">
+        <div class="tablet:w-6/12 laptopSm:w-5/12 flex flex-col">
           <!-- saving throws -->
           <div
             class="mx-2 mt-1 p-1 border-2 border-darkKhaki rounded-lg flex flex-col items-center shadow-lg"
           >
             <h3 class="font-bold text-lg text-maroon">Saving Throws</h3>
-            <div v-if="classData" class="flex w-full">
-              <div class="w-1/2 p-2">
+            <div v-if="classData" class="flex flex-col tablet:flex-row w-full">
+              <div class="w-full tablet:w-1/2 pt-2 tablet:p-2">
                 <SavingThrow
                   :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.str)"
@@ -69,7 +69,7 @@
                   :proficiencyBonus="proficiencyBonus"
                 />
               </div>
-              <div class="w-1/2 p-2">
+              <div class="w-full tablet:w-1/2 pb-2 tablet:p-2">
                 <SavingThrow
                   :saves="classData.saving_throws"
                   :stat="parseInt(character.stats.int)"
@@ -96,7 +96,7 @@
             class="mx-2 mt-4 mb-1 p-1 border-2 border-darkKhaki rounded-lg grow flex flex-col items-center shadow-lg"
           >
             <h3 class="font-bold text-lg text-maroon">Skills</h3>
-            <div class="flex flex-col w-full p-2">
+            <div class="flex flex-col w-full tablet:p-2">
               <SkillSave
                 v-for="skill in skills"
                 :key="skill.index"
@@ -110,7 +110,7 @@
         </div>
 
         <!-- second column -->
-        <div class="w-6/12 laptopSm:w-7/12">
+        <div class="tablet:w-6/12 laptopSm:w-7/12">
           <!-- proficiency-bonus & passive perception -->
           <div class="w-full flex flex-col laptopSm:flex-row">
             <div
@@ -151,10 +151,10 @@
       </div>
 
       <!-- third column -->
-      <div class="laptopSm:w-4/12 flex items-start laptopSm:items-stretch laptopSm:flex-col">
+      <div class="laptopSm:w-4/12 flex flex-col tablet:flex-row tablet:items-start laptopSm:items-stretch laptopSm:flex-col">
         <div
           v-if="weaponList.length > 0"
-          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg w-1/2 laptopSm:w-auto"
+          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg tablet:w-1/2 laptopSm:w-auto shadow-lg"
         >
           <AttackOptions
             :weapons="character.weapons"
@@ -167,12 +167,12 @@
         </div>
         <div
           v-else
-          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg flex justify-center items-center w-1/2 laptopSm:w-auto"
+          class="mx-2 mb-3 border-2 border-darkKhaki rounded-lg flex justify-center items-center tablet:w-1/2 laptopSm:w-auto shadow-lg"
         >
           <p class="text-xl font-bold my-5 text-maroon">Readying weapons...</p>
         </div>
         <div
-          class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center w-1/2 laptopSm:w-auto"
+          class="mx-2 mb-1 border-2 border-darkKhaki rounded-lg flex justify-center tablet:w-1/2 laptopSm:w-auto shadow-lg"
         >
           <ClassProficiencies :proficiencies="proficiencies" :languages="character.languages" />
         </div>

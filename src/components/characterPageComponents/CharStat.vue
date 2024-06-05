@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-2 border-maroon m-2 h-28 w-1/6 rounded-lg flex flex-col items-center bg-paleGold shadow-lg relative"
+    class="border-2 border-maroon m-2 mb-5 h-28 w-1/3 tablet:w-1/6 rounded-lg flex flex-col items-center bg-paleGold shadow-lg relative"
   >
     <p class="mt-2 mb-1 uppercase text-maroon font-bold">{{ title }}</p>
     <div
