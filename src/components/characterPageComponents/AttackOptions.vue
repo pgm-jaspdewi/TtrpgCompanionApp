@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center">
     <h3 class="text-lg text-maroon font-bold m-1 mt-2">Attacks</h3>
-    <div class="flex justify-center w-full">
+    <div class="tablet:flex justify-center w-full hidden">
       <p class="w-2/6 text-center">Name</p>
       <p class="w-1/6 text-center">Bonus</p>
       <p class="w-2/6 text-center">Damage</p>
@@ -10,27 +10,27 @@
       v-for="(weapon, index) of equipedWeapons"
       @click="openModal(weapon)"
       :key="index"
-      class="flex justify-center items-center w-full laptopSm:w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg"
+      class="flex flex-col tablet:flex-row tablet:justify-center items-center w-11/12 tablet:w-full laptopSm:w-11/12 py-1 last:mb-4 group hover:bg-maroon/50 rounded-lg border-y-2 border-darkKhaki tablet:border-none"
     >
       <p
-        class="w-2/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
+        class="w-11/12 tablet:w-2/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
       >
         {{ weapon.name }}
       </p>
       <p
         v-if="weapon.attack_bonus >= 0"
-        class="w-1/6 text-center border-2 border-darkKhaki mx-1 rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
+        class="w-11/12 tablet:w-1/6 text-center border-2 border-darkKhaki tablet:mx-1 rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
       >
         +{{ weapon.attack_bonus }}
       </p>
       <p
         v-else-if="weapon.attack_bonus < 0"
-        class="w-1/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
+        class="w-11/12 tablet:w-1/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
       >
         {{ weapon.attack_bonus }}
       </p>
       <p
-        class="w-2/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
+        class="w-11/12 tablet:w-2/6 text-center border-2 border-darkKhaki rounded-lg bg-lightKhaki group-hover:bg-maroon group-hover:text-lightKhaki"
       >
         {{ weapon.damage_die }} {{ weapon.damage_type }}
       </p>

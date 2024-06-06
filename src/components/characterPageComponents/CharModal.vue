@@ -1,6 +1,6 @@
 <template>
-  <div class="relative w-96 flex flex-col">
-    <div>
+  <div class="relative tablet:w-96 flex flex-col">
+    <div class="mt-5 tablet:mt-0">
       <BaseH1 :title="`${rollName} ${modal.diceThrowInfo.type}`" :smaller-title="true"/>
     </div>
     
