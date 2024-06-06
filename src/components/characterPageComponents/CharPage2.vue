@@ -13,7 +13,7 @@
       <div>
         <h2 class="text-xl ml-4 capitalize font-bold text-maroon">weapons</h2>
         <div
-          class="mx-2 mb-10 border-2 border-darkKhaki rounded-lg w-full flex justify-center shadow-lg"
+          class="mx-1 tablet:mx-2 mb-10 border-2 border-darkKhaki rounded-lg w-auto tablet:w-full flex justify-center shadow-lg"
         >
           <ItemsOwned :character-id="character.id" type="weapons" :availableEquipment="equipmentWeapons"/>
         </div>

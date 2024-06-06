@@ -1,33 +1,33 @@
 <template>
   <div class="max-w-maxWidth mx-auto">
     <!-- top row -->
-    <div class="mb-4 flex flex-col laptopLg:flex-row justify-between">
+    <div class="mb-4 flex flex-col laptopSm:flex-row justify-between">
       <!-- avatar + basic info -->
       <div
-        class="m-2 border-2 border-darkKhaki rounded-lg  tablet:w-10/12 laptopSm:w-7/12 laptopLg:w-4/12 flex flex-col tablet:flex-row items-start justify-between shadow-lg"
+        class="mx-auto my-2 tablet:m-2 border-2 border-darkKhaki rounded-lg  w-full max-w-64 tablet:max-w-none tabletLg:w-1/2 laptopSm:w-4/12 flex flex-col tablet:flex-row items-start justify-between shadow-lg"
       >
-        <div class="flex flex-col tablet:flex-row">
+        <div class="flex flex-col tablet:flex-row w-full ">
           <BaseImage :src="src" :size="8" class="mx-auto my-2 tablet:m-2" />
           <div class="m-2 flex flex-col justify-between tablet:h-32">
             <h2 class="text-2xl laptopLg:text-3xl font-bold text-maroon ">{{ character.name }}</h2>
-            <div class="flex justify-between">
-              <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize mr-4">{{ character.race }}</p>
+       
+              <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize mr-2">{{ character.race }}</p>
               <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize">{{ character.class }}</p>
-            </div>
+         
             <p class="text-xl tablet:text-2xl laptopLg:text-xl capitalize">level {{ character.level }}</p>
           </div>
         </div>
         <button
-          class=" rounded-full  h-8 flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mx-auto mb-2 tablet:mr-2 tablet:mt-2 tablet:ml-0 tablet:mb-0"
+          class=" rounded-full h-8  flex justify-center items-center border-2 border-maroon hover:bg-maroon group p-2 mx-auto mb-2 tablet:mr-1 tablet:mt-2 tablet:ml-0 tablet:mb-0"
         >
-          <p class="pr-1 uppercase font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
+          <p class="pr-1 uppercase w-16 font-semibold text-maroon group-hover:text-lightKhaki">lvl up</p>
           <FaArrowUp class="fill-maroon group-hover:fill-lightKhaki w-5 h-5" />
         </button>
       </div>
 
       <!-- Stats -->
       <div
-        class="m-2 rounded-lg laptopLg:w-7/12 flex flex-wrap tablet:flex-nowrap justify-center items-start shadow-lg bg-maroon/50"
+        class="m-2 rounded-lg laptopSm:w-7/12 flex flex-wrap tablet:flex-nowrap justify-center items-start shadow-lg bg-maroon/50"
       >
         <CharStat :title="'str'" :stat="parseInt(character.stats.str)" />
         <CharStat :title="'dex'" :stat="parseInt(character.stats.dex)" />

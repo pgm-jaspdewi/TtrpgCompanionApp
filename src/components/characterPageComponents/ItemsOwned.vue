@@ -1,26 +1,26 @@
 <template>
-  <div class="w-11/12 p-2 pb-4">
+  <div class="tablet:w-11/12 p-2 pb-4">
     <div class="flex">
       <h3
         v-if="type === 'weapons'"
-        class="capitalize font-bold text-maroon w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+        class="capitalize font-bold text-maroon w-7/12 tablet:w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
       >
         weapon
       </h3>
       <h3
         v-if="type === 'items'"
-        class="capitalize font-bold text-maroon w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+        class="capitalize font-bold text-maroon w-7/12 tablet:w-9/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
       >
         Item
       </h3>
 
       <h3
-        class="capitalize font-bold text-maroon w-2/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2"
+        class="capitalize font-bold text-maroon w-3/12 tablet:w-2/12 mt-2 border-darkKhaki border-b-2 border-r-2 p-2 text-center"
       >
-        quantity
+        qty.
       </h3>
-      <h3 class="capitalize font-bold text-maroon w-1/12 mt-2 border-darkKhaki border-b-2 p-2">
-        delete
+      <h3 class="capitalize font-bold text-maroon w-2/12 tablet:w-1/12 mt-2 border-darkKhaki border-b-2 p-2">
+        del.
       </h3>
     </div>
     <ItemDisplay

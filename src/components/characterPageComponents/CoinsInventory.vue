@@ -1,5 +1,5 @@
 <template>
-  <div v-if="coins.length > 0" class="flex justify-center ml-2">
+  <div v-if="coins.length > 0" class="flex flex-wrap tablet:flex-nowrap justify-between tablet:justify-center ml-2">
     <CoinInput
       v-for="(coin, index) of coins"
       @update-coin="updateCoin"

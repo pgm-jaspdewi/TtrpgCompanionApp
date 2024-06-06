@@ -40,7 +40,7 @@ export default {
       spacing: {
         'modalCancelBottom': '80%',
         'modalCancelLeft': '95%',
-        'coins': '75%',
+
         'proficiency': '90%',
         'proficiencyLg': '97%',
         'stats': '100px',

@@ -1,8 +1,8 @@
 <template>
   <div
-    class="border-2 border-maroon rounded-xl p-2 pl-7 m-2 mr-2 relative flex justif items-center bg-paleGold w-1/6"
+    class="border-2 border-maroon rounded-xl p-2 pl-7 m-2 mx-4 relative flex justif items-center bg-paleGold w-1/3 tablet:w-1/6"
   >
-    <p class="absolute border-2 border-maroon rounded-full bg-paleGold uppercase px-2 right-coins">
+    <p class="absolute border-2 border-maroon rounded-full bg-paleGold uppercase px-2 right-[75%] tablet:right-[80%] tabletLg:right-[85%] laptopLg:right-[75%]">
       {{ coinType }}
     </p>
     <input
