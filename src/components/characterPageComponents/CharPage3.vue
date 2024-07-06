@@ -24,8 +24,7 @@
     
     <!-- second row cantrips -> level 4 -->
     <div class="flex flex-col tablet:flex-row tablet:flex-wrap justify-center">
-      <LeveledSpellsList :spells="availableSpellsCantrips" :character="{id: character.id, name: character.name}" title="Cantrips" :spellLevel="0"/>
-      
+      <LeveledSpellsList :spells="availableSpellsCantrips" :character="{id: character.id, name: character.name}" title="Cantrips" :spellLevel="0"/>    
       <LeveledSpellsList :spells="availableSpellsLevel1" :character="{id: character.id, name: character.name}" title="1st level spells" :spellLevel="1"/>
       <LeveledSpellsList :spells="availableSpellsLevel2" :character="{id: character.id, name: character.name}" title="2nd level spells" :spellLevel="2"/>
       <LeveledSpellsList :spells="availableSpellsLevel3" :character="{id: character.id, name: character.name}" title="3rd level spells" :spellLevel="3"/>

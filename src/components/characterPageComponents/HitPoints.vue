@@ -191,11 +191,6 @@ const submitDamage = async () => {
   }
 }
 
-const test = () => {
-  // const armor = props.armorList.index.includes()
-}
-test()
-
 const calculateAC = computed(() => {
   if (ACValues.value && ACValues.value.dex_bonus) {
     return ACValues.value.base + dexBonus.value

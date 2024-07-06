@@ -90,7 +90,6 @@ const currentSpellsFromThisLvl = async () => {
   if (error) {
     console.error('Error:', error)
   } else {
-  //  console.log(data)
     data.spells.forEach((spell: spell) => {
     if (spell.level === props.spellLevel) {
       currentSpells.value.push(spell)
